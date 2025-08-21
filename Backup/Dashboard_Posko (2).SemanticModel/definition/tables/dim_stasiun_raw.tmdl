@@ -1,0 +1,260 @@
+table dim_stasiun_raw
+	lineageTag: 4e7ab58d-c79c-4893-8fc4-817aa774a5a4
+
+	column c_stasiun_id
+		dataType: double
+		sourceProviderType: decimal(24, 0)
+		lineageTag: a12cd6f8-4876-480b-a482-9740264189a3
+		summarizeBy: sum
+		sourceColumn: c_stasiun_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column c_stasiun_profitcenter
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ebc70d8c-81c1-4741-9138-afad34c70382
+		summarizeBy: none
+		sourceColumn: c_stasiun_profitcenter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Stasiun Keberangkatan'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 44d14bfe-be12-4477-9eb5-26ae6beb3a05
+		summarizeBy: none
+		sourceColumn: Stasiun Keberangkatan
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_stasiun_code
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 70ee8161-fd66-40b9-9e88-1f45c3da5898
+		summarizeBy: none
+		sourceColumn: c_stasiun_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_stasiun_pembatalan
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6cbb39e3-1958-410b-a907-19eb095b1404
+		summarizeBy: none
+		sourceColumn: c_stasiun_pembatalan
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_stasiun_pengembalianbea
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 750d6f76-1423-4df2-9417-10aab1a7bf67
+		summarizeBy: none
+		sourceColumn: c_stasiun_pengembalianbea
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_stasiun_status
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9decefef-df91-498d-869b-8d7af3e5ffa6
+		summarizeBy: none
+		sourceColumn: c_stasiun_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_stasiun_domain
+		dataType: double
+		sourceProviderType: decimal(24, 0)
+		lineageTag: c9eea609-517f-4405-b621-e8a168e4f29b
+		summarizeBy: sum
+		sourceColumn: c_stasiun_domain
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column c_stasiun_modifiedby
+		dataType: double
+		sourceProviderType: decimal(24, 0)
+		lineageTag: 191840ca-045c-4425-a8bf-fdab41536fdb
+		summarizeBy: sum
+		sourceColumn: c_stasiun_modifiedby
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column c_stasiun_modifiedon
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 4c1f70ab-c3db-4435-82f8-5b5b3b689b9e
+		summarizeBy: none
+		sourceColumn: c_stasiun_modifiedon
+
+		variation Variation
+			isDefault
+			relationship: 641b61a2-40a3-4423-97a3-fb93b01fbd07
+			defaultHierarchy: LocalDateTable_0b56c218-1660-4b74-afe7-45e617980a7a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_area_id
+		dataType: double
+		sourceProviderType: decimal(24, 0)
+		lineageTag: 280d1944-12a4-4c1d-af90-0f70b3401938
+		summarizeBy: none
+		sourceColumn: c_area_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column c_city_id
+		dataType: double
+		sourceProviderType: decimal(24, 0)
+		lineageTag: bdf94bb2-310e-4cfc-95d5-72f60ce67919
+		summarizeBy: sum
+		sourceColumn: c_city_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column c_stasiun_createdby
+		dataType: double
+		sourceProviderType: decimal(24, 0)
+		lineageTag: 62100699-1904-4a82-9d9d-186bfc8005f9
+		summarizeBy: sum
+		sourceColumn: c_stasiun_createdby
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column c_stasiun_createdon
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 1c06ad5d-33e8-44a3-ae73-189df1bf6ffc
+		summarizeBy: none
+		sourceColumn: c_stasiun_createdon
+
+		variation Variation
+			isDefault
+			relationship: 837e42cf-21ff-4837-9b21-e60df73700f3
+			defaultHierarchy: LocalDateTable_c638e203-2c19-4c30-9b4b-3b6a4f867f72.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_stasiun_showpos
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 66cc8539-3b4d-43df-8ae5-fdcdf4685351
+		summarizeBy: none
+		sourceColumn: c_stasiun_showpos
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_stasiun_showibook
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d321ff0b-f56c-4a7c-b6c8-96550c7a3f0a
+		summarizeBy: none
+		sourceColumn: c_stasiun_showibook
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_stasiun_showmobile
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b670f3d4-29c1-45fb-8adb-a326f6aceecd
+		summarizeBy: none
+		sourceColumn: c_stasiun_showmobile
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_stasiun_startdate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 20caac3e-d7b6-4add-91ff-8f3a2d698e15
+		summarizeBy: none
+		sourceColumn: c_stasiun_startdate
+
+		variation Variation
+			isDefault
+			relationship: 0b00e1ab-936e-4667-a4e9-a0f7a8110b94
+			defaultHierarchy: LocalDateTable_060cd448-4c77-4cb1-9127-375ff8f6b751.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_stasiun_enddate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 22732be6-51bc-4aaa-8fc8-8644adfcb62d
+		summarizeBy: none
+		sourceColumn: c_stasiun_enddate
+
+		variation Variation
+			isDefault
+			relationship: 2be349c9-39e2-4fc7-ae58-7b527b22d9ea
+			defaultHierarchy: LocalDateTable_47394330-6d95-4fca-8ea7-82af53b78c19.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_stasiun_local
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 235bcbc9-d392-4948-a762-c6e4c1a1d39b
+		summarizeBy: none
+		sourceColumn: c_stasiun_local
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_stasiun_intercity
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2f1ef268-7376-4242-8e75-fda8e62484ab
+		summarizeBy: none
+		sourceColumn: c_stasiun_intercity
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_service_type
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: cdf9ed16-c87e-42e2-af94-67f6ed1aad77
+		summarizeBy: none
+		sourceColumn: c_service_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_service_status
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 407b60b5-ea9d-4d53-bddb-101da98faa05
+		summarizeBy: none
+		sourceColumn: c_service_status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_stasiun_raw = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("eud3dnyz5fjehkzavuohztthdi-dcxryn2rcyqehmb53xkxj2c6ja.datawarehouse.fabric.microsoft.com", "dashboard_data"),
+				    dbo_dashboard_ticketing_stasiun_raw = Source{[Schema="dbo",Item="dashboard_ticketing_stasiun_raw"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(dbo_dashboard_ticketing_stasiun_raw,{{"c_stasiun_name", "Stasiun Keberangkatan"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

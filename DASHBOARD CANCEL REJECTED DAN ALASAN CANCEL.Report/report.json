@@ -1,0 +1,96 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"type\":2,\"version\":\"5.59\"}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":0,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "30cc24e559990b424405",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"0113f002270ccb695270\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.846153846153847,\"y\":336.73846153846154,\"z\":2000,\"width\":196.92307692307693,\"height\":106.33846153846154,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Agregat.BLACK LIST PENUMPANG\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"Agregat\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"BLACK LIST PENUMPANG\"},\"Name\":\"Agregat.BLACK LIST PENUMPANG\",\"NativeReferenceName\":\"BLACK LIST PENUMPANG\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"BLACK LIST PENUMPANG\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 106.34,
+          "width": 196.92,
+          "x": 9.85,
+          "y": 336.74,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"145bb882d49ec64d20d6\",\"layouts\":[{\"id\":0,\"position\":{\"x\":584.170193800575,\"y\":0,\"z\":1000,\"width\":477.9574312913795,\"height\":343.1489250297084,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"donutChart\",\"projections\":{\"Category\":[{\"queryRef\":\"RTSNG_T_REFUND_REPORT.REASON\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(RTSNG_T_REFUND_REPORT.TICKET_NUMBER)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"RTSNG_T_REFUND_REPORT\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"REASON\"},\"Name\":\"RTSNG_T_REFUND_REPORT.REASON\",\"NativeReferenceName\":\"Count of REASON\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"TICKET_NUMBER\"}},\"Function\":5},\"Name\":\"CountNonNull(RTSNG_T_REFUND_REPORT.TICKET_NUMBER)\",\"NativeReferenceName\":\"Count of TICKET_NUMBER\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"TICKET_NUMBER\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 343.15,
+          "width": 477.96,
+          "x": 584.17,
+          "y": 0.00,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"8d27cca593ec86e4bb18\",\"layouts\":[{\"id\":0,\"position\":{\"x\":206.76923076923077,\"y\":342.6461538461538,\"z\":3000,\"width\":137.84615384615384,\"height\":100.43076923076923,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Agregat.Jumlah Sakit\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"Agregat\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Jumlah Sakit\"},\"Name\":\"Agregat.Jumlah Sakit\",\"NativeReferenceName\":\"Jumlah Sakit\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Jumlah Sakit\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 100.43,
+          "width": 137.85,
+          "x": 206.77,
+          "y": 342.65,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"a570080456054058cc9e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":486.4,\"y\":344.61538461538464,\"z\":5000,\"width\":305.2307692307692,\"height\":100.43076923076923,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Agregat.LAIN LAIN 1\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"Agregat\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"LAIN LAIN 1\"},\"Name\":\"Agregat.LAIN LAIN 1\",\"NativeReferenceName\":\"LAIN LAIN 1\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"LAIN LAIN 1\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 100.43,
+          "width": 305.23,
+          "x": 486.40,
+          "y": 344.62,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"d13bad1540ae04077d26\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10.212765625884177,\"y\":0,\"z\":0,\"width\":547.404237547392,\"height\":292.0850969002875,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"RTSNG_T_REFUND_REPORT.TRIP_DATE\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(RTSNG_T_REFUND_REPORT.TICKET_NUMBER)\"}],\"Series\":[{\"queryRef\":\"RTSNG_T_REFUND_REPORT.REASON\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"RTSNG_T_REFUND_REPORT\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"TRIP_DATE\"},\"Name\":\"RTSNG_T_REFUND_REPORT.TRIP_DATE\",\"NativeReferenceName\":\"TRIP_DATE\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"TICKET_NUMBER\"}},\"Function\":5},\"Name\":\"CountNonNull(RTSNG_T_REFUND_REPORT.TICKET_NUMBER)\",\"NativeReferenceName\":\"Count of TICKET_NUMBER\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"REASON\"},\"Name\":\"RTSNG_T_REFUND_REPORT.REASON\",\"NativeReferenceName\":\"REASON\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"TRIP_DATE\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"legend\":[{\"properties\":{\"position\":{\"expr\":{\"Literal\":{\"Value\":\"'Bottom'\"}}}}}]}}}",
+          "filters": "[{\"name\":\"0dc24880ec8225bb0acc\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"RTSNG_T_REFUND_REPORT\"}},\"Property\":\"REASON\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"RTSNG_T_REFUND_REPORT\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"REASON\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"null\"}}]]}}}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{\"general\":[{\"properties\":{\"isInvertedSelectionMode\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"isHiddenInViewMode\":false}]",
+          "height": 292.09,
+          "width": 547.40,
+          "x": 10.21,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"da855e673485e540b784\",\"layouts\":[{\"id\":0,\"position\":{\"x\":716.8,\"y\":342.6461538461538,\"z\":5001,\"width\":273.7230769230769,\"height\":100.43076923076923,\"tabOrder\":5001}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Min(RTSNG_T_REFUND_REPORT.TICKET_NUMBER)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"RTSNG_T_REFUND_REPORT\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"TICKET_NUMBER\"}},\"Function\":5},\"Name\":\"Min(RTSNG_T_REFUND_REPORT.TICKET_NUMBER)\",\"NativeReferenceName\":\"Count of TICKET_NUMBER\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"TICKET_NUMBER\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 100.43,
+          "width": 273.72,
+          "x": 716.80,
+          "y": 342.65,
+          "z": 5001.00
+        },
+        {
+          "config": "{\"name\":\"eaf6f189822de1c33126\",\"layouts\":[{\"id\":0,\"position\":{\"x\":344.61538461538464,\"y\":344.61538461538464,\"z\":4000,\"width\":141.7846153846154,\"height\":98.46153846153847,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Agregat.KA TERLAMBAT\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"Agregat\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"KA TERLAMBAT\"},\"Name\":\"Agregat.KA TERLAMBAT\",\"NativeReferenceName\":\"KA TERLAMBAT\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"KA TERLAMBAT\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 98.46,
+          "width": 141.78,
+          "x": 344.62,
+          "y": 344.62,
+          "z": 4000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

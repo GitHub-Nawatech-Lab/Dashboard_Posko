@@ -1,0 +1,183 @@
+table DateTable2
+	lineageTag: bb1c92fd-1340-46de-ad23-23c2ddee6ddd
+
+	column Date
+		formatString: General Date
+		lineageTag: 19e9430d-ba95-493c-9ee3-c8462faf9c4f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: cddc05fc-d986-4442-bcd4-cd11c4335006
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: d94e7fd8-1fe8-4d9a-98e5-750c7f455999
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		formatString: 0
+		lineageTag: df25b5f8-3966-4731-8005-843bbc52eff1
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Month Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		lineageTag: ea84a055-1da6-4faf-b70d-d6c122c838f7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weekday
+		lineageTag: dfa63918-8e84-433a-beca-4cd42a8ca6d5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Weekday]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weekday Number'
+		formatString: 0
+		lineageTag: 0684a595-68a0-4383-9936-94866bb04373
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Weekday Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year-Month
+		lineageTag: b1bf79e4-9739-4b82-826f-f45297380577
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year-Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Posko = ```
+			
+			    CALCULATE(
+			         MIN(posko_table[Posko]),
+			         FILTER(
+			            posko_table,
+			            DateTable2[Date] <= posko_table[EndDate] 
+			            && DateTable2[Date] >= posko_table[StartDate]
+			         )
+			    )
+			```
+		lineageTag: 02c71404-ee3d-4d4a-a9cf-08876e7c82da
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column PoskoLabel = ```
+			
+			VAR YearValue = YEAR(DateTable2[Date])
+			VAR LebaranYear = IF(
+			    CONTAINSSTRING(DateTable2[Posko], "Lebaran"), 
+			    RIGHT(DateTable2[Posko], 4), 
+			    BLANK()
+			)
+			VAR RankNumber = IF(DateTable2[Posko] <> BLANK(),RANKX(
+			    FILTER(
+			        DateTable2, 
+			        DateTable2[Posko] = "Lebaran " & LebaranYear
+			    ), 
+			    DateTable2[Date], 
+			    , 
+			    ASC, 
+			    DENSE
+			), BLANK())
+			
+			RETURN "Lebaran " & " - " & FORMAT(RankNumber,"00")
+			```
+		lineageTag: f0544174-eb24-46b8-9c98-b47bc346fd2f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tanggal = FORMAT(DateTable2[Date], "DD.MM.YYYY")
+		lineageTag: 0b06dd67-cc46-4550-95f7-708c0848a0dc
+		summarizeBy: none
+		sortByColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProgramY1 = "Program " & DateTable2[Year] & "   "
+		lineageTag: 37c2f079-f737-4f8a-a0ce-f2f829e3c7f0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column RealisasiY1 = "Realisasi " & DateTable2[Year]
+		lineageTag: c349db55-0446-461f-be8a-df3470602e58
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column RealisasiY2 = "Realisasi " & DateTable2[Year]-1
+		lineageTag: d6ae4ea6-0f79-4621-a21f-88c2b0dac75e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column RealisasiY3 = "Realisasi " & DateTable2[Year]-2
+		lineageTag: 28fd4f35-564e-4e9e-986a-5be75ed6989b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Today = IF(DateTable2[Date]<=TODAY(), 1,0)
+		formatString: 0
+		lineageTag: 1209e30a-605a-4146-ba3c-c7046ab5c332
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DateTable2 = calculated
+		mode: import
+		source = ```
+				
+				ADDCOLUMNS(
+				    CALENDAR(DATE(2015, 1, 1), DATE(2030, 12, 31)),  -- Set start and end dates
+				    "Year", YEAR([Date]),
+				    "Month", FORMAT([Date], "MMMM"),  -- Full month name (e.g., January)
+				    "Month Number", MONTH([Date]),
+				    "Quarter", "Q" & FORMAT([Date], "Q"),
+				    "Weekday", FORMAT([Date], "dddd"),  -- Full weekday name (e.g., Monday)
+				    "Weekday Number", WEEKDAY([Date], 2),  -- 2 = Monday as start of week
+				    "Year-Month", FORMAT([Date], "YYYY-MM") -- Useful for sorting
+				    // "Semester", IF(MONTH([Date]) < 6, CONCATENATE( YEAR([Date])," Semester 1"),CONCATENATE( YEAR([Date])," Semester 2")),
+				    // "Event", 
+				    // SWITCH(
+				    //     TRUE(),
+				    //     [Date] >= DATE(2019, 5, 26) && [Date] <= DATE(2019, 6, 16), "Lebaran 2019",
+				    //     [Date] >= DATE(2020, 5, 24) && [Date] <= DATE(2020, 6, 14), "Lebaran 2020",
+				    //     [Date] >= DATE(2021, 5, 12) && [Date] <= DATE(2021, 6, 2), "Lebaran 2021",
+				    //     [Date] >= DATE(2022, 4, 22) && [Date] <= DATE(2022, 5, 13), "Lebaran 2022",
+				    //     [Date] >= DATE(2023, 4, 12) && [Date] <= DATE(2023, 5, 3), "Lebaran 2023",
+				    //     [Date] >= DATE(2024, 3, 31) && [Date] <= DATE(2024, 4, 21), "Lebaran 2024",
+				    //     [Date] >= DATE(2025, 3, 21) && [Date] <= DATE(2025, 4, 11), "Lebaran 2025",
+				    //     [Date] >= DATE(2026, 3, 21) && [Date] <= DATE(2026, 4, 11), "Lebaran 2026",
+				    //     "Hari Biasa"
+				    // )
+				)
+				```
+
+	annotation PBI_Id = 587de4034ebd42ef81774517d69043dd
+

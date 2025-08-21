@@ -1,0 +1,559 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "RTSNG_T_CANCELLATION",
+        "type": "Copy",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "Delete",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "OracleSource",
+            "oracleReaderQuery": "SELECT \nTO_CHAR(C_CANCELLATION_ID) AS C_CANCELLATION_ID,\n  TO_CHAR(C_CANCELLATION_DATE, 'YYYY-MM-DD HH24:MI:SS') AS C_CANCELLATION_DATE,\n  TO_CHAR(C_CANCELLATION_TOTAMOUNT) AS C_CANCELLATION_TOTAMOUNT,\n  TO_CHAR(C_CANCELLATION_STATUS) AS C_CANCELLATION_STATUS,\n  TO_CHAR(C_TRANSACTIONID_CANCELLED) AS C_TRANSACTIONID_CANCELLED,\n  TO_CHAR(C_TRANSACTIONID_NEW) AS C_TRANSACTIONID_NEW,\n  TO_CHAR(C_CANCELLATION_DOMAIN) AS C_CANCELLATION_DOMAIN,\n  TO_CHAR(C_CANCELLATION_MODIFIEDBY) AS C_CANCELLATION_MODIFIEDBY,\n  TO_CHAR(C_CANCELLATION_MODIFIEDON, 'YYYY-MM-DD HH24:MI:SS') AS C_CANCELLATION_MODIFIEDON,\n  TO_CHAR(C_STASIUN_ID) AS C_STASIUN_ID,\n  TO_CHAR(C_CANCELLATIONTYPE_ID) AS C_CANCELLATIONTYPE_ID,\n  TO_CHAR(C_CANCELREASON_ID) AS C_CANCELREASON_ID,\n  TO_CHAR(C_SHIFT_ID) AS C_SHIFT_ID,\n  TO_CHAR(C_CANCELLATION_NOKA) AS C_CANCELLATION_NOKA,\n  TO_CHAR(C_CANCELLATION_TRAINNAME) AS C_CANCELLATION_TRAINNAME,\n  TO_CHAR(C_CANCELLATION_MAXPRINT) AS C_CANCELLATION_MAXPRINT,\n  TO_CHAR(C_CANCELLATION_CANCELNUM) AS C_CANCELLATION_CANCELNUM,\n  TO_CHAR(C_CANCELLATION_PRINTEDON, 'YYYY-MM-DD HH24:MI:SS') AS C_CANCELLATION_PRINTEDON,\n  TO_CHAR(C_CANCELLATION_CREATEDBY) AS C_CANCELLATION_CREATEDBY,\n  TO_CHAR(C_CANCELLATION_CREATEDON, 'YYYY-MM-DD HH24:MI:SS') AS C_CANCELLATION_CREATEDON,\n  TO_CHAR(C_CANCELLATION_SEQ) AS C_CANCELLATION_SEQ,\n  TO_CHAR(C_STASIUN_IDORG) AS C_STASIUN_IDORG,\n  TO_CHAR(C_STASIUN_CODEORG) AS C_STASIUN_CODEORG,\n  TO_CHAR(C_STASIUN_IDDES) AS C_STASIUN_IDDES,\n  TO_CHAR(C_STASIUN_CODEDES) AS C_STASIUN_CODEDES,\n  TO_CHAR(C_WAGONCLASS_ID) AS C_WAGONCLASS_ID,\n  TO_CHAR(C_WAGONCLASS_CODE) AS C_WAGONCLASS_CODE,\n  TO_CHAR(C_CANCELLATION_PSGNUM) AS C_CANCELLATION_PSGNUM,\n  TO_CHAR(C_TRIP_DATE, 'YYYY-MM-DD') AS C_TRIP_DATE,\n  TO_CHAR(C_TRIP_ID) AS C_TRIP_ID,\n  TO_CHAR(C_TRANSACTION_LASTARRIVALDATE, 'YYYY-MM-DD HH24:MI:SS') AS C_TRANSACTION_LASTARRIVALDATE,\n  TO_CHAR(C_CANCELLATION_NETAMOUNT) AS C_CANCELLATION_NETAMOUNT,\n  TO_CHAR(C_TRANSACTIONDET_IDCANCELLED) AS C_TRANSACTIONDET_IDCANCELLED,\n  TO_CHAR(C_TRANSACTIONDET_IDNEW) AS C_TRANSACTIONDET_IDNEW,\n  TO_CHAR(C_CANCELLATION_FEE) AS C_CANCELLATION_FEE,\n  TO_CHAR(C_CANCELLATION_DIFF) AS C_CANCELLATION_DIFF,\n  TO_CHAR(C_CANCELLATION_AMOUNTTICKET) AS C_CANCELLATION_AMOUNTTICKET,\n  TO_CHAR(C_TRANSACTIONDET_TICKETNUM) AS C_TRANSACTIONDET_TICKETNUM,\n  TO_CHAR(C_TRANSACTION_BOOKCODE) AS C_TRANSACTION_BOOKCODE,\n  TO_CHAR(C_CANCELLATION_VACCINE) AS C_CANCELLATION_VACCINE,\n  TO_CHAR(C_CANCELLATION_PCR) AS C_CANCELLATION_PCR,\n  TO_CHAR(C_CANCELLATION_ANTIGEN) AS C_CANCELLATION_ANTIGEN,\n  TO_CHAR(C_CANCELLATION_GENOSE) AS C_CANCELLATION_GENOSE,\n  TO_CHAR(C_CANCELLATION_REFUND) AS C_CANCELLATION_REFUND,\n  TO_CHAR(C_MEMBER_BURNAMOUNT) AS C_MEMBER_BURNAMOUNT,\n  TO_CHAR(C_MEMBER_BURNPOIN) AS C_MEMBER_BURNPOIN,\n  TO_CHAR(C_MEMBER_BURNDIFFAMOUNT) AS C_MEMBER_BURNDIFFAMOUNT,\n  TO_CHAR(C_MEMBER_ID) AS C_MEMBER_ID\nFROM RTSNG_PRD.RTSNG_T_CANCELLATION WHERE TO_DATE(C_CANCELLATION_CREATEDON) >=  SYSDATE - 30 \n",
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "annotations": [],
+              "type": "OracleTable",
+              "schema": [],
+              "typeProperties": {},
+              "externalReferences": {
+                "connection": "4774647b-edc4-49a3-95ee-2b93a4625fed"
+              }
+            }
+          },
+          "sink": {
+            "type": "DataWarehouseSink",
+            "allowCopyCommand": true,
+            "copyCommandSettings": {},
+            "tableOption": "autoCreate",
+            "datasetSettings": {
+              "annotations": [],
+              "linkedService": {
+                "name": "DataDasboard",
+                "properties": {
+                  "annotations": [],
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "endpoint": "eud3dnyz5fjehkzavuohztthdi-dcxryn2rcyqehmb53xkxj2c6ja.datawarehouse.fabric.microsoft.com",
+                    "artifactId": "181c35ed-3dae-4526-a5e7-a6aa95509bc0",
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48"
+                  }
+                }
+              },
+              "type": "DataWarehouseTable",
+              "schema": [],
+              "typeProperties": {
+                "schema": "RTSNG_PRD",
+                "table": "RTSNG_T_CANCELLATION"
+              }
+            }
+          },
+          "enableStaging": true,
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          }
+        }
+      },
+      {
+        "name": "RTSNG_T_REFUND",
+        "type": "Copy",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "Delete",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "OracleSource",
+            "oracleReaderQuery": "SELECT \nTO_CHAR(C_REFUND_REPRINTCOUNT) AS C_REFUND_REPRINTCOUNT,\n  TO_CHAR(C_MEMBER_ID) AS C_MEMBER_ID,\n  TO_CHAR(C_MEMBER_BURNAMOUNT) AS C_MEMBER_BURNAMOUNT,\n  TO_CHAR(C_MEMBER_BURNPOIN) AS C_MEMBER_BURNPOIN,\n  TO_CHAR(C_MEMBER_BURNDIFFAMOUNT) AS C_MEMBER_BURNDIFFAMOUNT,\n  TO_CHAR(C_ADDON_AMOUNT) AS C_ADDON_AMOUNT,\n  TO_CHAR(C_CANCELLATION_NETAMOUNT) AS C_CANCELLATION_NETAMOUNT,\n  TO_CHAR(C_TRIP_ID) AS C_TRIP_ID,\n  TO_CHAR(C_TRANSACTION_LASTARRIVALDATE, 'YYYY-MM-DD HH24:MI:SS') AS C_TRANSACTION_LASTARRIVALDATE,\n  C_TRANSACTION_BOOKCODE,\n  C_TRANSACTION_PAYCODE,\n  C_REFUND_EMAIL,\n  C_REFUND_TYPE,\n  TO_CHAR(C_REFUND_ID) AS C_REFUND_ID,\n  C_REFUND_PAYTYPE,\n  TO_CHAR(C_REFUND_PAYSTARTDATE, 'YYYY-MM-DD HH24:MI:SS') AS C_REFUND_PAYSTARTDATE,\n  TO_CHAR(C_REFUND_PAYENDDATE, 'YYYY-MM-DD HH24:MI:SS') AS C_REFUND_PAYENDDATE,\n  TO_CHAR(C_REFUND_PAYDATE, 'YYYY-MM-DD HH24:MI:SS') AS C_REFUND_PAYDATE,\n  C_REFUND_BANKACCNUM,\n  C_REFUND_BANKACCNAME,\n  C_REFUND_STATUS,\n  TO_CHAR(C_REFUND_DOMAIN) AS C_REFUND_DOMAIN,\n  TO_CHAR(C_REFUND_MODIFIEDBY) AS C_REFUND_MODIFIEDBY,\n  TO_CHAR(C_REFUND_MODIFIEDON, 'YYYY-MM-DD HH24:MI:SS') AS C_REFUND_MODIFIEDON,\n  TO_CHAR(C_BANK_ID) AS C_BANK_ID,\n  TO_CHAR(C_STASIUN_ID) AS C_STASIUN_ID,\n  TO_CHAR(C_REFUND_MAXPRINT) AS C_REFUND_MAXPRINT,\n  C_REFUND_REFUNDNUM,\n  TO_CHAR(C_REFUND_PRINTEDON, 'YYYY-MM-DD HH24:MI:SS') AS C_REFUND_PRINTEDON,\n  TO_CHAR(C_REFUND_TOTAMOUNT) AS C_REFUND_TOTAMOUNT,\n  C_REFUND_PHONENUM,\n  TO_CHAR(C_SHIFT_ID) AS C_SHIFT_ID,\n  C_REFUND_NOKA,\n  C_REFUND_CONTACTNAME,\n  TO_CHAR(C_REFUND_CREATEDBY) AS C_REFUND_CREATEDBY,\n  TO_CHAR(C_REFUND_CREATEDON, 'YYYY-MM-DD HH24:MI:SS') AS C_REFUND_CREATEDON,\n  TO_CHAR(C_STASIUN_IDORG) AS C_STASIUN_IDORG,\n  C_STASIUN_CODEORG,\n  TO_CHAR(C_STASIUN_IDDES) AS C_STASIUN_IDDES,\n  C_STASIUN_CODEDES,\n  TO_CHAR(C_WAGONCLASS_ID) AS C_WAGONCLASS_ID,\n  C_WAGONCLASS_CODE,\n  TO_CHAR(C_REFUND_PSGNUM) AS C_REFUND_PSGNUM,\n  TO_CHAR(C_TRIP_DATE, 'YYYY-MM-DD') AS C_TRIP_DATE,\n  C_CANCELLATION_CANCELNUM,\n  C_REFUND_REF,\n  C_REFUND_REF2,\n  C_UNIT_CODE,\n  C_USER_FULLNAME,\n  C_USER_USERNAME\nFROM RTSNG_PRD.RTSNG_T_REFUND WHERE TO_DATE(C_REFUND_CREATEDON) >=  SYSDATE - 30 ",
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "annotations": [],
+              "type": "OracleTable",
+              "schema": [],
+              "typeProperties": {},
+              "externalReferences": {
+                "connection": "4774647b-edc4-49a3-95ee-2b93a4625fed"
+              }
+            }
+          },
+          "sink": {
+            "type": "DataWarehouseSink",
+            "allowCopyCommand": true,
+            "copyCommandSettings": {},
+            "tableOption": "autoCreate",
+            "datasetSettings": {
+              "annotations": [],
+              "linkedService": {
+                "name": "DataDasboard",
+                "properties": {
+                  "annotations": [],
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "endpoint": "eud3dnyz5fjehkzavuohztthdi-dcxryn2rcyqehmb53xkxj2c6ja.datawarehouse.fabric.microsoft.com",
+                    "artifactId": "181c35ed-3dae-4526-a5e7-a6aa95509bc0",
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48"
+                  }
+                }
+              },
+              "type": "DataWarehouseTable",
+              "schema": [],
+              "typeProperties": {
+                "schema": "RTSNG_PRD",
+                "table": "RTSNG_T_REFUND"
+              }
+            }
+          },
+          "enableStaging": true,
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          }
+        }
+      },
+      {
+        "name": "RTSNG_T_CANCELLATIONTYPE",
+        "type": "Copy",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "Delete",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "OracleSource",
+            "oracleReaderQuery": "SELECT\n  TO_CHAR(C_CANCELLATIONTYPE_ID) AS C_CANCELLATIONTYPE_ID,\n  C_CANCELLATIONTYPE_NAME,\n  C_CANCELLATIONTYPE_STATUS,\n  TO_CHAR(C_CANCELLATIONTYPE_DOMAIN) AS C_CANCELLATIONTYPE_DOMAIN,\n  TO_CHAR(C_CANCELLATIONTYPE_MODIFIEDBY) AS C_CANCELLATIONTYPE_MODIFIEDBY,\n  TO_CHAR(C_CANCELLATIONTYPE_MODIFIEDON, 'YYYY-MM-DD HH24:MI:SS') AS C_CANCELLATIONTYPE_MODIFIEDON,\n  C_CANCELLATIONTYPE_CODE,\n  TO_CHAR(C_CANCELLATIONTYPE_CREATEDBY) AS C_CANCELLATIONTYPE_CREATEDBY,\n  TO_CHAR(C_CANCELLATIONTYPE_CREATEDON, 'YYYY-MM-DD HH24:MI:SS') AS C_CANCELLATIONTYPE_CREATEDON\nFROM RTSNG_PRD.RTSNG_T_CANCELLATIONTYPE",
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "annotations": [],
+              "type": "OracleTable",
+              "schema": [],
+              "typeProperties": {},
+              "externalReferences": {
+                "connection": "4774647b-edc4-49a3-95ee-2b93a4625fed"
+              }
+            }
+          },
+          "sink": {
+            "type": "DataWarehouseSink",
+            "allowCopyCommand": true,
+            "copyCommandSettings": {},
+            "tableOption": "autoCreate",
+            "datasetSettings": {
+              "annotations": [],
+              "linkedService": {
+                "name": "DataDasboard",
+                "properties": {
+                  "annotations": [],
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "endpoint": "eud3dnyz5fjehkzavuohztthdi-dcxryn2rcyqehmb53xkxj2c6ja.datawarehouse.fabric.microsoft.com",
+                    "artifactId": "181c35ed-3dae-4526-a5e7-a6aa95509bc0",
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48"
+                  }
+                }
+              },
+              "type": "DataWarehouseTable",
+              "schema": [],
+              "typeProperties": {
+                "schema": "RTSNG_PRD",
+                "table": "RTSNG_T_CANCELLATIONTYPE"
+              }
+            }
+          },
+          "enableStaging": true,
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          }
+        }
+      },
+      {
+        "name": "RTSNG_T_CANCELREASON",
+        "type": "Copy",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "Delete",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "OracleSource",
+            "oracleReaderQuery": "SELECT\n\n   C_CANCELREASON_STATUS,\n\n   TO_CHAR(C_CANCELREASON_PERCENT) AS C_CANCELREASON_PERCENT,\n\n   C_CANCELREASON_ROLE,\n\n   TO_CHAR(C_CANCELREASON_CREATEDBY) AS C_CANCELREASON_CREATEDBY,\n\n   TO_CHAR(C_CANCELREASON_CREATEDON, 'YYYY-MM-DD HH24:MI:SS') AS C_CANCELREASON_CREATEDON,\n\n   TO_CHAR(C_CANCELREASON_MODIFIEDBY) AS C_CANCELREASON_MODIFIEDBY,\n\n   TO_CHAR(C_CANCELREASON_MODIFIEDON, 'YYYY-MM-DD HH24:MI:SS') AS C_CANCELREASON_MODIFIEDON,\n\n   TO_CHAR(C_CANCELREASON_ID) AS C_CANCELREASON_ID,\n\n   C_CANCELREASON_DESC\n\n FROM RTSNG_PRD.RTSNG_T_CANCELREASON",
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "annotations": [],
+              "type": "OracleTable",
+              "schema": [],
+              "typeProperties": {},
+              "externalReferences": {
+                "connection": "4774647b-edc4-49a3-95ee-2b93a4625fed"
+              }
+            }
+          },
+          "sink": {
+            "type": "DataWarehouseSink",
+            "allowCopyCommand": true,
+            "copyCommandSettings": {},
+            "tableOption": "autoCreate",
+            "datasetSettings": {
+              "annotations": [],
+              "linkedService": {
+                "name": "DataDasboard",
+                "properties": {
+                  "annotations": [],
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "endpoint": "eud3dnyz5fjehkzavuohztthdi-dcxryn2rcyqehmb53xkxj2c6ja.datawarehouse.fabric.microsoft.com",
+                    "artifactId": "181c35ed-3dae-4526-a5e7-a6aa95509bc0",
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48"
+                  }
+                }
+              },
+              "type": "DataWarehouseTable",
+              "schema": [],
+              "typeProperties": {
+                "schema": "RTSNG_PRD",
+                "table": "RTSNG_T_CANCELREASON"
+              }
+            }
+          },
+          "enableStaging": true,
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          }
+        }
+      },
+      {
+        "name": "RTSNG_T_SHIFT",
+        "type": "Copy",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "Delete",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "OracleSource",
+            "oracleReaderQuery": "SELECT\n  TO_CHAR(C_SHIFT_ID) AS C_SHIFT_ID,\n  C_SHIFT_NAME,\n  TO_CHAR(C_SHIFT_OPENON, 'YYYY-MM-DD HH24:MI:SS') AS C_SHIFT_OPENON,\n  TO_CHAR(C_SHIFT_CLOSEDON, 'YYYY-MM-DD HH24:MI:SS') AS C_SHIFT_CLOSEDON,\n  C_SHIFT_STATUS,\n  TO_CHAR(C_SHIFT_DOMAIN) AS C_SHIFT_DOMAIN,\n  TO_CHAR(C_SHIFT_MODIFIEDBY) AS C_SHIFT_MODIFIEDBY,\n  TO_CHAR(C_SHIFT_MODIFIEDON, 'YYYY-MM-DD HH24:MI:SS') AS C_SHIFT_MODIFIEDON,\n  TO_CHAR(C_USER_ID) AS C_USER_ID,\n  TO_CHAR(C_UNIT_ID) AS C_UNIT_ID,\n  TO_CHAR(C_SHIFT_CREATEDBY) AS C_SHIFT_CREATEDBY,\n  TO_CHAR(C_SHIFT_CREATEDON, 'YYYY-MM-DD HH24:MI:SS') AS C_SHIFT_CREATEDON,\n  C_USER_FULLNAME,\n  C_UNIT_CODE,\n  TO_CHAR(C_STASIUN_ID) AS C_STASIUN_ID,\n  C_STASIUN_CODE,\n  C_USER_USERNAME\nFROM RTSNG_PRD.RTSNG_T_SHIFT\n\n",
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "annotations": [],
+              "type": "OracleTable",
+              "schema": [],
+              "typeProperties": {},
+              "externalReferences": {
+                "connection": "4774647b-edc4-49a3-95ee-2b93a4625fed"
+              }
+            }
+          },
+          "sink": {
+            "type": "DataWarehouseSink",
+            "allowCopyCommand": true,
+            "copyCommandSettings": {},
+            "tableOption": "autoCreate",
+            "datasetSettings": {
+              "annotations": [],
+              "linkedService": {
+                "name": "DataDasboard",
+                "properties": {
+                  "annotations": [],
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "endpoint": "eud3dnyz5fjehkzavuohztthdi-dcxryn2rcyqehmb53xkxj2c6ja.datawarehouse.fabric.microsoft.com",
+                    "artifactId": "181c35ed-3dae-4526-a5e7-a6aa95509bc0",
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48"
+                  }
+                }
+              },
+              "type": "DataWarehouseTable",
+              "schema": [],
+              "typeProperties": {
+                "schema": "RTSNG_PRD",
+                "table": "RTSNG_T_SHIFT"
+              }
+            }
+          },
+          "enableStaging": true,
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          }
+        }
+      },
+      {
+        "name": "RTSNG_T_STASIUN",
+        "type": "Copy",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "Delete",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "OracleSource",
+            "oracleReaderQuery": "SELECT\n  C_STASIUN_LOCAL,\n  C_STASIUN_INTERCITY,\n  C_SERVICE_TYPE,\n  C_SERVICE_STATUS,\n  C_STASIUN_CONNECTING,\n  C_STASIUN_FR,\n  C_STASIUN_FRBOARDING,\n  C_STASIUN_FRHIKV,\n  TO_CHAR(C_STASIUN_GROUPID) AS C_STASIUN_GROUPID,\n  C_STASIUN_CODE,\n  C_STASIUN_PEMBATALAN,\n  C_STASIUN_PENGEMBALIANBEA,\n  C_STASIUN_STATUS,\n  TO_CHAR(C_STASIUN_DOMAIN) AS C_STASIUN_DOMAIN,\n  TO_CHAR(C_STASIUN_MODIFIEDBY) AS C_STASIUN_MODIFIEDBY,\n  TO_CHAR(C_STASIUN_MODIFIEDON, 'YYYY-MM-DD HH24:MI:SS') AS C_STASIUN_MODIFIEDON,\n  TO_CHAR(C_AREA_ID) AS C_AREA_ID,\n  TO_CHAR(C_CITY_ID) AS C_CITY_ID,\n  TO_CHAR(C_STASIUN_CREATEDBY) AS C_STASIUN_CREATEDBY,\n  TO_CHAR(C_STASIUN_CREATEDON, 'YYYY-MM-DD HH24:MI:SS') AS C_STASIUN_CREATEDON,\n  C_STASIUN_SHOWPOS,\n  C_STASIUN_SHOWIBOOK,\n  C_STASIUN_SHOWMOBILE,\n  TO_CHAR(C_STASIUN_STARTDATE, 'YYYY-MM-DD HH24:MI:SS') AS C_STASIUN_STARTDATE,\n  TO_CHAR(C_STASIUN_ENDDATE, 'YYYY-MM-DD HH24:MI:SS') AS C_STASIUN_ENDDATE,\n  TO_CHAR(C_STASIUN_ID) AS C_STASIUN_ID,\n  C_STASIUN_PROFITCENTER,\n  C_STASIUN_NAME\nFROM RTSNG_PRD.RTSNG_T_STASIUN",
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "annotations": [],
+              "type": "OracleTable",
+              "schema": [],
+              "typeProperties": {},
+              "externalReferences": {
+                "connection": "4774647b-edc4-49a3-95ee-2b93a4625fed"
+              }
+            }
+          },
+          "sink": {
+            "type": "DataWarehouseSink",
+            "allowCopyCommand": true,
+            "copyCommandSettings": {},
+            "tableOption": "autoCreate",
+            "datasetSettings": {
+              "annotations": [],
+              "linkedService": {
+                "name": "DataDasboard",
+                "properties": {
+                  "annotations": [],
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "endpoint": "eud3dnyz5fjehkzavuohztthdi-dcxryn2rcyqehmb53xkxj2c6ja.datawarehouse.fabric.microsoft.com",
+                    "artifactId": "181c35ed-3dae-4526-a5e7-a6aa95509bc0",
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48"
+                  }
+                }
+              },
+              "type": "DataWarehouseTable",
+              "schema": [],
+              "typeProperties": {
+                "schema": "RTSNG_PRD",
+                "table": "RTSNG_T_STASIUN"
+              }
+            }
+          },
+          "enableStaging": true,
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          }
+        }
+      },
+      {
+        "name": "insert refund report",
+        "type": "TridentNotebook",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "RTSNG_T_CANCELLATION",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "RTSNG_T_REFUND",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "RTSNG_T_CANCELLATIONTYPE",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "RTSNG_T_CANCELREASON",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "RTSNG_T_SHIFT",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "RTSNG_T_STASIUN",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "e9e1a1f4-7d84-4d8f-a199-44dbd0e64b76",
+          "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48"
+        }
+      },
+      {
+        "name": "Delete",
+        "type": "TridentNotebook",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "df503f7b-17a6-4a74-8bf8-de875ae43a44",
+          "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48"
+        }
+      },
+      {
+        "name": "Script1",
+        "type": "Script",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "linkedService": {
+          "name": "DataDasboard",
+          "properties": {
+            "annotations": [],
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "endpoint": "eud3dnyz5fjehkzavuohztthdi-dcxryn2rcyqehmb53xkxj2c6ja.datawarehouse.fabric.microsoft.com",
+              "artifactId": "181c35ed-3dae-4526-a5e7-a6aa95509bc0",
+              "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48"
+            }
+          }
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "CREATE TABLE RTSNG_F_GETFIRSTDEPARTURE AS\r\nSELECT\r\n    C_TRANSACTIONDET_ID,\r\n    RTSNG_PRD.RTSNG_F_GETFIRSTDEPARTURE(TD.C_TRIP_ID, 1, 2) AS DEPARTURE\r\nFROM\r\n    RTSNG_PRD.RTSNG_T_TRANSACTIONDET TD\r\n    JOIN RTSNG_PRD.RTSNG_T_STASIUN ST ON ST.C_STASIUN_ID = TD.C_STASIUN_IDORG\r\n    JOIN RTSNG_PRD.RTSNG_T_AREA AR ON ST.C_AREA_ID = AR.C_AREA_ID\r\n    JOIN RTSNG_PRD.RTSNG_T_SCHEDULE S ON S.C_SCHEDULE_ID = TD.C_SCHEDULE_ID\r\n    LEFT JOIN RTSNG_PRD.RTSNG_T_TRANSDISTANCE DIS ON TD.C_TRANSACTIONDET_TICKETNUM = DIS.C_TRANSACTIONDET_TICKETNUM\r\nWHERE\r\n    TD.C_TRANSACTIONDET_STATUS IN ('2', '5')\r\n    AND TD.C_TRIP_DATE = '2025-01-01';\r\n",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        }
+      }
+    ]
+  }
+}

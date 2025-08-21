@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "init_data_backup"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "681a4010-c4c6-a7bf-4967-5f7d20e500a0"
+  }
+}

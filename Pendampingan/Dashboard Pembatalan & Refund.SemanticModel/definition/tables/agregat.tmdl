@@ -1,0 +1,136 @@
+table agregat
+	lineageTag: a8a70632-2c0f-4607-bb60-7d665f1f2e66
+
+	measure jumlah_cancel_passenger =
+			
+			COALESCE(CALCULATE(
+			    COUNT(rtsng_t_refund_report[BOOKING_CODE]),
+			    rtsng_t_refund_report[REFUND_TYPE] = "CANCEL PASSENGER"
+			),0)
+		formatString: 0
+		lineageTag: e1f8068f-c675-4b0e-b95c-36ee70ed430e
+
+	measure %jumlah_cancel_passenger = DIVIDE(agregat[jumlah_cancel_passenger],[jumlah_cancel_passenger]+[jumlah_cancel_rejected]+[jumlah_cancel_train]+[jumlah_cancel_train_return]+[jumlah_total_tiket_batal],0)*1
+		lineageTag: 58c06aaf-bf63-4be2-9e6a-f3b2681b8084
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure amount_cancel_train_return =
+			
+			COALESCE(CALCULATE(
+			    SUM(rtsng_t_refund_report[TICKET_AMOUNT]),
+			    rtsng_t_refund_report[REFUND_TYPE] = "CANCEL TRAIN RETURN"
+			),0)
+		formatString: 0
+		lineageTag: e16cde47-09de-4c80-8992-ebdeae715720
+
+	measure jumlah_cancel_train =
+			
+			COALESCE(CALCULATE(
+			    COUNT(rtsng_t_refund_report[BOOKING_CODE]),
+			    rtsng_t_refund_report[REFUND_TYPE] = "CANCEL TRAIN"
+			),0)
+		formatString: 0
+		lineageTag: 3157f8fa-4457-4138-a93e-55c53d61e7de
+
+	measure jumlah_cancel_rejected =
+			
+			COALESCE(CALCULATE(
+			    COUNT(rtsng_t_refund_report[BOOKING_CODE]),
+			    rtsng_t_refund_report[REFUND_TYPE] = "CANCEL REJECTED"
+			),0)
+		formatString: 0
+		lineageTag: 82aea0d7-fe86-4290-bc8c-005cd5797bf0
+
+	measure refund = SUM(rtsng_t_refund_report[TICKET_AMOUNT])
+		formatString: 0
+		lineageTag: 8ded8bba-a6ef-472d-9e9c-a39c274cdb83
+
+	measure amount_cancel_passenger =
+			
+			COALESCE(CALCULATE(
+			    SUM(rtsng_t_refund_report[TICKET_AMOUNT]),
+			    rtsng_t_refund_report[REFUND_TYPE] = "CANCEL PASSENGER"
+			),0)
+		formatString: 0
+		lineageTag: 2d98b041-7eb5-4f59-a833-9047d8ae679b
+
+	measure amount_cancel_rejected =
+			
+			COALESCE(CALCULATE(
+			    SUM(rtsng_t_refund_report[TICKET_AMOUNT]),
+			    rtsng_t_refund_report[REFUND_TYPE] = "CANCEL REJECTED"
+			),0)
+		formatString: 0
+		lineageTag: a9e1d059-8465-4973-a3f0-24730972b1ef
+
+	measure amount_cancel_train =
+			
+			COALESCE(CALCULATE(
+			    SUM(rtsng_t_refund_report[TICKET_AMOUNT]),
+			    rtsng_t_refund_report[REFUND_TYPE] = "CANCEL TRAIN"
+			),0)
+		formatString: 0
+		lineageTag: 16a74c4a-5623-4dcf-9836-1f933af7b640
+
+	measure jumlah_cancel_train_return =
+			
+			COALESCE(CALCULATE(
+			    COUNT(rtsng_t_refund_report[BOOKING_CODE]),
+			    rtsng_t_refund_report[REFUND_TYPE] = "CANCEL TRAIN RETURN"
+			),0)
+		formatString: 0
+		lineageTag: 0b69873c-af65-4c27-8657-e8465ccc5cc7
+
+	measure jumlah_total_tiket_batal = COUNT(rtsng_t_refund_report[BOOKING_CODE])
+		formatString: 0
+		lineageTag: 930d8ab5-d04d-44d1-9630-2c43fd00d88d
+
+	measure %Jumlah_Cancel_train = DIVIDE(agregat[jumlah_cancel_train],[jumlah_cancel_train]+[jumlah_cancel_train_return]+[jumlah_cancel_passenger]+[amount_cancel_rejected],0)*1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 22e860b1-b9a8-4bb9-bc58-a4102be19ba3
+
+	measure %Jumlah_cancel_Rejected = DIVIDE(agregat[jumlah_cancel_rejected],[jumlah_cancel_passenger]+[jumlah_cancel_rejected]+[jumlah_cancel_train]+[jumlah_cancel_train_return],0)*1
+		lineageTag: 6137a5b5-e3fd-436c-a67f-3fb9ce58a70a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %Jumlah_cancel_Train_return = DIVIDE(agregat[jumlah_cancel_train_return],[jumlah_cancel_passenger]+[jumlah_cancel_rejected]+[jumlah_cancel_train]+[jumlah_cancel_train_return],0)*1
+		lineageTag: 65d9920c-beba-4055-8ca6-ac70356e3b30
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %Amount_Cancel_Passenger = DIVIDE(agregat[amount_cancel_passenger],[amount_cancel_rejected]+[amount_cancel_train]+[amount_cancel_train_return]+[amount_cancel_passenger],0)*1
+		lineageTag: dff71e30-1e9d-4e90-9065-80aff789432a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %Amount_Cancel_Rejected = DIVIDE(agregat[amount_cancel_rejected],[amount_cancel_rejected]+[amount_cancel_train]+[amount_cancel_train_return]+[amount_cancel_passenger],0)*1
+		lineageTag: f89a60c4-843c-49af-a1a6-b0f794088513
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %Amount_Cancel_Train = DIVIDE(agregat[amount_cancel_train],[amount_cancel_rejected]+[amount_cancel_train]+[amount_cancel_train_return]+[amount_cancel_passenger],0)*1
+		lineageTag: c3ca0e5b-05dc-436a-b2de-e108cd631449
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %Amount_Cancel_Train_Return = DIVIDE(agregat[amount_cancel_train_return],[amount_cancel_rejected]+[amount_cancel_train]+[amount_cancel_train_return]+[amount_cancel_passenger],0)*1
+		lineageTag: 9c3406de-48a9-4f3a-90a7-53eeffe94b7c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column a
+		lineageTag: 85978d38-ccb9-4084-ab48-f113b9f6a7c8
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [a]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition agregat = calculated
+		mode: import
+		source = ROW("a","")
+
+	annotation PBI_Id = 3a5536f49ef44c8090e5cc86daccc8ab
+

@@ -1,0 +1,20 @@
+CREATE TABLE [RTSNG_PRD].[RTSNG_T_WAGON] (
+
+	[C_WAGON_ID] bigint NULL, 
+	[C_WAGON_NAME] varchar(100) NULL, 
+	[C_WAGON_COLS] bigint NULL, 
+	[C_WAGON_COL1SEATS] bigint NULL, 
+	[C_WAGON_COL2SEATS] bigint NULL, 
+	[C_WAGON_COL3SEATS] bigint NULL, 
+	[C_WAGON_ROWS] bigint NULL, 
+	[C_WAGON_STATUS] varchar(1) NULL, 
+	[C_WAGON_DOMAIN] bigint NULL, 
+	[C_WAGON_MODIFIEDBY] bigint NULL, 
+	[C_WAGON_MODIFIEDON] datetime2(6) NULL, 
+	[C_WAGONCLASS_ID] bigint NULL, 
+	[C_WAGON_CAPACITY] bigint NULL, 
+	[C_WAGON_CREATEDBY] bigint NULL, 
+	[C_WAGON_CREATEDON] datetime2(6) NULL, 
+	[C_WAGON_CODE] varchar(10) NULL, 
+	[C_WAGON_FACILITYCODE] varchar(20) NULL
+);

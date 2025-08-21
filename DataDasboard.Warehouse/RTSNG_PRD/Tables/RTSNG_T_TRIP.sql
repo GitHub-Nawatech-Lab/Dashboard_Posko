@@ -1,0 +1,13 @@
+CREATE TABLE [RTSNG_PRD].[RTSNG_T_TRIP] (
+
+	[C_TRIP_ID] bigint NULL, 
+	[C_TRIP_DATE] datetime2(6) NULL, 
+	[C_SCHEDULE_ID] varchar(36) NULL, 
+	[C_TRIP_STATUS] varchar(1) NULL, 
+	[C_TRIP_DOMAIN] bigint NULL, 
+	[C_TRIP_MODIFIEDBY] bigint NULL, 
+	[C_TRIP_MODIFIEDON] datetime2(6) NULL, 
+	[C_TRIP_CREATEDBY] bigint NULL, 
+	[C_TRIP_CREATEDON] datetime2(6) NULL, 
+	[C_SCHEDULE_NOKA] varchar(10) NULL
+);

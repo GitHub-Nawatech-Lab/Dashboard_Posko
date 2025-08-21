@@ -1,0 +1,109 @@
+table dim_train_raw
+	lineageTag: 26985b79-95b5-4d3b-bd1f-116b2d5ecd2a
+
+	column 'Train ID'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: efb7f42c-3337-4182-b4e7-c267f3506440
+		summarizeBy: none
+		sourceColumn: Train ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: dea1f92c-25a8-4202-bdca-860177229487
+		summarizeBy: none
+		sourceColumn: train_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_number
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a04bf0ac-be2e-491d-89ce-db96cc69f162
+		summarizeBy: none
+		sourceColumn: train_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_priority
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: cda91c2a-e08c-496b-81f6-4c3d5b82e743
+		summarizeBy: sum
+		sourceColumn: train_priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_local
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 22a6c3bf-b882-4711-84f1-981fe7ddba26
+		summarizeBy: sum
+		sourceColumn: train_local
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_perintis
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: fd3017e7-ac25-4ebe-9401-cb49009f7c50
+		summarizeBy: sum
+		sourceColumn: train_perintis
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 2b470ab7-2783-4795-bb24-02b2bddb8fcf
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KA Lokal'
+		dataType: string
+		sourceProviderType: varchar(60)
+		lineageTag: 0ca1e9d5-45e6-4692-8e10-b14d0b519af8
+		summarizeBy: none
+		sourceColumn: KA Lokal
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipe Priority'
+		dataType: string
+		sourceProviderType: varchar(60)
+		lineageTag: dfd8aeee-3aa2-4da6-bcd4-a3c3b93f2fce
+		summarizeBy: none
+		sourceColumn: Tipe Priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipe Perintis'
+		dataType: string
+		sourceProviderType: varchar(60)
+		lineageTag: f58e62f0-d503-4eb4-b7d1-10df6d5b3cac
+		summarizeBy: none
+		sourceColumn: Tipe Perintis
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_train_raw = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("eud3dnyz5fjehkzavuohztthdi-dcxryn2rcyqehmb53xkxj2c6ja.datawarehouse.fabric.microsoft.com", "dashboard_data"),
+				    dbo_dashboard_ticketing_train_raw = Source{[Schema="dbo",Item="dashboard_ticketing_train_raw"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(dbo_dashboard_ticketing_train_raw,{{"train_id", "Train ID"}, {"train_local_name", "KA Lokal"}, {"train_perintis_name", "Tipe Perintis"}, {"train_priority_name", "Tipe Priority"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

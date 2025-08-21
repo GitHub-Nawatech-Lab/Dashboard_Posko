@@ -1,0 +1,692 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "datetable.realisasiy2pass": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable2",
+			          "ConceptualProperty": "RealisasiY2Pass"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "datetable.realisasiy3pass": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable2",
+			          "ConceptualProperty": "RealisasiY3Pass"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "datetable.realisasiy2amo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable2",
+			          "ConceptualProperty": "RealisasiY2Amo"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "datetable.realisasiy3amo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable2",
+			          "ConceptualProperty": "RealisasiY3Amo"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "datetable.realisasiy2pass1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "RealisasiY2Pass"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "datetable.realisasiy3pass1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "RealisasiY3Pass"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "datetable.realisasiy2amo1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "RealisasiY2Amo"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "datetable.realisasiy3amo1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "RealisasiY3Amo"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "datetable.semesterpasy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "SemesterPasY"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "datetable.semesterpasy2": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "SemesterPasY2"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "datetable.semesterpasy3": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "SemesterPasY3"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "datetable.semesteramoy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "SemesterAmoY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Program Y": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "datetable.semesteramoy2": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "SemesterAmoY2"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Realisasi Y-2": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "datetable.semesteramoy3": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "SemesterAmoY3"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Realisasi Y-3": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "datetable.semesterpasyv1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "SemesterPasYV1"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "datetable.semesterpasy2v1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "SemesterPasY2V1"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "datetable.semesterpasy3v1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "SemesterPasY3V1"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "datetable.semesteramoyv1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "SemesterAmoYV1"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Program Pendapatan": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "datetable.semesteramoy2v1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "SemesterAmoY2V1"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Realisasi Pendapatan Y-2": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "datetable.semesteramoy3v1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "SemesterAmoY3V1"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Realisasi Pendapatan Y-3": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_stasiun_raw.c_stasiun_name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_stasiun_raw",
+			          "ConceptualProperty": "c_stasiun_name"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Stasiun Keberangkatan": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Stasiun": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_area_raw.c_area_name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_area_raw",
+			          "ConceptualProperty": "c_area_name"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Area": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "yeartable.total_passenger_all": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "YearTable",
+			          "ConceptualProperty": "total_passenger_all"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Total Penumpang": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Total": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "yeartable.label": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "YearTable",
+			          "ConceptualProperty": "label"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Kategori": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "yeartable.total_amount_all": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "YearTable",
+			          "ConceptualProperty": "total_amount_all"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Total Pendapatan": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "datetable.realisasiy3pass2": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "%RealisasiY3Pass"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Tercapai": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "datetable.realisasiy3pass_other": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "%RealisasiY3Pass Other"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Tidak Tercapai": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "datetable.realisasiy2pass2": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "%RealisasiY2Pass"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Tercapai": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "datetable.realisasiy2pass_other": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "%RealisasiY2Pass Other"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Tidak Tercapai": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "datetable.prevmounthpass": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "%PrevMounthPass"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Tercapai": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "datetable.prevmounthpass_other": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "%PrevMounthPass Other"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Tidak Tercapai": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "datetable.realisasiy3amo2": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "%RealisasiY3Amo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Tercapai": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "datetable.realisasiy3amo_other": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "%RealisasiY3Amo Other"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Tidak Tercapai": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "datetable.realisasiy2amo2": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "%RealisasiY2Amo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Tercapai": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "datetable.realisasiy2amo_other": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "%RealisasiY2Amo Other"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Tidak Tercapai": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "datetable.prevmounthamo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "%PrevMounthAmo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Tercapai": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "datetable.prevmounthamo_other": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "DateTable",
+			          "ConceptualProperty": "%PrevMounthAmo Other"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Tidak Tercapai": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_train_raw.train_id": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_train_raw",
+			          "ConceptualProperty": "train_id"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Kereta": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "yeartable.category": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "YearTable",
+			          "ConceptualProperty": "category"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Kategoru": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Kategori": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

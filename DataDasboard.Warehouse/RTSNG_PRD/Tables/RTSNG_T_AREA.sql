@@ -1,0 +1,17 @@
+CREATE TABLE [RTSNG_PRD].[RTSNG_T_AREA] (
+
+	[C_AREA_ID] bigint NULL, 
+	[C_AREA_BISNIS] varchar(50) NULL, 
+	[C_AREA_NAME] varchar(100) NULL, 
+	[C_AREA_STATUS] varchar(1) NULL, 
+	[C_AREA_DOMAIN] bigint NULL, 
+	[C_AREA_MODIFIEDBY] bigint NULL, 
+	[C_AREA_MODIFIEDON] datetime2(6) NULL, 
+	[C_AREA_CREATEDBY] bigint NULL, 
+	[C_AREA_CREATEDON] datetime2(6) NULL, 
+	[C_AREA_STARTDATE] datetime2(6) NULL, 
+	[C_AREA_ENDDATE] datetime2(6) NULL, 
+	[C_AREA_BUSINESSAREA] varchar(50) NULL, 
+	[C_AREA_ALIAS] varchar(50) NULL, 
+	[C_AREA_WILAYAH] varchar(1) NULL
+);

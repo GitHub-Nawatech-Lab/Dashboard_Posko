@@ -1,0 +1,249 @@
+table rtsng_t_refund_report
+	lineageTag: 3b6c49fd-40ef-4d8f-ac29-557598a0359f
+	sourceLineageTag: [dbo].[rtsng_t_refund_report]
+
+	column CANCEL_TIME
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1a918f35-f9e7-4f7c-b6a0-2a21f8184d80
+		sourceLineageTag: CANCEL_TIME
+		summarizeBy: none
+		sourceColumn: CANCEL_TIME
+
+		annotation SummarizationSetBy = Automatic
+
+	column REFUND_START_DATE
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 24a1ea52-d73a-42d6-a6de-f4d56d35e12e
+		sourceLineageTag: REFUND_START_DATE
+		summarizeBy: none
+		sourceColumn: REFUND_START_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column REFUND_END_DATE
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d95dd201-39bf-4ec3-950c-4ed1c291d46f
+		sourceLineageTag: REFUND_END_DATE
+		summarizeBy: none
+		sourceColumn: REFUND_END_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAY_DATE
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: varchar(8000)
+		lineageTag: 11852a2d-78c8-4429-b3c6-65ebc713e43b
+		sourceLineageTag: PAY_DATE
+		summarizeBy: none
+		sourceColumn: PAY_DATE
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column BOOKING_CODE
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 14fe4290-bae9-42dd-8106-f241e7f68e21
+		sourceLineageTag: BOOKING_CODE
+		summarizeBy: none
+		sourceColumn: BOOKING_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column TICKET_NUMBER
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: cdfc2ed6-9105-4bf6-89cc-b5e6f111d74d
+		sourceLineageTag: TICKET_NUMBER
+		summarizeBy: none
+		sourceColumn: TICKET_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column CANCEL_NUMBER
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: fd650720-42a8-493a-9fa1-82f7aeb057d5
+		sourceLineageTag: CANCEL_NUMBER
+		summarizeBy: none
+		sourceColumn: CANCEL_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column TRAIN_NUMBER
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 03d6c12f-8465-497c-998c-797688c22766
+		sourceLineageTag: TRAIN_NUMBER
+		summarizeBy: none
+		sourceColumn: TRAIN_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column TRAIN_NAME
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c9724fad-3bbd-4cf4-85c2-ab0a3a7b932c
+		sourceLineageTag: TRAIN_NAME
+		summarizeBy: none
+		sourceColumn: TRAIN_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROUTE
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f050c2d1-2536-4098-a0e7-a3b977203256
+		sourceLineageTag: ROUTE
+		summarizeBy: none
+		sourceColumn: ROUTE
+
+		annotation SummarizationSetBy = Automatic
+
+	column WAGON_CLASS
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9be1c646-a4f9-48a5-8d95-9642c513485d
+		sourceLineageTag: WAGON_CLASS
+		summarizeBy: none
+		sourceColumn: WAGON_CLASS
+
+		annotation SummarizationSetBy = Automatic
+
+	column TRIP_DATE
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 45c004ed-ebb8-4640-895a-c0a295ecbb9b
+		sourceLineageTag: TRIP_DATE
+		summarizeBy: none
+		sourceColumn: TRIP_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CANCEL_STATION
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 360ab6a7-2be0-4273-9049-e467fbddfa44
+		sourceLineageTag: CANCEL_STATION
+		summarizeBy: none
+		sourceColumn: CANCEL_STATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column CANCEL_PIC
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 91afb3a8-aeb9-4e79-b819-b6c022fdfe8a
+		sourceLineageTag: CANCEL_PIC
+		summarizeBy: none
+		sourceColumn: CANCEL_PIC
+
+		annotation SummarizationSetBy = Automatic
+
+	column REFUND_STATION
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 395a0ba5-87a0-4071-a1c3-1c6927ca1593
+		sourceLineageTag: REFUND_STATION
+		summarizeBy: none
+		sourceColumn: REFUND_STATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column REFUND_UNIT
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 03fbbe33-bb31-415d-9cbf-d3dd6635657e
+		sourceLineageTag: REFUND_UNIT
+		summarizeBy: none
+		sourceColumn: REFUND_UNIT
+
+		annotation SummarizationSetBy = Automatic
+
+	column REFUND_PIC
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b6ff542f-41b6-4bbe-b954-aa0e8277a2c4
+		sourceLineageTag: REFUND_PIC
+		summarizeBy: none
+		sourceColumn: REFUND_PIC
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAYMENT_TYPE
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d76ca6f0-c1fd-437c-b33c-0571d38b9ecf
+		sourceLineageTag: PAYMENT_TYPE
+		summarizeBy: none
+		sourceColumn: PAYMENT_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column REFUND_TYPE
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d96dddb9-90d3-4209-a0fc-622d9cbb18b4
+		sourceLineageTag: REFUND_TYPE
+		summarizeBy: none
+		sourceColumn: REFUND_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column TICKET_AMOUNT
+		dataType: int64
+		formatString: 0
+		sourceProviderType: varchar(8000)
+		lineageTag: 5a1876d8-b788-41d3-badb-fbdf796ce8f6
+		sourceLineageTag: TICKET_AMOUNT
+		summarizeBy: sum
+		sourceColumn: TICKET_AMOUNT
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column REFUND_AMOUNT
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c233ccda-40af-4186-874f-b388dbb204cf
+		sourceLineageTag: REFUND_AMOUNT
+		summarizeBy: none
+		sourceColumn: REFUND_AMOUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATUS
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c5d8b58f-32c6-4984-895d-bd76c35c6a92
+		sourceLineageTag: STATUS
+		summarizeBy: none
+		sourceColumn: STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column REASON
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d7ad5432-ef1d-4843-9d44-f6edf36b9716
+		sourceLineageTag: REASON
+		summarizeBy: none
+		sourceColumn: REASON
+
+		annotation SummarizationSetBy = Automatic
+
+	partition rtsng_t_refund_report = entity
+		mode: directLake
+		source
+			entityName: rtsng_t_refund_report
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

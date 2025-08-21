@@ -1,0 +1,206 @@
+table aggregate_realization
+	lineageTag: 1ef225d4-1700-458a-be88-9be1ae54c54c
+
+	column period_first_depart
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 279a2e51-2679-406d-ac62-a1aa2c13eeb1
+		summarizeBy: none
+		sourceColumn: period_first_depart
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column area_code_first_depart
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 946a9025-3673-443f-89d0-cc01b824c6aa
+		summarizeBy: none
+		sourceColumn: area_code_first_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_name_first_depart
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5fecaa19-abf7-4b50-90dd-689792d21c85
+		summarizeBy: none
+		sourceColumn: area_name_first_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_number_merge
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 95551896-ef0f-44d0-8e15-055cad646085
+		summarizeBy: none
+		sourceColumn: train_number_merge
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_number
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: cd3d619d-c6bf-42fb-964d-f24fbc79b727
+		summarizeBy: none
+		sourceColumn: train_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 424c9a41-03b7-4ace-b5c2-b5f267cbd4a3
+		summarizeBy: none
+		sourceColumn: train_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_code_first_depart
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f6deafd9-fcac-4a54-81a6-e73df0298ae0
+		summarizeBy: none
+		sourceColumn: station_code_first_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_code_last_arrival
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 773fadce-f74a-49eb-8f5f-7b9d8158655b
+		summarizeBy: none
+		sourceColumn: station_code_last_arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_local
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 450e8b69-a6a8-4d07-9f7a-40c4747efe21
+		summarizeBy: sum
+		sourceColumn: train_local
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_class
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 91f3a5da-b166-414a-a257-0aa1e80fd410
+		summarizeBy: none
+		sourceColumn: train_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_priority
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 08be9757-f29a-4b20-a5f6-5862294b4e90
+		summarizeBy: sum
+		sourceColumn: train_priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_pso
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: de6e8566-93c5-44a6-9d28-f71eaa25fbe8
+		summarizeBy: none
+		sourceColumn: train_pso
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_perintis
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: e0916b05-c814-4fe8-8e65-44b7c97b8ccb
+		summarizeBy: sum
+		sourceColumn: train_perintis
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_passenger
+		dataType: int64
+		formatString: #,0
+		sourceProviderType: bigint
+		lineageTag: b2ec2f59-a273-44a6-9f50-46aa2184aa7f
+		summarizeBy: sum
+		sourceColumn: total_passenger
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_amount
+		dataType: int64
+		formatString: #,0
+		sourceProviderType: bigint
+		lineageTag: 085a61ca-88e3-4b7d-b23f-a8b1482b9f59
+		summarizeBy: sum
+		sourceColumn: total_amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_id = [train_name]  & " (" & [train_number] & ")"
+		lineageTag: 196671f7-b93d-491c-a859-43f95f98e5a2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column feeder
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: dee25639-9810-46a9-90b0-55341957c736
+		summarizeBy: sum
+		sourceColumn: feeder
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_running
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 1d233c56-cfa9-4f7d-a686-8abfcbc81014
+		summarizeBy: none
+		sourceColumn: job_running
+
+		variation Variation
+			isDefault
+			relationship: 1cd7c609-312a-4035-8f32-7cebd1684f32
+			defaultHierarchy: LocalDateTable_ffe7f5f0-f18c-40d7-abc7-45631728cd36.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column cut_off_data
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: bbf48f83-2d31-4f0f-b206-5dac0322447e
+		summarizeBy: none
+		sourceColumn: cut_off_data
+
+		variation Variation
+			isDefault
+			relationship: 1bda99c0-8fba-4cb2-ab1d-d5fa0784e527
+			defaultHierarchy: LocalDateTable_23ceb2bb-c2a0-4560-b33a-247d18b64a65.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition aggregate_realization = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("eud3dnyz5fjehkzavuohztthdi-dcxryn2rcyqehmb53xkxj2c6ja.datawarehouse.fabric.microsoft.com", "dashboard_data"),
+				    dbo_aggregate_system = Source{[Schema="dbo",Item="aggregate_system"]}[Data]
+				in
+				    dbo_aggregate_system
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

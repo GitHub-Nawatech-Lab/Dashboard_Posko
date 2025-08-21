@@ -1,0 +1,26 @@
+CREATE TABLE [RTSNG_PRD].[RTSNG_T_REFUND_REPORT] (
+
+	[CANCEL_TIME] datetime2(6) NULL, 
+	[REFUND_START_DATE] datetime2(6) NULL, 
+	[REFUND_END_DATE] datetime2(6) NULL, 
+	[PAY_DATE] datetime2(6) NULL, 
+	[BOOKING_CODE] varchar(20) NULL, 
+	[TICKET_NUMBER] varchar(50) NULL, 
+	[CANCEL_NUMBER] varchar(50) NULL, 
+	[TRAIN_NUMBER] varchar(50) NULL, 
+	[TRAIN_NAME] varchar(100) NULL, 
+	[ROUTE] varchar(23) NOT NULL, 
+	[WAGON_CLASS] varchar(20) NULL, 
+	[TRIP_DATE] datetime2(6) NULL, 
+	[CANCEL_STATION] varchar(10) NULL, 
+	[CANCEL_PIC] varchar(50) NULL, 
+	[REFUND_STATION] varchar(10) NULL, 
+	[REFUND_UNIT] varchar(20) NULL, 
+	[REFUND_PIC] varchar(50) NULL, 
+	[PAYMENT_TYPE] varchar(8) NOT NULL, 
+	[REFUND_TYPE] varchar(100) NULL, 
+	[TICKET_AMOUNT] bigint NULL, 
+	[REFUND_AMOUNT] bigint NULL, 
+	[STATUS] varchar(12) NOT NULL, 
+	[REASON] varchar(100) NULL
+);

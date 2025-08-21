@@ -1,0 +1,164 @@
+table aggregate_program
+	lineageTag: 62c24a08-38b6-49be-8a71-9fd9c6650a6a
+
+	column period_first_depart
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: f1e64665-92b1-4298-a828-256250c00183
+		summarizeBy: none
+		sourceColumn: period_first_depart
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column area_code_first_depart
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1d0fb56b-f2cf-40fa-bab8-f32ec0c1c781
+		summarizeBy: none
+		sourceColumn: area_code_first_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_name_first_depart
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6cebe3d7-c04b-48d4-ba5c-800b276fda22
+		summarizeBy: none
+		sourceColumn: area_name_first_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_number_merge
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 49234069-028d-47a2-943f-45594b4ac139
+		summarizeBy: none
+		sourceColumn: train_number_merge
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_number
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 8f7cddd5-f75a-4aec-b948-d2134f975db1
+		summarizeBy: none
+		sourceColumn: train_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 61616239-137d-4797-8d49-4dde25234a78
+		summarizeBy: none
+		sourceColumn: train_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_code_first_depart
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 415e6cde-03d3-494c-9507-3e9c4f346f88
+		summarizeBy: none
+		sourceColumn: station_code_first_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_code_last_arrival
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9fabeb1f-774e-4825-b78a-f8adb071bc94
+		summarizeBy: none
+		sourceColumn: station_code_last_arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_local
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 031d2b51-53b8-47cc-ba85-e586d52e9c0f
+		summarizeBy: sum
+		sourceColumn: train_local
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_class
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: df7e8d17-8b2d-4d77-b3c8-31b39c9e86f5
+		summarizeBy: none
+		sourceColumn: train_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_priority
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: f81ff90d-4d3f-49d6-b513-678cf4697c69
+		summarizeBy: sum
+		sourceColumn: train_priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_pso
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d126906b-3301-42f1-bec4-493b435d82bf
+		summarizeBy: sum
+		sourceColumn: train_pso
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_perintis
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: cc3bf292-736d-4d48-a298-4902bc908143
+		summarizeBy: sum
+		sourceColumn: train_perintis
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_passenger_program
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 59c83c7f-e6ea-48cd-9668-5c1d8d15b0ae
+		summarizeBy: sum
+		sourceColumn: total_passenger_program
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_amount_program
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 023182fb-591e-48f1-adbe-0650038258c5
+		summarizeBy: sum
+		sourceColumn: total_amount_program
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_id = [train_name]  & " (" & [train_number_merge] & ")"
+		lineageTag: 2aaab190-16db-450c-80fb-789b13c1113c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition aggregate_program = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("eud3dnyz5fjehkzavuohztthdi-dcxryn2rcyqehmb53xkxj2c6ja.datawarehouse.fabric.microsoft.com", "dashboard_data"),
+				    dbo_aggregate_program = Source{[Schema="dbo",Item="aggregate_program"]}[Data]
+				in
+				    dbo_aggregate_program
+
+	annotation PBI_ResultType = Table
+

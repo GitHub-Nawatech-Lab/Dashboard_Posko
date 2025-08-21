@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Dashboard_Posko"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a252595a-8315-877b-44d3-d4936661ce44"
+  }
+}

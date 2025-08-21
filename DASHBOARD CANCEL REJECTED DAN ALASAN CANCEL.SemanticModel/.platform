@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "DASHBOARD CANCEL REJECTED DAN ALASAN CANCEL"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3281c15f-0223-b443-49d1-581dc49f7e3e"
+  }
+}

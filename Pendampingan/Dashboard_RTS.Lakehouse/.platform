@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "Dashboard_RTS"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "04378a62-6a1b-a24e-4f3d-7da5a5206e31"
+  }
+}

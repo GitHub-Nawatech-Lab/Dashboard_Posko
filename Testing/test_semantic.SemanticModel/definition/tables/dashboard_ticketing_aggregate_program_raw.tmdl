@@ -1,0 +1,592 @@
+table dashboard_ticketing_aggregate_program_raw
+	lineageTag: 3044dd91-266e-436f-953c-ec0197b330ad
+	sourceLineageTag: [dbo].[dashboard_ticketing_aggregate_program_raw]
+
+	column id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 447efed6-b9e4-476d-92a0-bae7eefdc1d6
+		sourceLineageTag: id
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column period_first_depart
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: f38c7931-5c8e-46f9-aee2-0664b4c1c4cc
+		sourceLineageTag: period_first_depart
+		summarizeBy: none
+		sourceColumn: period_first_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column period_last_arrival
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: ec51d217-e8dc-442e-a58d-3a53abbb7c74
+		sourceLineageTag: period_last_arrival
+		summarizeBy: none
+		sourceColumn: period_last_arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	column period_depart
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 81384276-b573-403c-829b-8c6a3be2ce74
+		sourceLineageTag: period_depart
+		summarizeBy: none
+		sourceColumn: period_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column period_arrival
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: b726b688-cf23-4b10-b709-005232c7fe51
+		sourceLineageTag: period_arrival
+		summarizeBy: none
+		sourceColumn: period_arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	column period_sales
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: f38bf107-e302-4eab-9bf3-1eb4c7b040b9
+		sourceLineageTag: period_sales
+		summarizeBy: none
+		sourceColumn: period_sales
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_first_depart
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: c931fc3b-aa29-45c5-8959-3aeb04645aa9
+		sourceLineageTag: area_first_depart
+		summarizeBy: sum
+		sourceColumn: area_first_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_last_arrival
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: a53f0832-3644-4cfb-a5e0-695eb21f2fbc
+		sourceLineageTag: area_last_arrival
+		summarizeBy: sum
+		sourceColumn: area_last_arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_depart
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: e8fb2a20-3968-4e04-baeb-c17db3eb3758
+		sourceLineageTag: area_depart
+		summarizeBy: sum
+		sourceColumn: area_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_arrival
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 6995b681-9c89-4a2f-834d-cc4c5ae85ad6
+		sourceLineageTag: area_arrival
+		summarizeBy: sum
+		sourceColumn: area_arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_sales
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: bc9dae29-2fa7-4342-9956-8c213fe955b9
+		sourceLineageTag: area_sales
+		summarizeBy: sum
+		sourceColumn: area_sales
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_code_first_depart
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: fc7ae33d-daa1-47aa-851a-0b7bcd181d8f
+		sourceLineageTag: area_code_first_depart
+		summarizeBy: none
+		sourceColumn: area_code_first_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_code_last_arrival
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 69d4ef7c-6975-43a4-ba02-0efbf43de987
+		sourceLineageTag: area_code_last_arrival
+		summarizeBy: none
+		sourceColumn: area_code_last_arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_code_depart
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ed579c21-ca13-446c-9bf7-a386c8b3d5f3
+		sourceLineageTag: area_code_depart
+		summarizeBy: none
+		sourceColumn: area_code_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_code_arrival
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: bb2c179a-3952-49b0-b7d8-a99ba65a562f
+		sourceLineageTag: area_code_arrival
+		summarizeBy: none
+		sourceColumn: area_code_arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_code_sales
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2ca0bd89-ad3e-4880-a514-1a2f4699dbd0
+		sourceLineageTag: area_code_sales
+		summarizeBy: none
+		sourceColumn: area_code_sales
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_name_first_depart
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 211a5da7-87ca-4d88-84cf-06bfb2030707
+		sourceLineageTag: area_name_first_depart
+		summarizeBy: none
+		sourceColumn: area_name_first_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_name_last_arrival
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 93b33486-284f-4d0a-8184-c6e2702cfbaf
+		sourceLineageTag: area_name_last_arrival
+		summarizeBy: none
+		sourceColumn: area_name_last_arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_name_depart
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e4093aa8-1c8f-42f8-a390-30b34785e6f4
+		sourceLineageTag: area_name_depart
+		summarizeBy: none
+		sourceColumn: area_name_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_name_arrival
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 70061b60-123b-436f-a33c-05c75bce231f
+		sourceLineageTag: area_name_arrival
+		summarizeBy: none
+		sourceColumn: area_name_arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_name_sales
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 288d7d99-7aed-4079-afdf-4b09ad10456b
+		sourceLineageTag: area_name_sales
+		summarizeBy: none
+		sourceColumn: area_name_sales
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_first_depart
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: e6101db7-c79e-4c5c-b874-52e4e306552f
+		sourceLineageTag: station_first_depart
+		summarizeBy: sum
+		sourceColumn: station_first_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_last_arrival
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: c3a9e570-c4ab-4e14-9aa6-65c4a542acf8
+		sourceLineageTag: station_last_arrival
+		summarizeBy: sum
+		sourceColumn: station_last_arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_depart
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 448d2389-0653-4c10-9040-ada6c464dc11
+		sourceLineageTag: station_depart
+		summarizeBy: sum
+		sourceColumn: station_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_arrival
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 5cf237c1-190b-463e-adbc-6ffbf2a0d980
+		sourceLineageTag: station_arrival
+		summarizeBy: sum
+		sourceColumn: station_arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_sales
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: a33ed34a-2ede-4e5e-8642-e038fe643692
+		sourceLineageTag: station_sales
+		summarizeBy: sum
+		sourceColumn: station_sales
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_code_first_depart
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 883db9af-f937-423f-8f98-e0f5265d11b2
+		sourceLineageTag: station_code_first_depart
+		summarizeBy: none
+		sourceColumn: station_code_first_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_code_last_arrival
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b2f92274-4920-44dd-953f-774edcedeb96
+		sourceLineageTag: station_code_last_arrival
+		summarizeBy: none
+		sourceColumn: station_code_last_arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_code_depart
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e4ee05c0-393a-434b-af37-913068381b44
+		sourceLineageTag: station_code_depart
+		summarizeBy: none
+		sourceColumn: station_code_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_code_arrival
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7007cb68-5053-4524-b02a-e8b251fc0dc6
+		sourceLineageTag: station_code_arrival
+		summarizeBy: none
+		sourceColumn: station_code_arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_code_sales
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5e6dd376-ab91-4d04-a689-0f8244bb0e5d
+		sourceLineageTag: station_code_sales
+		summarizeBy: none
+		sourceColumn: station_code_sales
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_name_first_depart
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 30f93e54-5607-4e71-adc4-cb679db02bf8
+		sourceLineageTag: station_name_first_depart
+		summarizeBy: none
+		sourceColumn: station_name_first_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_name_last_arrival
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2020f1d6-a2c6-47de-b8de-388e615fcb75
+		sourceLineageTag: station_name_last_arrival
+		summarizeBy: none
+		sourceColumn: station_name_last_arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_name_depart
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: de5c8284-12fb-4e05-8890-1846cb4533e1
+		sourceLineageTag: station_name_depart
+		summarizeBy: none
+		sourceColumn: station_name_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_name_arrival
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f167a311-2922-4e61-92eb-500c11aa9f7b
+		sourceLineageTag: station_name_arrival
+		summarizeBy: none
+		sourceColumn: station_name_arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_name_sales
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1f8d1a5a-f6ad-4a80-9aab-810024ee7ff1
+		sourceLineageTag: station_name_sales
+		summarizeBy: none
+		sourceColumn: station_name_sales
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel_sales
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 76ef482c-0ecc-48c8-941f-e2ca39d04c6a
+		sourceLineageTag: channel_sales
+		summarizeBy: none
+		sourceColumn: channel_sales
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_number_merge
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f55bc503-0ec5-4e61-97ae-b0b47379157a
+		sourceLineageTag: train_number_merge
+		summarizeBy: none
+		sourceColumn: train_number_merge
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_number
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a5a85098-e5fe-47c6-803a-51e3a74e65d0
+		sourceLineageTag: train_number
+		summarizeBy: none
+		sourceColumn: train_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: db4ff8cd-a77f-4f25-8bb6-84eff308543d
+		sourceLineageTag: train_name
+		summarizeBy: none
+		sourceColumn: train_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_class
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 290b15a4-d085-45aa-8134-82c1975ceb0b
+		sourceLineageTag: train_class
+		summarizeBy: none
+		sourceColumn: train_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_local
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 5263c0a9-a6be-41fd-9383-fcf611f5689e
+		sourceLineageTag: train_local
+		summarizeBy: sum
+		sourceColumn: train_local
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_priority
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 0e0c1657-2b5e-49d8-92d8-f22bfd270acc
+		sourceLineageTag: train_priority
+		summarizeBy: sum
+		sourceColumn: train_priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_pso
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 0ed29f2f-166c-4b06-940b-31937aba53fe
+		sourceLineageTag: train_pso
+		summarizeBy: sum
+		sourceColumn: train_pso
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_perintis
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 4511fc2e-c09d-43e8-a912-2e47a1c2e624
+		sourceLineageTag: train_perintis
+		summarizeBy: sum
+		sourceColumn: train_perintis
+
+		annotation SummarizationSetBy = Automatic
+
+	column passenger
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 5be9f9a2-496f-4e96-a87b-57d4b5136288
+		sourceLineageTag: passenger
+		summarizeBy: sum
+		sourceColumn: passenger
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: e5a4db67-08c4-42f8-a625-b3bafc7289b4
+		sourceLineageTag: amount
+		summarizeBy: sum
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column distance_od
+		dataType: double
+		sourceProviderType: float
+		lineageTag: c254d3df-105c-4840-bf2e-a9be21fefd10
+		sourceLineageTag: distance_od
+		summarizeBy: sum
+		sourceColumn: distance_od
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column distance
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 36a803e0-773e-4493-8c6c-a0334963ba6c
+		sourceLineageTag: distance
+		summarizeBy: sum
+		sourceColumn: distance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column company
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 3e2f5f1e-dc8e-4cda-8fca-a9d2daa930fd
+		sourceLineageTag: company
+		summarizeBy: sum
+		sourceColumn: company
+
+		annotation SummarizationSetBy = Automatic
+
+	column zone
+		dataType: int64
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 05127fa9-5fa8-4a97-b452-376a7f4db9b7
+		sourceLineageTag: zone
+		summarizeBy: sum
+		sourceColumn: zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_update
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: cdcb4b76-c001-469f-8c6f-9f257e4402cf
+		sourceLineageTag: last_update
+		summarizeBy: none
+		sourceColumn: last_update
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_data
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2d0dc9ff-e4d6-4123-a893-6c56b9b3e878
+		sourceLineageTag: source_data
+		summarizeBy: none
+		sourceColumn: source_data
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_first_depart
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0b0d9d38-b4e7-4b9c-88b1-b1d7fde8db78
+		sourceLineageTag: time_first_depart
+		summarizeBy: none
+		sourceColumn: time_first_depart
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_last_arrival
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b34f4e66-81f7-4011-ae6a-1c9e4990111e
+		sourceLineageTag: time_last_arrival
+		summarizeBy: none
+		sourceColumn: time_last_arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dashboard_ticketing_aggregate_program_raw = entity
+		mode: directLake
+		source
+			entityName: dashboard_ticketing_aggregate_program_raw
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

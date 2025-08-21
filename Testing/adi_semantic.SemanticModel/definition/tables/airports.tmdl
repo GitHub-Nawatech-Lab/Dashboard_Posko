@@ -1,0 +1,77 @@
+table airports
+	lineageTag: 5a0f7e30-8e69-4dea-9095-0c91d738e751
+	sourceLineageTag: [dbo].[airports]
+
+	column iata_code
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: eaab559c-355c-4399-b20a-6fd2a7a01f4a
+		sourceLineageTag: iata_code
+		summarizeBy: none
+		sourceColumn: iata_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 44014d8e-11ad-4504-a7aa-fa08b0610500
+		sourceLineageTag: city
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column airport_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ccee574d-ec01-42ec-9c7d-febdfa973344
+		sourceLineageTag: airport_name
+		summarizeBy: none
+		sourceColumn: airport_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column latitude
+		dataType: double
+		sourceProviderType: float
+		lineageTag: a0612b80-d9a5-496b-bf09-95ba71bb7a30
+		sourceLineageTag: latitude
+		summarizeBy: sum
+		sourceColumn: latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column longitude
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 9b383003-9313-4015-ab12-b87a555acede
+		sourceLineageTag: longitude
+		summarizeBy: sum
+		sourceColumn: longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Country
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 71d2d5cc-ebe9-41db-a810-fa25c5dcc509
+		sourceLineageTag: Country
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	partition airports = entity
+		mode: directLake
+		source
+			entityName: airports
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

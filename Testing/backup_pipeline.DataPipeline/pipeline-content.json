@@ -1,0 +1,3331 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "items": {
+            "value": "@pipeline().parameters.cw_items_e4n",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "Copy",
+              "typeProperties": {
+                "source": {
+                  "type": "LakehouseTableSource",
+                  "datasetSettings": {
+                    "type": "LakehouseTable",
+                    "typeProperties": {
+                      "table": {
+                        "value": "@item().source.table",
+                        "type": "Expression"
+                      }
+                    },
+                    "schema": [],
+                    "linkedService": {
+                      "name": "dashboard_data",
+                      "properties": {
+                        "type": "Lakehouse",
+                        "typeProperties": {
+                          "artifactId": "a4ed6bac-4637-a058-462d-b995343b9929",
+                          "workspaceId": "00000000-0000-0000-0000-000000000000",
+                          "rootFolder": "Tables"
+                        },
+                        "annotations": []
+                      }
+                    },
+                    "annotations": []
+                  }
+                },
+                "sink": {
+                  "type": "LakehouseTableSink",
+                  "tableActionOption": "OverwriteSchema",
+                  "partitionOption": "None",
+                  "datasetSettings": {
+                    "type": "LakehouseTable",
+                    "typeProperties": {
+                      "table": {
+                        "value": "@item().destination.table",
+                        "type": "Expression"
+                      }
+                    },
+                    "schema": [],
+                    "linkedService": {
+                      "name": "dashboard_data_backup",
+                      "properties": {
+                        "type": "Lakehouse",
+                        "typeProperties": {
+                          "artifactId": "d1f56734-d1b1-9f9d-43d4-e4bfe9c44faf",
+                          "workspaceId": "00000000-0000-0000-0000-000000000000",
+                          "rootFolder": "Tables"
+                        },
+                        "annotations": []
+                      }
+                    },
+                    "annotations": []
+                  }
+                },
+                "translator": {
+                  "value": "@item().copyActivity.translator",
+                  "type": "Expression"
+                },
+                "enableStaging": false
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Copy_e4n",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "ForEach_e4n",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "cw_items_e4n": {
+        "type": "Array",
+        "defaultValue": [
+          {
+            "source": {
+              "table": "aggregate_program"
+            },
+            "destination": {
+              "table": "aggregate_program"
+            },
+            "copyActivity": {
+              "translator": {
+                "type": "TabularTranslator",
+                "mappings": [
+                  {
+                    "source": {
+                      "name": "period_first_depart",
+                      "type": "Date",
+                      "physicalType": "date"
+                    },
+                    "sink": {
+                      "name": "period_first_depart",
+                      "physicalType": "date"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_code_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_code_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_name_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_name_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_number_merge",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_number_merge",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_number",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_number",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_name",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_name",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_last_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_last_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_local",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_local",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_class",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_class",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_priority",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_priority",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_pso",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_pso",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_perintis",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_perintis",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "total_passenger_program",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "total_passenger_program",
+                      "physicalType": "long"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "total_amount_program",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "total_amount_program",
+                      "physicalType": "long"
+                    }
+                  }
+                ],
+                "typeConversion": true,
+                "typeConversionSettings": {
+                  "allowDataTruncation": true,
+                  "treatBooleanAsNumber": false
+                }
+              }
+            }
+          },
+          {
+            "source": {
+              "table": "aggregate_system"
+            },
+            "destination": {
+              "table": "aggregate_system"
+            },
+            "copyActivity": {
+              "translator": {
+                "type": "TabularTranslator",
+                "mappings": [
+                  {
+                    "source": {
+                      "name": "period_first_depart",
+                      "type": "Date",
+                      "physicalType": "date"
+                    },
+                    "sink": {
+                      "name": "period_first_depart",
+                      "physicalType": "date"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_code_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_code_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_name_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_name_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_number_merge",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_number_merge",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_number",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_number",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_name",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_name",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_last_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_last_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_local",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_local",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_class",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_class",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_priority",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_priority",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_pso",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_pso",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_perintis",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_perintis",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "total_passenger",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "total_passenger",
+                      "physicalType": "long"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "total_amount",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "total_amount",
+                      "physicalType": "long"
+                    }
+                  }
+                ],
+                "typeConversion": true,
+                "typeConversionSettings": {
+                  "allowDataTruncation": true,
+                  "treatBooleanAsNumber": false
+                }
+              }
+            }
+          },
+          {
+            "source": {
+              "table": "dashboard_ticketing_aggregate_program_raw"
+            },
+            "destination": {
+              "table": "dashboard_ticketing_aggregate_program_raw"
+            },
+            "copyActivity": {
+              "translator": {
+                "type": "TabularTranslator",
+                "mappings": [
+                  {
+                    "source": {
+                      "name": "id",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "id",
+                      "physicalType": "long"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "period_first_depart",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "period_first_depart",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "period_last_arrival",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "period_last_arrival",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "period_depart",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "period_depart",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "period_arrival",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "period_arrival",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "period_sales",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "period_sales",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_first_depart",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "area_first_depart",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_last_arrival",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "area_last_arrival",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_depart",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "area_depart",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_arrival",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "area_arrival",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_sales",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "area_sales",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_code_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_code_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_code_last_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_code_last_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_code_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_code_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_code_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_code_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_code_sales",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_code_sales",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_name_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_name_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_name_last_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_name_last_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_name_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_name_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_name_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_name_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_name_sales",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_name_sales",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_first_depart",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "station_first_depart",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_last_arrival",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "station_last_arrival",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_depart",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "station_depart",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_arrival",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "station_arrival",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_sales",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "station_sales",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_last_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_last_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_sales",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_sales",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_name_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_name_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_name_last_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_name_last_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_name_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_name_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_name_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_name_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_name_sales",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_name_sales",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "channel_sales",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "channel_sales",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_number_merge",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_number_merge",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_number",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_number",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_name",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_name",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_class",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_class",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_local",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_local",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_priority",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_priority",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_pso",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_pso",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_perintis",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_perintis",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "passenger",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "passenger",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "amount",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "amount",
+                      "physicalType": "long"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "distance_od",
+                      "type": "Double",
+                      "physicalType": "double"
+                    },
+                    "sink": {
+                      "name": "distance_od",
+                      "physicalType": "double"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "distance",
+                      "type": "Double",
+                      "physicalType": "double"
+                    },
+                    "sink": {
+                      "name": "distance",
+                      "physicalType": "double"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "company",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "company",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "zone",
+                      "type": "Int16",
+                      "physicalType": "short"
+                    },
+                    "sink": {
+                      "name": "zone",
+                      "physicalType": "short"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "last_update",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "last_update",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "source_data",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "source_data",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "time_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "time_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "time_last_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "time_last_arrival",
+                      "physicalType": "string"
+                    }
+                  }
+                ],
+                "typeConversion": true,
+                "typeConversionSettings": {
+                  "allowDataTruncation": true,
+                  "treatBooleanAsNumber": false
+                }
+              }
+            }
+          },
+          {
+            "source": {
+              "table": "dashboard_ticketing_aggregate_system_posko_raw"
+            },
+            "destination": {
+              "table": "dashboard_ticketing_aggregate_system_posko_raw"
+            },
+            "copyActivity": {
+              "translator": {
+                "type": "TabularTranslator",
+                "mappings": [
+                  {
+                    "source": {
+                      "name": "id",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "id",
+                      "physicalType": "long"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "period_first_depart",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "period_first_depart",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "period_last_arrival",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "period_last_arrival",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "period_depart",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "period_depart",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "period_arrival",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "period_arrival",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "period_sales",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "period_sales",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_first_depart",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "area_first_depart",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_last_arrival",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "area_last_arrival",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_depart",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "area_depart",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_arrival",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "area_arrival",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_sales",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "area_sales",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_code_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_code_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_code_last_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_code_last_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_code_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_code_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_code_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_code_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_code_sales",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_code_sales",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_name_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_name_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_name_last_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_name_last_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_name_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_name_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_name_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_name_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_name_sales",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_name_sales",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_first_depart",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "station_first_depart",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_last_arrival",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "station_last_arrival",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_depart",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "station_depart",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_arrival",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "station_arrival",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_sales",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "station_sales",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_last_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_last_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_sales",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_sales",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_name_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_name_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_name_last_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_name_last_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_name_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_name_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_name_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_name_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_name_sales",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_name_sales",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "channel_sales",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "channel_sales",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_number_merge",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_number_merge",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_number",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_number",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_name",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_name",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_class",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_class",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_local",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_local",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_priority",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_priority",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_pso",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_pso",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_perintis",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_perintis",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "passenger",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "passenger",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "amount",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "amount",
+                      "physicalType": "long"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "distance_od",
+                      "type": "Double",
+                      "physicalType": "double"
+                    },
+                    "sink": {
+                      "name": "distance_od",
+                      "physicalType": "double"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "distance",
+                      "type": "Double",
+                      "physicalType": "double"
+                    },
+                    "sink": {
+                      "name": "distance",
+                      "physicalType": "double"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "company",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "company",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "zone",
+                      "type": "Int16",
+                      "physicalType": "short"
+                    },
+                    "sink": {
+                      "name": "zone",
+                      "physicalType": "short"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "last_update",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "last_update",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "source_data",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "source_data",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "time_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "time_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "time_last_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "time_last_arrival",
+                      "physicalType": "string"
+                    }
+                  }
+                ],
+                "typeConversion": true,
+                "typeConversionSettings": {
+                  "allowDataTruncation": true,
+                  "treatBooleanAsNumber": false
+                }
+              }
+            }
+          },
+          {
+            "source": {
+              "table": "dashboard_ticketing_aggregate_system_raw"
+            },
+            "destination": {
+              "table": "dashboard_ticketing_aggregate_system_raw"
+            },
+            "copyActivity": {
+              "translator": {
+                "type": "TabularTranslator",
+                "mappings": [
+                  {
+                    "source": {
+                      "name": "id",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "id",
+                      "physicalType": "long"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "period_first_depart",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "period_first_depart",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "period_last_arrival",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "period_last_arrival",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "period_depart",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "period_depart",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "period_arrival",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "period_arrival",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "period_sales",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "period_sales",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_first_depart",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "area_first_depart",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_last_arrival",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "area_last_arrival",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_depart",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "area_depart",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_arrival",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "area_arrival",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_sales",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "area_sales",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_code_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_code_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_code_last_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_code_last_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_code_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_code_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_code_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_code_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_code_sales",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_code_sales",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_name_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_name_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_name_last_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_name_last_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_name_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_name_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_name_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_name_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "area_name_sales",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "area_name_sales",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_first_depart",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "station_first_depart",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_last_arrival",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "station_last_arrival",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_depart",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "station_depart",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_arrival",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "station_arrival",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_sales",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "station_sales",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_last_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_last_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_code_sales",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_code_sales",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_name_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_name_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_name_last_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_name_last_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_name_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_name_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_name_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_name_arrival",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "station_name_sales",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "station_name_sales",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "channel_sales",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "channel_sales",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_number_merge",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_number_merge",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_number",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_number",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_name",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_name",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_class",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_class",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_local",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_local",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_priority",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_priority",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_pso",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_pso",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_perintis",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "train_perintis",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "passenger",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "passenger",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "amount",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "amount",
+                      "physicalType": "long"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "distance_od",
+                      "type": "Double",
+                      "physicalType": "double"
+                    },
+                    "sink": {
+                      "name": "distance_od",
+                      "physicalType": "double"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "distance",
+                      "type": "Double",
+                      "physicalType": "double"
+                    },
+                    "sink": {
+                      "name": "distance",
+                      "physicalType": "double"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "company",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "company",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "zone",
+                      "type": "Int16",
+                      "physicalType": "short"
+                    },
+                    "sink": {
+                      "name": "zone",
+                      "physicalType": "short"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "last_update",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "last_update",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "source_data",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "source_data",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "time_first_depart",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "time_first_depart",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "time_last_arrival",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "time_last_arrival",
+                      "physicalType": "string"
+                    }
+                  }
+                ],
+                "typeConversion": true,
+                "typeConversionSettings": {
+                  "allowDataTruncation": true,
+                  "treatBooleanAsNumber": false
+                }
+              }
+            }
+          },
+          {
+            "source": {
+              "table": "dashboard_ticketing_area_raw"
+            },
+            "destination": {
+              "table": "dashboard_ticketing_area_raw"
+            },
+            "copyActivity": {
+              "translator": {
+                "type": "TabularTranslator",
+                "mappings": [
+                  {
+                    "source": {
+                      "name": "c_area_id",
+                      "type": "Decimal",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 38
+                    },
+                    "sink": {
+                      "name": "c_area_id",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 38
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_area_bisnis",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_area_bisnis",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_area_name",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_area_name",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_area_status",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_area_status",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_area_domain",
+                      "type": "Decimal",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    },
+                    "sink": {
+                      "name": "c_area_domain",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_area_modifiedby",
+                      "type": "Decimal",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    },
+                    "sink": {
+                      "name": "c_area_modifiedby",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_area_modifiedon",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "c_area_modifiedon",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_area_createdby",
+                      "type": "Decimal",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    },
+                    "sink": {
+                      "name": "c_area_createdby",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_area_createdon",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "c_area_createdon",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_area_startdate",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "c_area_startdate",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_area_enddate",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "c_area_enddate",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_area_businessarea",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_area_businessarea",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_area_alias",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_area_alias",
+                      "physicalType": "string"
+                    }
+                  }
+                ],
+                "typeConversion": true,
+                "typeConversionSettings": {
+                  "allowDataTruncation": true,
+                  "treatBooleanAsNumber": false
+                }
+              }
+            }
+          },
+          {
+            "source": {
+              "table": "dashboard_ticketing_schedule_raw"
+            },
+            "destination": {
+              "table": "dashboard_ticketing_schedule_raw"
+            },
+            "copyActivity": {
+              "translator": {
+                "type": "TabularTranslator",
+                "mappings": [
+                  {
+                    "source": {
+                      "name": "c_schedule_id",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "c_schedule_id",
+                      "physicalType": "long"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_noka",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_schedule_noka",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_startdate",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "c_schedule_startdate",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_enddate",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "c_schedule_enddate",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_note",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_schedule_note",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_traintype_id",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "c_traintype_id",
+                      "physicalType": "long"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_train_id",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "c_train_id",
+                      "physicalType": "long"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_status",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_schedule_status",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_domain",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "c_schedule_domain",
+                      "physicalType": "long"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_modifiedby",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "c_schedule_modifiedby",
+                      "physicalType": "long"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_modifiedon",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "c_schedule_modifiedon",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_trainmiles_id",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "c_trainmiles_id",
+                      "physicalType": "long"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_trainrunning_id",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "c_trainrunning_id",
+                      "physicalType": "long"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_localstat",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_schedule_localstat",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_validdays",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_schedule_validdays",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_noseatalloc",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "c_schedule_noseatalloc",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_noseattype",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_schedule_noseattype",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_routedesc",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_schedule_routedesc",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_createdby",
+                      "type": "Int64",
+                      "physicalType": "long"
+                    },
+                    "sink": {
+                      "name": "c_schedule_createdby",
+                      "physicalType": "long"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_createdon",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "c_schedule_createdon",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_trainrunning_value",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "c_trainrunning_value",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_train_name",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_train_name",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_trainmiles_code",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_trainmiles_code",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_traintype_code",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_traintype_code",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_stamform",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_schedule_stamform",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_maxcapacity",
+                      "type": "Int32",
+                      "physicalType": "integer"
+                    },
+                    "sink": {
+                      "name": "c_schedule_maxcapacity",
+                      "physicalType": "integer"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_alloc",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_schedule_alloc",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_showseat",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_schedule_showseat",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_trainplan_noka",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_trainplan_noka",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_trainplan_gapeka",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_trainplan_gapeka",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_trainplan_trainname",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_trainplan_trainname",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_bandara",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_schedule_bandara",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_feeder",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_schedule_feeder",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_schedule_kcic",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_schedule_kcic",
+                      "physicalType": "string"
+                    }
+                  }
+                ],
+                "typeConversion": true,
+                "typeConversionSettings": {
+                  "allowDataTruncation": true,
+                  "treatBooleanAsNumber": false
+                }
+              }
+            }
+          },
+          {
+            "source": {
+              "table": "dashboard_ticketing_stasiun_raw"
+            },
+            "destination": {
+              "table": "dashboard_ticketing_stasiun_raw"
+            },
+            "copyActivity": {
+              "translator": {
+                "type": "TabularTranslator",
+                "mappings": [
+                  {
+                    "source": {
+                      "name": "c_stasiun_id",
+                      "type": "Decimal",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    },
+                    "sink": {
+                      "name": "c_stasiun_id",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_profitcenter",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_stasiun_profitcenter",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_name",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_stasiun_name",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_code",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_stasiun_code",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_pembatalan",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_stasiun_pembatalan",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_pengembalianbea",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_stasiun_pengembalianbea",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_status",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_stasiun_status",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_domain",
+                      "type": "Decimal",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    },
+                    "sink": {
+                      "name": "c_stasiun_domain",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_modifiedby",
+                      "type": "Decimal",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    },
+                    "sink": {
+                      "name": "c_stasiun_modifiedby",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_modifiedon",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "c_stasiun_modifiedon",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_area_id",
+                      "type": "Decimal",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    },
+                    "sink": {
+                      "name": "c_area_id",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_city_id",
+                      "type": "Decimal",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    },
+                    "sink": {
+                      "name": "c_city_id",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_createdby",
+                      "type": "Decimal",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    },
+                    "sink": {
+                      "name": "c_stasiun_createdby",
+                      "physicalType": "decimal",
+                      "scale": 0,
+                      "precision": 24
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_createdon",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "c_stasiun_createdon",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_showpos",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_stasiun_showpos",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_showibook",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_stasiun_showibook",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_showmobile",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_stasiun_showmobile",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_startdate",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "c_stasiun_startdate",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_enddate",
+                      "type": "DateTime",
+                      "physicalType": "timestamp"
+                    },
+                    "sink": {
+                      "name": "c_stasiun_enddate",
+                      "physicalType": "timestamp"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_local",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_stasiun_local",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_stasiun_intercity",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_stasiun_intercity",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_service_type",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_service_type",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "c_service_status",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "c_service_status",
+                      "physicalType": "string"
+                    }
+                  }
+                ],
+                "typeConversion": true,
+                "typeConversionSettings": {
+                  "allowDataTruncation": true,
+                  "treatBooleanAsNumber": false
+                }
+              }
+            }
+          },
+          {
+            "source": {
+              "table": "dashboard_ticketing_train_raw"
+            },
+            "destination": {
+              "table": "dashboard_ticketing_train_raw"
+            },
+            "copyActivity": {
+              "translator": {
+                "type": "TabularTranslator",
+                "mappings": [
+                  {
+                    "source": {
+                      "name": "train_id",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_id",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_number_merge",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_number_merge",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "train_name",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "train_name",
+                      "physicalType": "string"
+                    }
+                  }
+                ],
+                "typeConversion": true,
+                "typeConversionSettings": {
+                  "allowDataTruncation": true,
+                  "treatBooleanAsNumber": false
+                }
+              }
+            }
+          },
+          {
+            "source": {
+              "table": "posko_table"
+            },
+            "destination": {
+              "table": "posko_table"
+            },
+            "copyActivity": {
+              "translator": {
+                "type": "TabularTranslator",
+                "mappings": [
+                  {
+                    "source": {
+                      "name": "Posko",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "Posko",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "Type",
+                      "type": "String",
+                      "physicalType": "string"
+                    },
+                    "sink": {
+                      "name": "Type",
+                      "physicalType": "string"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "StartDate",
+                      "type": "Date",
+                      "physicalType": "date"
+                    },
+                    "sink": {
+                      "name": "StartDate",
+                      "physicalType": "date"
+                    }
+                  },
+                  {
+                    "source": {
+                      "name": "EndDate",
+                      "type": "Date",
+                      "physicalType": "date"
+                    },
+                    "sink": {
+                      "name": "EndDate",
+                      "physicalType": "date"
+                    }
+                  }
+                ],
+                "typeConversion": true,
+                "typeConversionSettings": {
+                  "allowDataTruncation": true,
+                  "treatBooleanAsNumber": false
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

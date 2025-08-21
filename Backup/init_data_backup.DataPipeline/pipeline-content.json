@@ -1,0 +1,792 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "query": "SELECT * FROM dashboard_ticketing.aggregate_system_posko WHERE  id is not null and last_update is not null and passenger <> 0  and amount <> 0",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "PostgreSqlTable",
+              "schema": [],
+              "externalReferences": {
+                "connection": "0641eb68-53eb-43cb-9320-bd783ee76290"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "Append",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "dashboard_ticketing_aggregate_system_posko_raw"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "dashboard_data",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "343b9929-b995-462d-a058-4637a4ed6bac",
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy Aggregate System Posko",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": []
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "query": "SELECT * \nFROM dashboard_ticketing.aggregate_system \nWHERE \n(\n   (period_first_depart between '2019-05-26' and '2019-06-16') \n    or (period_first_depart between '2022-04-22' and '2022-05-13') \n    or (period_first_depart between '2023-04-12' and '2023-05-03') \n    or (period_first_depart between '2024-03-31' and '2024-04-21')\n    or (period_first_depart between '2025-03-21' and '2025-04-11')\n    and not ( passenger = 0 and amount = 0 ))",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "PostgreSqlTable",
+              "schema": [],
+              "externalReferences": {
+                "connection": "0641eb68-53eb-43cb-9320-bd783ee76290"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "OverwriteSchema",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "dashboard_ticketing_aggregate_system_raw"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "dashboard_data",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "343b9929-b995-462d-a058-4637a4ed6bac",
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy Aggregate System",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": []
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "query": "SELECT * \nFROM dashboard_ticketing.aggregate_program \nWHERE \n(\n   (period_first_depart between '2019-05-26' and '2019-06-16') \n    or (period_first_depart between '2022-04-22' and '2022-05-13') \n    or (period_first_depart between '2023-04-12' and '2023-05-03') \n    or (period_first_depart between '2024-03-31' and '2024-04-21')\n    or (period_first_depart between '2025-03-21' and '2025-04-11')\n    or (period_last_arrival between '2019-05-26' and '2019-06-16') \n    or (period_last_arrival between '2022-04-22' and '2022-05-13') \n    or (period_last_arrival between '2023-04-12' and '2023-05-03') \n    or (period_last_arrival between '2024-03-31' and '2024-04-21')  \n    or (period_last_arrival between '2025-03-21' and '2025-04-11') \n) and not( passenger = 0 and amount = 0 )",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "PostgreSqlTable",
+              "schema": [],
+              "externalReferences": {
+                "connection": "0641eb68-53eb-43cb-9320-bd783ee76290"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "Append",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "dashboard_ticketing_aggregate_program_raw"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "dashboard_data",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "343b9929-b995-462d-a058-4637a4ed6bac",
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy Aggregate Program",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": []
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "PostgreSqlTable",
+              "typeProperties": {
+                "table": "rtsng_t_stasiun",
+                "schema": "dashboard_ticketing"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "0641eb68-53eb-43cb-9320-bd783ee76290"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "Append",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "dashboard_ticketing_stasiun_raw"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "dashboard_data",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "343b9929-b995-462d-a058-4637a4ed6bac",
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy Stasiun",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": []
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "PostgreSqlTable",
+              "typeProperties": {
+                "table": "rtsng_t_area",
+                "schema": "dashboard_ticketing"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "0641eb68-53eb-43cb-9320-bd783ee76290"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "Append",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "dashboard_ticketing_area_raw"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "dashboard_data",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "343b9929-b995-462d-a058-4637a4ed6bac",
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy Area",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": []
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "PostgreSqlTable",
+              "typeProperties": {
+                "table": "rtsng_t_schedule",
+                "schema": "dashboard_ticketing"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "0641eb68-53eb-43cb-9320-bd783ee76290"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "Append",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "dashboard_ticketing_stchedule_raw"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "dashboard_data",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "343b9929-b995-462d-a058-4637a4ed6bac",
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy Schedule",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": []
+      },
+      {
+        "type": "Office365Outlook",
+        "typeProperties": {
+          "inputs": {
+            "body": {},
+            "method": "post",
+            "path": "/v2/Mail"
+          }
+        },
+        "name": "Office 365 Outlook1",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": []
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "PostgreSqlTable",
+              "typeProperties": {
+                "table": "biop_revenue",
+                "schema": "dashboard_ticketing"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "0641eb68-53eb-43cb-9320-bd783ee76290"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "Append",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "dashboard_ticketing_biop_revenue_raw"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "dashboard_data",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "343b9929-b995-462d-a058-4637a4ed6bac",
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "id",
+                  "type": "Int64",
+                  "physicalType": "bigint"
+                },
+                "sink": {
+                  "name": "id",
+                  "physicalType": "long"
+                }
+              },
+              {
+                "source": {
+                  "name": "jenis_ka",
+                  "type": "Int32",
+                  "physicalType": "integer"
+                },
+                "sink": {
+                  "name": "jenis_ka",
+                  "physicalType": "integer"
+                }
+              },
+              {
+                "source": {
+                  "name": "tanggal_ka",
+                  "type": "DateTime",
+                  "physicalType": "date"
+                },
+                "sink": {
+                  "name": "tanggal_ka",
+                  "physicalType": "timestamp"
+                }
+              },
+              {
+                "source": {
+                  "name": "nomor_ka",
+                  "type": "String",
+                  "physicalType": "character varying"
+                },
+                "sink": {
+                  "name": "nomor_ka",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "nama_ka",
+                  "type": "String",
+                  "physicalType": "character varying"
+                },
+                "sink": {
+                  "name": "nama_ka",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "stamformasi",
+                  "type": "String",
+                  "physicalType": "character varying"
+                },
+                "sink": {
+                  "name": "stamformasi",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "wagonclass",
+                  "type": "String",
+                  "physicalType": "character varying"
+                },
+                "sink": {
+                  "name": "wagonclass",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "pso",
+                  "type": "Int32",
+                  "physicalType": "integer"
+                },
+                "sink": {
+                  "name": "pso",
+                  "physicalType": "integer"
+                }
+              },
+              {
+                "source": {
+                  "name": "kapasitas",
+                  "type": "Int64",
+                  "physicalType": "bigint"
+                },
+                "sink": {
+                  "name": "kapasitas",
+                  "physicalType": "long"
+                }
+              },
+              {
+                "source": {
+                  "name": "terjual",
+                  "type": "Decimal",
+                  "physicalType": "numeric"
+                },
+                "sink": {
+                  "name": "terjual",
+                  "physicalType": "decimal"
+                }
+              },
+              {
+                "source": {
+                  "name": "sisa_td",
+                  "type": "Int64",
+                  "physicalType": "bigint"
+                },
+                "sink": {
+                  "name": "sisa_td",
+                  "physicalType": "long"
+                }
+              },
+              {
+                "source": {
+                  "name": "pendapatan",
+                  "type": "Int64",
+                  "physicalType": "bigint"
+                },
+                "sink": {
+                  "name": "pendapatan",
+                  "physicalType": "long"
+                }
+              },
+              {
+                "source": {
+                  "name": "modifiedby",
+                  "type": "Decimal",
+                  "physicalType": "numeric"
+                },
+                "sink": {
+                  "name": "modifiedby",
+                  "physicalType": "decimal"
+                }
+              },
+              {
+                "source": {
+                  "name": "modifiedon",
+                  "type": "DateTime",
+                  "physicalType": "timestamp without time zone"
+                },
+                "sink": {
+                  "name": "modifiedon",
+                  "physicalType": "timestamp"
+                }
+              },
+              {
+                "source": {
+                  "name": "priority",
+                  "type": "Int32",
+                  "physicalType": "integer"
+                },
+                "sink": {
+                  "name": "priority",
+                  "physicalType": "integer"
+                }
+              },
+              {
+                "source": {
+                  "name": "luxury",
+                  "type": "Int32",
+                  "physicalType": "integer"
+                },
+                "sink": {
+                  "name": "luxury",
+                  "physicalType": "integer"
+                }
+              },
+              {
+                "source": {
+                  "name": "nomor_ka_merge",
+                  "type": "String",
+                  "physicalType": "character varying"
+                },
+                "sink": {
+                  "name": "nomor_ka_merge",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "tripstatus",
+                  "type": "String",
+                  "physicalType": "character varying"
+                },
+                "sink": {
+                  "name": "tripstatus",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "perintis",
+                  "type": "Int32",
+                  "physicalType": "integer"
+                },
+                "sink": {
+                  "name": "perintis",
+                  "physicalType": "integer"
+                }
+              },
+              {
+                "source": {
+                  "name": "kci",
+                  "type": "Int32",
+                  "physicalType": "integer"
+                },
+                "sink": {
+                  "name": "kci",
+                  "physicalType": "integer"
+                }
+              },
+              {
+                "source": {
+                  "name": "kapasitassf",
+                  "type": "Int32",
+                  "physicalType": "integer"
+                },
+                "sink": {
+                  "name": "kapasitassf",
+                  "physicalType": "integer"
+                }
+              },
+              {
+                "source": {
+                  "name": "jarakod",
+                  "type": "Double",
+                  "physicalType": "double precision"
+                },
+                "sink": {
+                  "name": "jarakod",
+                  "physicalType": "double"
+                }
+              },
+              {
+                "source": {
+                  "name": "kmpnp",
+                  "type": "Double",
+                  "physicalType": "double precision"
+                },
+                "sink": {
+                  "name": "kmpnp",
+                  "physicalType": "double"
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy Biop revenue",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": []
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "PostgreSqlTable",
+              "typeProperties": {
+                "table": "aggregate_system_feeder",
+                "schema": "dashboard_ticketing"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "0641eb68-53eb-43cb-9320-bd783ee76290"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "OverwriteSchema",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "dashboard_ticketing_aggregate_system_feeder_raw"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "dashboard_data",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "a4ed6bac-4637-a058-462d-b995343b9929",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy Aggregate System Feeder",
+        "dependsOn": []
+      }
+    ]
+  }
+}

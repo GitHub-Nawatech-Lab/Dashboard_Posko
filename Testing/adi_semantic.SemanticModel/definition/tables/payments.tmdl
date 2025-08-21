@@ -1,0 +1,77 @@
+table payments
+	lineageTag: 08ab9a81-54ab-4f2b-82a4-33786165e5b0
+	sourceLineageTag: [dbo].[payments]
+
+	column payment_id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: c3d9a1fd-b544-4499-8ae5-434f27939eac
+		sourceLineageTag: payment_id
+		summarizeBy: sum
+		sourceColumn: payment_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column booking_id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: f64855c5-fea7-4223-b15f-0e692e06e95e
+		sourceLineageTag: booking_id
+		summarizeBy: sum
+		sourceColumn: booking_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: bd1b8461-14c7-4b0a-add2-eaa0fc116fc5
+		sourceLineageTag: amount
+		summarizeBy: sum
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_method
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 15e43c96-17f2-479f-9efa-9067554eefb8
+		sourceLineageTag: payment_method
+		summarizeBy: none
+		sourceColumn: payment_method
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_status
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d883b077-307b-4985-aaff-bdb7fdad9647
+		sourceLineageTag: payment_status
+		summarizeBy: none
+		sourceColumn: payment_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column transaction_date
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 7c5fd945-6b31-417e-82ec-cc251c0ec89f
+		sourceLineageTag: transaction_date
+		summarizeBy: none
+		sourceColumn: transaction_date
+
+		annotation SummarizationSetBy = Automatic
+
+	partition payments = entity
+		mode: directLake
+		source
+			entityName: payments
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

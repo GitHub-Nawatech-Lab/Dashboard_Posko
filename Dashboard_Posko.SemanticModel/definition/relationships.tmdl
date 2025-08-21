@@ -1,0 +1,85 @@
+relationship c5f31007-c5c9-3af8-2f45-353305ba8fb6
+	fromColumn: aggregate_target.station_code_first_depart
+	toColumn: dim_stasiun_raw.c_stasiun_code
+
+relationship 8cb8aa10-f266-0bf9-d0d6-17c56f01ebda
+	fromColumn: aggregate_realization.station_code_first_depart
+	toColumn: dim_stasiun_raw.c_stasiun_code
+
+relationship 8bb7ba24-b7d4-4b34-dd31-e8eea1918414
+	isActive: false
+	fromColumn: aggregate_target.area_code_first_depart
+	toColumn: dim_area_raw.c_area_alias
+
+relationship e1ce4ada-405e-b744-324a-401dcecda7c0
+	isActive: false
+	fromColumn: aggregate_realization.area_code_first_depart
+	toColumn: dim_area_raw.c_area_alias
+
+relationship ee9e24ab-7c43-4167-2a63-4adbb38b7084
+	toCardinality: many
+	fromColumn: aggregate_target.train_id
+	toColumn: dim_train_raw.'Train ID'
+
+relationship 7f2e3142-6824-6b35-026e-4610fd47bd95
+	toCardinality: many
+	fromColumn: aggregate_realization.train_id
+	toColumn: dim_train_raw.'Train ID'
+
+relationship 2dd80eaa-d813-99ce-84dd-10667bddbdb9
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: DateTable2.Date
+	toColumn: posko_table.StartDate
+
+relationship 406bb629-691e-f63e-d2cd-ca294d2ac856
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: DateTable2.Date
+	toColumn: posko_table.EndDate
+
+relationship f649a751-230e-5845-c048-3e668b825e06
+	fromColumn: aggregate_target.period_first_depart
+	toColumn: DateTable2.Date
+
+relationship 37e8ff76-37d0-513c-cc4a-419d96791b70
+	fromColumn: aggregate_realization.period_first_depart
+	toColumn: DateTable2.Date
+
+relationship 0a3e9971-1361-4d07-2053-3b323fea5b62
+	toCardinality: many
+	fromColumn: YearTable.year
+	toColumn: DateTable2.Year
+
+relationship 8d70c071-0232-d7fd-b022-bd3037ad3d37
+	fromColumn: DateTable2.Posko
+	toColumn: posko_table.Posko
+
+relationship 66581396-627c-09a3-9f1a-142467921f59
+	crossFilteringBehavior: bothDirections
+	fromColumn: dim_stasiun_raw.c_area_id
+	toColumn: dim_area_raw.c_area_id
+
+relationship c9267350-30b1-af04-d351-706803ef4e67
+	toCardinality: many
+	fromColumn: dim_train_raw.year
+	toColumn: DateTable2.Year
+
+relationship a4d37939-7981-23db-ce17-2771c7c1a764
+	fromColumn: aggregate_realization.train_class
+	toColumn: dim_train_class.class
+
+relationship fe50997f-4d6e-68d1-4c03-d4aa99a9d9e5
+	fromColumn: aggregate_realization.train_pso
+	toColumn: dim_train_pso.pso
+
+relationship 2478f170-37ee-d27e-04d9-caf11c4073b9
+	fromColumn: aggregate_target.train_class
+	toColumn: dim_train_class.class
+
+relationship 0239f04e-ebcd-bd16-6864-4c21c806d2a6
+	fromColumn: aggregate_target.train_pso
+	toColumn: dim_train_pso.pso
+

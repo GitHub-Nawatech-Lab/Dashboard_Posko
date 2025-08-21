@@ -1,0 +1,861 @@
+{
+  "name": "{{Dataset_Name}}",
+  "compatibilityLevel": 1604,
+  "model": {
+    "name": "{{Dataset_Name}}",
+    "culture": "en-US",
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "aggregate_system",
+        "sourceLineageTag": "[dashboard_ticketing].[aggregate_system]",
+        "columns": [
+          {
+            "name": "id",
+            "dataType": "int64",
+            "sourceColumn": "id",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "id",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "period_first_depart",
+            "dataType": "dateTime",
+            "sourceColumn": "period_first_depart",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "period_first_depart",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "period_last_arrival",
+            "dataType": "dateTime",
+            "sourceColumn": "period_last_arrival",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "period_last_arrival",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "period_depart",
+            "dataType": "dateTime",
+            "sourceColumn": "period_depart",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "period_depart",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "period_arrival",
+            "dataType": "dateTime",
+            "sourceColumn": "period_arrival",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "period_arrival",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "period_sales",
+            "dataType": "dateTime",
+            "sourceColumn": "period_sales",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "period_sales",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area_first_depart",
+            "dataType": "int64",
+            "sourceColumn": "area_first_depart",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "area_first_depart",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area_last_arrival",
+            "dataType": "int64",
+            "sourceColumn": "area_last_arrival",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "area_last_arrival",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area_depart",
+            "dataType": "int64",
+            "sourceColumn": "area_depart",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "area_depart",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area_arrival",
+            "dataType": "int64",
+            "sourceColumn": "area_arrival",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "area_arrival",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area_sales",
+            "dataType": "int64",
+            "sourceColumn": "area_sales",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "area_sales",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area_code_first_depart",
+            "dataType": "string",
+            "sourceColumn": "area_code_first_depart",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "area_code_first_depart",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area_code_last_arrival",
+            "dataType": "string",
+            "sourceColumn": "area_code_last_arrival",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "area_code_last_arrival",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area_code_depart",
+            "dataType": "string",
+            "sourceColumn": "area_code_depart",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "area_code_depart",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area_code_arrival",
+            "dataType": "string",
+            "sourceColumn": "area_code_arrival",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "area_code_arrival",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area_code_sales",
+            "dataType": "string",
+            "sourceColumn": "area_code_sales",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "area_code_sales",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area_name_first_depart",
+            "dataType": "string",
+            "sourceColumn": "area_name_first_depart",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "area_name_first_depart",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area_name_last_arrival",
+            "dataType": "string",
+            "sourceColumn": "area_name_last_arrival",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "area_name_last_arrival",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area_name_depart",
+            "dataType": "string",
+            "sourceColumn": "area_name_depart",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "area_name_depart",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area_name_arrival",
+            "dataType": "string",
+            "sourceColumn": "area_name_arrival",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "area_name_arrival",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "area_name_sales",
+            "dataType": "string",
+            "sourceColumn": "area_name_sales",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "area_name_sales",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "station_first_depart",
+            "dataType": "int64",
+            "sourceColumn": "station_first_depart",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "station_first_depart",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "station_last_arrival",
+            "dataType": "int64",
+            "sourceColumn": "station_last_arrival",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "station_last_arrival",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "station_depart",
+            "dataType": "int64",
+            "sourceColumn": "station_depart",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "station_depart",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "station_arrival",
+            "dataType": "int64",
+            "sourceColumn": "station_arrival",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "station_arrival",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "station_sales",
+            "dataType": "int64",
+            "sourceColumn": "station_sales",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "station_sales",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "station_code_first_depart",
+            "dataType": "string",
+            "sourceColumn": "station_code_first_depart",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "station_code_first_depart",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "station_code_last_arrival",
+            "dataType": "string",
+            "sourceColumn": "station_code_last_arrival",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "station_code_last_arrival",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "station_code_depart",
+            "dataType": "string",
+            "sourceColumn": "station_code_depart",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "station_code_depart",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "station_code_arrival",
+            "dataType": "string",
+            "sourceColumn": "station_code_arrival",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "station_code_arrival",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "station_code_sales",
+            "dataType": "string",
+            "sourceColumn": "station_code_sales",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "station_code_sales",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "station_name_first_depart",
+            "dataType": "string",
+            "sourceColumn": "station_name_first_depart",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "station_name_first_depart",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "station_name_last_arrival",
+            "dataType": "string",
+            "sourceColumn": "station_name_last_arrival",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "station_name_last_arrival",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "station_name_depart",
+            "dataType": "string",
+            "sourceColumn": "station_name_depart",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "station_name_depart",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "station_name_arrival",
+            "dataType": "string",
+            "sourceColumn": "station_name_arrival",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "station_name_arrival",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "station_name_sales",
+            "dataType": "string",
+            "sourceColumn": "station_name_sales",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "station_name_sales",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "channel_sales",
+            "dataType": "string",
+            "sourceColumn": "channel_sales",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "channel_sales",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "train_number_merge",
+            "dataType": "string",
+            "sourceColumn": "train_number_merge",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "train_number_merge",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "train_number",
+            "dataType": "string",
+            "sourceColumn": "train_number",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "train_number",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "train_name",
+            "dataType": "string",
+            "sourceColumn": "train_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "train_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "train_class",
+            "dataType": "string",
+            "sourceColumn": "train_class",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "train_class",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "train_local",
+            "dataType": "int64",
+            "sourceColumn": "train_local",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "train_local",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "train_priority",
+            "dataType": "int64",
+            "sourceColumn": "train_priority",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "train_priority",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "train_pso",
+            "dataType": "int64",
+            "sourceColumn": "train_pso",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "train_pso",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "train_perintis",
+            "dataType": "int64",
+            "sourceColumn": "train_perintis",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "train_perintis",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "passenger",
+            "dataType": "int64",
+            "sourceColumn": "passenger",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "passenger",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "amount",
+            "dataType": "int64",
+            "sourceColumn": "amount",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "amount",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "distance_od",
+            "dataType": "double",
+            "sourceColumn": "distance_od",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "distance_od",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "distance",
+            "dataType": "double",
+            "sourceColumn": "distance",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "distance",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "company",
+            "dataType": "int64",
+            "sourceColumn": "company",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "company",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "zone",
+            "dataType": "int64",
+            "sourceColumn": "zone",
+            "formatString": "0",
+            "sourceProviderType": "smallint",
+            "sourceLineageTag": "zone",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "last_update",
+            "dataType": "dateTime",
+            "sourceColumn": "last_update",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "last_update",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "source_data",
+            "dataType": "string",
+            "sourceColumn": "source_data",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "source_data",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "time_first_depart",
+            "dataType": "string",
+            "sourceColumn": "time_first_depart",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "time_first_depart",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "time_last_arrival",
+            "dataType": "string",
+            "sourceColumn": "time_last_arrival",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "time_last_arrival",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "aggregate_system",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dashboard_ticketing"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "kind": "m",
+        "expression": "let\n    database = {{TDS_Endpoint}}\nin\n    database\n"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "SourceLineageTagType",
+        "value": "DatabaseFullyQualifiedName"
+      }
+    ]
+  }
+}

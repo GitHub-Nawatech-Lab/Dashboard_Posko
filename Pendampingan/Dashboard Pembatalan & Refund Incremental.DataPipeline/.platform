@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Dashboard Pembatalan & Refund Incremental"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "13cbf48e-b791-9bab-48e0-7176520cb377"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Dashboard Pembatalan & Refund Init"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "98d051e6-0df5-8a66-448a-736d28fcb448"
+  }
+}

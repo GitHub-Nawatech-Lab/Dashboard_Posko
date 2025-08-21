@@ -1,0 +1,161 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "query": "SELECT * FROM dashboard_ticketing.aggregate_system WHERE id is not null and period_first_depart between '2025-03-21' and '2025-04-11' and not (passenger = 0 and amount = 0) and company in (0,2)",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "PostgreSqlTable",
+              "schema": [],
+              "externalReferences": {
+                "connection": "0641eb68-53eb-43cb-9320-bd783ee76290"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "Append",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "dashboard_ticketing_aggregate_system_incr"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "dashboard_data",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "a4ed6bac-4637-a058-462d-b995343b9929",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy Aggregate System",
+        "dependsOn": []
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "08e26adc-5212-9a90-43a5-bf4414d5cdc2",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Transform Data Incr",
+        "dependsOn": [
+          {
+            "activity": "Copy Aggregate System Feeder",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "PostgreSqlTable",
+              "typeProperties": {
+                "table": "aggregate_system_feeder",
+                "schema": "dashboard_ticketing"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "0641eb68-53eb-43cb-9320-bd783ee76290"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "OverwriteSchema",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "dashboard_ticketing_aggregate_system_feeder_raw"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "dashboard_data",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "a4ed6bac-4637-a058-462d-b995343b9929",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy Aggregate System Feeder",
+        "dependsOn": [
+          {
+            "activity": "Copy Aggregate System",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

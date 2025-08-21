@@ -1,0 +1,418 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Copy data1",
+        "type": "Copy",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "query": "SELECT * FROM dashboard_ticketing.aggregate_system_posko WHERE  id is not null and last_update is not null and  period_first_depart > '2020-01-01'",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "annotations": [],
+              "type": "PostgreSqlTable",
+              "schema": [],
+              "typeProperties": {},
+              "externalReferences": {
+                "connection": "0641eb68-53eb-43cb-9320-bd783ee76290"
+              }
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "Append",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "annotations": [],
+              "linkedService": {
+                "name": "data",
+                "properties": {
+                  "annotations": [],
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48",
+                    "artifactId": "92757ff8-e232-4a85-a0df-0b4ff8fbc1f5",
+                    "rootFolder": "Tables"
+                  }
+                }
+              },
+              "type": "LakehouseTable",
+              "schema": [],
+              "typeProperties": {
+                "table": "dashboard_ticketing_aggregate_system_posko_raw"
+              }
+            }
+          },
+          "enableStaging": false,
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          }
+        }
+      },
+      {
+        "name": "Copy data1_copy1",
+        "type": "Copy",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "query": "SELECT * FROM dashboard_ticketing.aggregate_system WHERE  id is not null and last_update is not null and period_first_depart between '2025-03-21' and '2025-04-11'",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "annotations": [],
+              "type": "PostgreSqlTable",
+              "schema": [],
+              "typeProperties": {},
+              "externalReferences": {
+                "connection": "0641eb68-53eb-43cb-9320-bd783ee76290"
+              }
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "Append",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "annotations": [],
+              "linkedService": {
+                "name": "data",
+                "properties": {
+                  "annotations": [],
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48",
+                    "artifactId": "92757ff8-e232-4a85-a0df-0b4ff8fbc1f5",
+                    "rootFolder": "Tables"
+                  }
+                }
+              },
+              "type": "LakehouseTable",
+              "schema": [],
+              "typeProperties": {
+                "table": "dashboard_ticketing_aggregate_system_raw_test_3"
+              }
+            }
+          },
+          "enableStaging": false,
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          }
+        }
+      },
+      {
+        "name": "Copy data1_copy1_copy1",
+        "type": "Copy",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "query": "SELECT * FROM dashboard_ticketing.aggregate_program WHERE \n(\n       (period_first_depart between '2019-05-26' and '2019-06-16') \n    or (period_first_depart between '2022-04-22' and '2022-05-13') \n    or (period_first_depart between '2023-04-12' and '2023-05-03') \n    or (period_first_depart between '2024-03-31' and '2024-04-21')\n    or (period_last_arrival between '2019-05-26' and '2019-06-16') \n    or (period_last_arrival between '2022-04-22' and '2022-05-13') \n    or (period_last_arrival between '2023-04-12' and '2023-05-03') \n    or (period_last_arrival between '2024-03-31' and '2024-04-21')\n)",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "annotations": [],
+              "type": "PostgreSqlTable",
+              "schema": [],
+              "typeProperties": {},
+              "externalReferences": {
+                "connection": "0641eb68-53eb-43cb-9320-bd783ee76290"
+              }
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "OverwriteSchema",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "annotations": [],
+              "linkedService": {
+                "name": "data",
+                "properties": {
+                  "annotations": [],
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48",
+                    "artifactId": "92757ff8-e232-4a85-a0df-0b4ff8fbc1f5",
+                    "rootFolder": "Tables"
+                  }
+                }
+              },
+              "type": "LakehouseTable",
+              "schema": [],
+              "typeProperties": {
+                "table": "dashboard_ticketing_aggregate_program_raw"
+              }
+            }
+          },
+          "enableStaging": false,
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          }
+        }
+      },
+      {
+        "name": "Copy data1_copy1_copy2",
+        "type": "Copy",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "query": {
+              "value": "SELECT * FROM dashboard_ticketing.aggregate_system WHERE  id is not null and last_update is not null and  period_first_depart between '2025-03-21' and '2025-04-11' and last_update between '@{formatDateTime(addHours(utcnow(), 6), 'yyyy-MM-dd HH:00:00')}' and '@{formatDateTime(addHours(utcnow(), 7), 'yyyy-MM-dd HH:00:00')}';",
+              "type": "Expression"
+            },
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "annotations": [],
+              "type": "PostgreSqlTable",
+              "schema": [],
+              "typeProperties": {},
+              "externalReferences": {
+                "connection": "0641eb68-53eb-43cb-9320-bd783ee76290"
+              }
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "Append",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "annotations": [],
+              "linkedService": {
+                "name": "data",
+                "properties": {
+                  "annotations": [],
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48",
+                    "artifactId": "92757ff8-e232-4a85-a0df-0b4ff8fbc1f5",
+                    "rootFolder": "Tables"
+                  }
+                }
+              },
+              "type": "LakehouseTable",
+              "schema": [],
+              "typeProperties": {
+                "table": "dashboard_ticketing_aggregate_system_raw_test_5"
+              }
+            }
+          },
+          "enableStaging": false,
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          }
+        }
+      },
+      {
+        "name": "Set variable1",
+        "type": "SetVariable",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [],
+        "policy": {
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "variableName": "test",
+          "value": {
+            "value": "SELECT * FROM dashboard_ticketing.aggregate_system WHERE  id is not null and last_update is not null and  period_first_depart between '2025-03-21' and '2025-04-11' and last_update between '@{formatDateTime(addHours(utcnow(), 7), 'yyyy-MM-dd HH:00:00')}' and '@{formatDateTime(addHours(utcnow(), 8), 'yyyy-MM-dd HH:00:00')}';",
+            "type": "Expression"
+          }
+        }
+      },
+      {
+        "name": "Lookup1",
+        "type": "Lookup",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "query": {
+              "value": "SELECT max(last_update) as max_update, min(last_update) as min_update, count(*), min(id), max(id) FROM dashboard_ticketing.aggregate_system WHERE id is not null and period_first_depart between '2025-03-21' and '2025-04-11' and last_update > '2025-03-20 05:00:00';",
+              "type": "Expression"
+            },
+            "queryTimeout": "02:00:00"
+          },
+          "firstRowOnly": false,
+          "datasetSettings": {
+            "annotations": [],
+            "type": "PostgreSqlTable",
+            "schema": [],
+            "typeProperties": {},
+            "externalReferences": {
+              "connection": "0641eb68-53eb-43cb-9320-bd783ee76290"
+            }
+          }
+        }
+      },
+      {
+        "name": "Copy data2",
+        "type": "Copy",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "query": "select * from dashboard_ticketing.rtsng_t_schedule",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "annotations": [],
+              "type": "PostgreSqlTable",
+              "schema": [],
+              "typeProperties": {},
+              "externalReferences": {
+                "connection": "0641eb68-53eb-43cb-9320-bd783ee76290"
+              }
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "Append",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "annotations": [],
+              "linkedService": {
+                "name": "data",
+                "properties": {
+                  "annotations": [],
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "workspaceId": "371caf18-1651-4320-b03d-ddd574e85e48",
+                    "artifactId": "92757ff8-e232-4a85-a0df-0b4ff8fbc1f5",
+                    "rootFolder": "Tables"
+                  }
+                }
+              },
+              "type": "LakehouseTable",
+              "schema": [],
+              "typeProperties": {
+                "table": "dashboard_ticketing_rtsng_t_schedule_test"
+              }
+            }
+          },
+          "enableStaging": false,
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          }
+        }
+      },
+      {
+        "name": "Lookup2",
+        "type": "Lookup",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "query": {
+              "value": "SELECT sum(passenger) as volume, sum(amount) pendapatan, max(period_last_arrival) as period_last_arrival, min(period_last_arrival) as min_period_last_arrival, max(period_first_depart) as period_first_depart, min(period_first_depart) as min_period_first_depart, max(last_update) as max_update, min(last_update) as min_update, now(), DATE((now()+interval '7 hours')-interval '8 days'), count(*) from dashboard_ticketing.aggregate_program where id is not null and period_first_depart >= '2024-01-01' and company in (0,2)",
+              "type": "Expression"
+            },
+            "queryTimeout": "02:00:00"
+          },
+          "firstRowOnly": false,
+          "datasetSettings": {
+            "annotations": [],
+            "type": "PostgreSqlTable",
+            "schema": [],
+            "typeProperties": {},
+            "externalReferences": {
+              "connection": "0641eb68-53eb-43cb-9320-bd783ee76290"
+            }
+          }
+        }
+      }
+    ],
+    "variables": {
+      "test": {
+        "type": "String"
+      }
+    }
+  }
+}

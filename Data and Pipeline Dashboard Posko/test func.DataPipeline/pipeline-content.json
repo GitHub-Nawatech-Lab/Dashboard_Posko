@@ -1,0 +1,83 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Lookup1",
+        "type": "Lookup",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "DataWarehouseSource",
+            "sqlReaderQuery": "select top 10 dbo.CalculateSquare(passenger_id) from passengers",
+            "queryTimeout": "02:00:00",
+            "partitionOption": "None"
+          },
+          "firstRowOnly": false,
+          "datasetSettings": {
+            "annotations": [],
+            "linkedService": {
+              "name": "dimas_warehouse",
+              "properties": {
+                "annotations": [],
+                "type": "DataWarehouse",
+                "typeProperties": {
+                  "endpoint": "eud3dnyz5fjehkzavuohztthdi-tgferyatexieraha2l7vrckamq.datawarehouse.fabric.microsoft.com",
+                  "artifactId": "c69e0e18-7cdc-4963-a69c-b72c44a5969e",
+                  "workspaceId": "e0488a99-2513-48d0-80e0-d2ff58894064"
+                }
+              }
+            },
+            "type": "DataWarehouseTable",
+            "schema": [],
+            "typeProperties": {}
+          }
+        }
+      },
+      {
+        "name": "Script1",
+        "type": "Script",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "linkedService": {
+          "name": "dimas_warehouse",
+          "properties": {
+            "annotations": [],
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "endpoint": "eud3dnyz5fjehkzavuohztthdi-tgferyatexieraha2l7vrckamq.datawarehouse.fabric.microsoft.com",
+              "artifactId": "c69e0e18-7cdc-4963-a69c-b72c44a5969e",
+              "workspaceId": "e0488a99-2513-48d0-80e0-d2ff58894064"
+            }
+          }
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "SELECT dbo.CalculateSquare(5) AS result;",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        }
+      }
+    ]
+  }
+}

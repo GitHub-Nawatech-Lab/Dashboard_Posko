@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Warehouse",
+    "displayName": "DataDasboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "95509bc0-a6aa-a5e7-4526-3dae181c35ed"
+  }
+}

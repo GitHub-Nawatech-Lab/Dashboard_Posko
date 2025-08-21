@@ -1,0 +1,22 @@
+model Model
+	culture: en-US
+	collation: Latin1_General_100_BIN2_UTF8
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.142.7602.2 (Main)+ca8d54483c116a43cf1854e57f020ab7a9be1d91
+
+annotation PBI_QueryOrder = ["DatabaseQuery"]
+
+annotation __PBIService_Versioning_SaveVersion = be464944-9a7c-48e6-8857-2f83d2fe688d
+
+ref table dashboard_ticketing_aggregate_program_raw
+ref table dashboard_ticketing_aggregate_system_posko_raw
+
+ref cultureInfo en-US
+

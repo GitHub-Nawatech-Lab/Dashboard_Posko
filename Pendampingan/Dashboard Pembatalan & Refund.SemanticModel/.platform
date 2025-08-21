@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Dashboard Pembatalan & Refund"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "589d1e7d-46b1-8596-4eb7-c5b77aafe82d"
+  }
+}

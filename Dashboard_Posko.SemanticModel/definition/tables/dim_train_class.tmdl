@@ -1,0 +1,31 @@
+table dim_train_class
+	lineageTag: 51a8bfde-d398-4296-add7-9820d56f18f4
+
+	column class
+		dataType: string
+		sourceProviderType: varchar(40)
+		lineageTag: 118e8ffb-b8f8-414a-b0af-cdd0c517b657
+		summarizeBy: none
+		sourceColumn: class
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Kelas KA'
+		dataType: string
+		sourceProviderType: varchar(60)
+		lineageTag: 21c4a8bd-9f4d-4598-b5a2-8ef9320dada6
+		summarizeBy: none
+		sourceColumn: Kelas KA
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_train_class = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("eud3dnyz5fjehkzavuohztthdi-dcxryn2rcyqehmb53xkxj2c6ja.datawarehouse.fabric.microsoft.com", "dashboard_data"),
+				    dbo_dashboard_ticketing_train_class_raw = Source{[Schema="dbo",Item="dashboard_ticketing_train_class_raw"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(dbo_dashboard_ticketing_train_class_raw,{{"class_name", "Kelas KA"}})
+				in
+				    #"Renamed Columns"
+

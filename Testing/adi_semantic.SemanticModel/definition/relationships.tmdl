@@ -1,0 +1,4 @@
+relationship ef0485fe-c480-7a5b-85db-86e5b8f9aa42
+	fromColumn: bookings.flight_id
+	toColumn: flights.Id
+

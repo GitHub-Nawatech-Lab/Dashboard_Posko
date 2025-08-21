@@ -1,0 +1,62 @@
+[
+  {
+    "name": "payments",
+    "path": "/Tables",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/payments",
+        "itemId": "99851c4e-1aaa-4cbc-a954-820ca68c1616",
+        "workspaceId": "e0488a99-2513-48d0-80e0-d2ff58894064"
+      }
+    }
+  },
+  {
+    "name": "passengers",
+    "path": "/Tables",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/passengers",
+        "itemId": "99851c4e-1aaa-4cbc-a954-820ca68c1616",
+        "workspaceId": "e0488a99-2513-48d0-80e0-d2ff58894064"
+      }
+    }
+  },
+  {
+    "name": "flights",
+    "path": "/Tables",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/flights",
+        "itemId": "99851c4e-1aaa-4cbc-a954-820ca68c1616",
+        "workspaceId": "e0488a99-2513-48d0-80e0-d2ff58894064"
+      }
+    }
+  },
+  {
+    "name": "bookings",
+    "path": "/Tables",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/bookings",
+        "itemId": "99851c4e-1aaa-4cbc-a954-820ca68c1616",
+        "workspaceId": "e0488a99-2513-48d0-80e0-d2ff58894064"
+      }
+    }
+  },
+  {
+    "name": "airports",
+    "path": "/Tables",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/airports",
+        "itemId": "99851c4e-1aaa-4cbc-a954-820ca68c1616",
+        "workspaceId": "e0488a99-2513-48d0-80e0-d2ff58894064"
+      }
+    }
+  }
+]

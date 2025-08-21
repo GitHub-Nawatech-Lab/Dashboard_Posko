@@ -1,0 +1,219 @@
+table YearTable
+	lineageTag: 6398cdb4-aa22-4dc3-8399-5fe96c4ea254
+
+	measure total_passenger_all = ```
+			
+			
+			var curr_year = SELECTEDVALUE(DateTable2[Year])
+			
+			var prev_year = SELECTEDVALUE(YearTable[prev_year]) 
+			
+			var prev_event = SUBSTITUTE(SELECTEDVALUE(DateTable2[Posko]),  curr_year, prev_year)
+			
+			var program = CONTAINSSTRING(SELECTEDVALUE(YearTable[label]), "Program")
+			
+			var sums = 
+			    CALCULATE(
+			        IF(
+			            program,
+			            SUM('aggregate_target'[total_passenger_target]),
+			            SUM('aggregate_realization'[total_passenger])
+			        ),
+			        FILTER(
+			            ALL(DateTable2),
+			            DateTable2[Year] == prev_year
+			            && DateTable2[Posko] == prev_event
+			            // && CONTAINSSTRING(SELECTEDVALUE(DateTable2[Posko]), "Lebaran")
+			        )
+			    )
+			
+			RETURN sums
+			```
+		formatString: #,0
+		lineageTag: 9958d131-5a16-4601-ba68-e34a398e3ee4
+
+	measure matrix_table = ```
+			
+			
+			var category = SELECTEDVALUE(YearTable[category])
+			
+			var check = OR(([total_passenger_all]<>BLANK()), [total_amount_all]<>BLANK())
+			
+			var out = 
+			SWITCH
+			    (
+			        TRUE(),
+			        category == "Penumpang (Orang)", 
+			            FORMAT([total_passenger_all], "#,##0"),
+			        category == "Pendapatan", 
+			            FORMAT([total_amount_all], "#,##0"),
+			        category == "Pencapaian Penumpang Terhadap (%)", 
+			            FORMAT(DIVIDE(SUM('aggregate_realization'[total_passenger]),[total_passenger_all]), "PERCENT"),
+			        category == "Pencapaian Pendapatan Terhadap (%)", 
+			            FORMAT(DIVIDE(SUM('aggregate_realization'[total_amount]),[total_amount_all]), "PERCENT"),
+			        BLANK()
+			    )
+			
+			RETURN IF(check<>BLANK(), out, BLANK())
+			
+			```
+		lineageTag: 4de5ade6-3e57-4f89-8494-d27e9505a9d6
+
+	measure total_amount_all = ```
+			
+			var curr_year = SELECTEDVALUE(DateTable2[Year])
+			
+			var prev_year = SELECTEDVALUE(YearTable[prev_year]) 
+			
+			var prev_event = SUBSTITUTE(SELECTEDVALUE(DateTable2[Posko]),  curr_year, prev_year)
+			
+			var program = CONTAINSSTRING(SELECTEDVALUE(YearTable[label]), "Program")
+			
+			var sums = 
+			    CALCULATE(
+			        IF(
+			            program,
+			            SUM('aggregate_target'[total_amount_target]),
+			            SUM('aggregate_realization'[total_amount])
+			        ),
+			        FILTER(
+			            ALL(DateTable2),
+			            DateTable2[Year] == prev_year
+			            && DateTable2[Posko] == prev_event
+			        )
+			    )
+			
+			RETURN sums
+			```
+		formatString: #,0
+		lineageTag: 6217ae95-38fa-4ca7-ba55-cfdc2e143bed
+
+	measure total_passenger_all_period = ```
+			
+			var program = CONTAINSSTRING(SELECTEDVALUE(YearTable[label]), "Program")
+			
+			var sums = 
+			    CALCULATE(
+			        IF(
+			            program,
+			            SUM('aggregate_target'[total_passenger_target]),
+			            SUM('aggregate_realization'[total_passenger])
+			        ),
+			        FILTER(
+			            ALL(DateTable2),
+			            DateTable2[Year] == SELECTEDVALUE(YearTable[prev_year])
+			            && DateTable2[PoskoLabel] == SELECTEDVALUE(DateTable2[PoskoLabel])
+			        )
+			    )
+			
+			RETURN sums
+			```
+		formatString: #,0
+		lineageTag: f024cc26-c3b5-453d-aab2-d4453b3a2d3d
+
+	measure total_passenger_all_period_percent = DIVIDE([TotalPasY], [total_passenger_all_period])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c35f7350-e97a-4c75-a9c3-5fb345fc12bf
+
+	measure total_amount_all_period = ```
+			
+			var program = CONTAINSSTRING(SELECTEDVALUE(YearTable[label]), "Program")
+			
+			var sums = 
+			    CALCULATE(
+			        IF(
+			            program,
+			            SUM('aggregate_target'[total_amount_target]),
+			            SUM('aggregate_realization'[total_amount])
+			        ),
+			        FILTER(
+			            ALL(DateTable2),
+			            DateTable2[Year] == SELECTEDVALUE(YearTable[prev_year])
+			            && DateTable2[PoskoLabel] == SELECTEDVALUE(DateTable2[PoskoLabel])
+			        )
+			    )
+			
+			RETURN sums
+			```
+		formatString: #,0
+		lineageTag: 2f877c3e-8d73-426e-af7d-8f64c2b4f762
+
+	measure total_amount_all_period_percent = DIVIDE([TotalAmoY], [total_amount_all_period])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ff3ab363-994b-4a1a-8293-b41390990840
+
+	measure total_passenger_all_percent = DIVIDE([TotalPasY], [total_passenger_all])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 035383cf-a56b-4575-8018-7c1a1d5f94e3
+
+	measure total_amount_all_percent = DIVIDE([TotalAmoY], [total_amount_all])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 147f6eb7-5857-4054-a552-0ac0d54ff900
+
+	column category
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7aba92d4-2964-4184-8ab9-9cac87281a93
+		summarizeBy: none
+		sourceColumn: category
+		sortByColumn: id
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 8af56984-1f43-4a7b-9733-48dd1d5524ea
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column prev_year
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: ea1680bf-e22b-436f-9be5-7d64a805ec1b
+		summarizeBy: sum
+		sourceColumn: prev_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column label
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f0ce17a7-1364-497a-bd77-6e718f29e258
+		summarizeBy: none
+		sourceColumn: label
+		sortByColumn: prev_year
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 65355600-cab3-4fba-abca-07018af010ae
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition YearTable = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("eud3dnyz5fjehkzavuohztthdi-dcxryn2rcyqehmb53xkxj2c6ja.datawarehouse.fabric.microsoft.com", "dashboard_data"),
+				    dbo_year_table = Source{[Schema="dbo",Item="year_table"]}[Data]
+				in
+				    dbo_year_table
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

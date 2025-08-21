@@ -1,0 +1,66 @@
+table posko_table
+	lineageTag: 8326db4e-412a-48e7-a398-0437cdaef9a3
+
+	column Posko
+		dataType: string
+		sourceProviderType: varchar(400)
+		lineageTag: 4b103793-746a-4454-a08c-add6644b46ae
+		summarizeBy: none
+		sourceColumn: Posko
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		sourceProviderType: varchar(200)
+		lineageTag: 65a123cb-6366-4625-84da-a7a54fbaef50
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartDate
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 5b90b6c2-d9dc-4a73-a8fe-c7dde7ac5650
+		summarizeBy: none
+		sourceColumn: StartDate
+
+		variation Variation
+			isDefault
+			relationship: 51f3f2a7-149f-4083-88bc-8321e7df16d3
+			defaultHierarchy: LocalDateTable_6014df42-7f86-4562-a232-a3a15358cfad.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column EndDate
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 73952a9e-4f58-4ba0-97bf-762c90d0ce1d
+		summarizeBy: none
+		sourceColumn: EndDate
+
+		variation Variation
+			isDefault
+			relationship: d9d778e3-8a83-488f-b130-097ab5980807
+			defaultHierarchy: LocalDateTable_4d014ae4-7cab-40af-a49f-4cd2575d9c89.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition posko_table = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("eud3dnyz5fjehkzavuohztthdi-dcxryn2rcyqehmb53xkxj2c6ja.datawarehouse.fabric.microsoft.com", "dashboard_data"),
+				    dbo_posko_table = Source{[Schema="dbo",Item="posko_table"]}[Data]
+				in
+				    dbo_posko_table
+
+	annotation PBI_ResultType = Table
+

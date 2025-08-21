@@ -1,0 +1,36 @@
+table dim_train_pso
+	lineageTag: 99786658-65dd-43ac-944a-b74498ef096b
+
+	column pso
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: dd27ec78-8cb6-42d6-bf34-104ac58df04d
+		summarizeBy: none
+		sourceColumn: pso
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipe PSO'
+		dataType: string
+		sourceProviderType: varchar(60)
+		lineageTag: 6c557753-b226-464f-a5b0-f7fc651eed93
+		summarizeBy: none
+		sourceColumn: Tipe PSO
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_train_pso = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("eud3dnyz5fjehkzavuohztthdi-dcxryn2rcyqehmb53xkxj2c6ja.datawarehouse.fabric.microsoft.com", "dashboard_data"),
+				    dbo_dashboard_ticketing_train_pso_raw = Source{[Schema="dbo",Item="dashboard_ticketing_train_pso_raw"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(dbo_dashboard_ticketing_train_pso_raw,{{"pso_name", "Tipe PSO"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

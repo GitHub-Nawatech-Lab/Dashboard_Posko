@@ -1,0 +1,159 @@
+table flights
+	lineageTag: 4bfee40e-00dc-43e3-9cfd-8b3545b1a2b9
+	sourceLineageTag: [dbo].[flights]
+
+	column Id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 92a656dd-2b7f-4da1-9d0f-a80e98224d78
+		sourceLineageTag: Id
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Airline
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ac7bcf5e-7ec7-4cfb-95cc-a2250b1054c8
+		sourceLineageTag: Airline
+		summarizeBy: none
+		sourceColumn: Airline
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_of_Journey
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 8525e241-0082-482f-9375-cb78e2129e54
+		sourceLineageTag: Date_of_Journey
+		summarizeBy: none
+		sourceColumn: Date_of_Journey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Source
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e502c7fc-08c5-4898-b151-c3389a6d49ce
+		sourceLineageTag: Source
+		summarizeBy: none
+		sourceColumn: Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column Destination
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 90e5fb1a-8f0a-4f54-834f-f84adc8a1ce1
+		sourceLineageTag: Destination
+		summarizeBy: none
+		sourceColumn: Destination
+
+		annotation SummarizationSetBy = Automatic
+
+	column Route
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d3d1cc32-27a5-4bee-844a-bb164930792e
+		sourceLineageTag: Route
+		summarizeBy: none
+		sourceColumn: Route
+
+		annotation SummarizationSetBy = Automatic
+
+	column Route_Start
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9e4e4b99-3e07-4402-b52d-7096e78f5e09
+		sourceLineageTag: Route_Start
+		summarizeBy: none
+		sourceColumn: Route_Start
+
+		annotation SummarizationSetBy = Automatic
+
+	column Route_Destination
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 021cd4f4-2554-4baf-8947-0db27eed9259
+		sourceLineageTag: Route_Destination
+		summarizeBy: none
+		sourceColumn: Route_Destination
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dep_Time
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 3dc014fa-84e2-4958-8eeb-b5d6b17b48f2
+		sourceLineageTag: Dep_Time
+		summarizeBy: none
+		sourceColumn: Dep_Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column Arrival_Time
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 3758a549-21c5-46c8-80ec-ce00cbd4cbaa
+		sourceLineageTag: Arrival_Time
+		summarizeBy: none
+		sourceColumn: Arrival_Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column Duration_Minutes
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d7ad7959-dfde-4a11-af2f-ef3edbb09897
+		sourceLineageTag: Duration_Minutes
+		summarizeBy: none
+		sourceColumn: Duration_Minutes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Stops
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1a3cb346-0864-4ffc-9f88-34780f600f78
+		sourceLineageTag: Total_Stops
+		summarizeBy: none
+		sourceColumn: Total_Stops
+
+		annotation SummarizationSetBy = Automatic
+
+	column Additional_Info
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9e042681-0c77-47f2-8be7-9db70111909a
+		sourceLineageTag: Additional_Info
+		summarizeBy: none
+		sourceColumn: Additional_Info
+
+		annotation SummarizationSetBy = Automatic
+
+	column Price
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 0f4fbbf6-9c82-4ec4-a511-dbc593401267
+		sourceLineageTag: Price
+		summarizeBy: none
+		sourceColumn: Price
+
+		annotation SummarizationSetBy = Automatic
+
+	partition flights = entity
+		mode: directLake
+		source
+			entityName: flights
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

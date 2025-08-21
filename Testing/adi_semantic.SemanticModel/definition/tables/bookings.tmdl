@@ -1,0 +1,67 @@
+table bookings
+	lineageTag: 3211a53e-a66a-42b7-a14a-4060fb76cf94
+	sourceLineageTag: [dbo].[bookings]
+
+	column booking_id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: beeb4b6f-ec62-4c41-acc5-82572f262396
+		sourceLineageTag: booking_id
+		summarizeBy: sum
+		sourceColumn: booking_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column passenger_id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 6a866104-f9f2-4b9e-8e37-f7f9c71b3c1f
+		sourceLineageTag: passenger_id
+		summarizeBy: sum
+		sourceColumn: passenger_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column flight_id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 98accb40-994f-40de-9b65-15df143af006
+		sourceLineageTag: flight_id
+		summarizeBy: none
+		sourceColumn: flight_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column booking_date
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 13eaf381-2eb6-4cc5-b70e-d1bb307bf8e3
+		sourceLineageTag: booking_date
+		summarizeBy: none
+		sourceColumn: booking_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_status
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 38702847-aa3c-4105-aab6-4f688e1b8ee5
+		sourceLineageTag: payment_status
+		summarizeBy: none
+		sourceColumn: payment_status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition bookings = entity
+		mode: directLake
+		source
+			entityName: bookings
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

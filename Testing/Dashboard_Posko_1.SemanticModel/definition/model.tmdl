@@ -1,0 +1,26 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-ID
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["aggregate_system","aggregate_program","dim_area_raw","dim_stasiun_raw","dim_train_raw","posko_table","YearTable"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.139.2054.0 (24.12)+334ca1c95b576cc53924655643b0d36f21caac55
+
+ref table aggregate_system
+ref table aggregate_program
+ref table DateTable2
+ref table dim_area_raw
+ref table dim_stasiun_raw
+ref table dim_train_raw
+ref table posko_table
+ref table DateTable
+ref table YearTable
+
+ref cultureInfo en-US
+

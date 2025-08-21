@@ -1,0 +1,175 @@
+table dim_area_raw
+	lineageTag: e3834418-0d67-4231-9a41-fb82fdb08210
+
+	column c_area_id
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: 80db3501-9490-422d-9685-2cb0a6cc159d
+		summarizeBy: none
+		sourceColumn: c_area_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column c_area_bisnis
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4506319c-fa16-4d02-af28-22b15295a5fa
+		summarizeBy: none
+		sourceColumn: c_area_bisnis
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Area Keberangkatan'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ff547f20-6cb8-4e80-b5f7-a37f802724f4
+		summarizeBy: none
+		sourceColumn: Area Keberangkatan
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_area_status
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 95cc4f48-6500-4d29-bd08-c1327228a2dc
+		summarizeBy: none
+		sourceColumn: c_area_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_area_domain
+		dataType: double
+		sourceProviderType: decimal(24, 0)
+		lineageTag: 86bdedf0-6499-42e8-befb-b6cb865ea9f7
+		summarizeBy: sum
+		sourceColumn: c_area_domain
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column c_area_modifiedby
+		dataType: double
+		sourceProviderType: decimal(24, 0)
+		lineageTag: 788f2ce0-7764-41cd-bbee-8c6b94046669
+		summarizeBy: sum
+		sourceColumn: c_area_modifiedby
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column c_area_modifiedon
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: e4ece277-b339-403a-882b-a173ec47dbbd
+		summarizeBy: none
+		sourceColumn: c_area_modifiedon
+
+		variation Variation
+			isDefault
+			relationship: 7583213e-fbed-4c77-af7f-53a2bd2092cb
+			defaultHierarchy: LocalDateTable_8adbb1b1-cb3b-45eb-a900-3b9adf6bc243.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_area_createdby
+		dataType: double
+		sourceProviderType: decimal(24, 0)
+		lineageTag: 3078a267-d734-4eb7-9b90-d386116934ab
+		summarizeBy: sum
+		sourceColumn: c_area_createdby
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column c_area_createdon
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: b202dad5-ac88-4c07-8e62-d69f5d2c07e3
+		summarizeBy: none
+		sourceColumn: c_area_createdon
+
+		variation Variation
+			isDefault
+			relationship: 6e589e2f-3689-46dc-900c-9326db443694
+			defaultHierarchy: LocalDateTable_28fb3cc1-901e-4c41-a51e-523c599e6156.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_area_startdate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 6375f23e-7865-47a5-89f9-636ccee68f48
+		summarizeBy: none
+		sourceColumn: c_area_startdate
+
+		variation Variation
+			isDefault
+			relationship: 80a97d6b-a66f-420c-ac65-db75489003d7
+			defaultHierarchy: LocalDateTable_2dc3e68b-2c9c-48ab-ac32-54b2b45438c1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_area_enddate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: f7cb682c-fb77-4bc7-b806-1cbdc3ae247d
+		summarizeBy: none
+		sourceColumn: c_area_enddate
+
+		variation Variation
+			isDefault
+			relationship: affc7a51-77f9-4508-bbe1-ec36cacc7250
+			defaultHierarchy: LocalDateTable_5b3119fb-d7c7-42e6-8b9b-f4ee53d8c10d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_area_businessarea
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: acb70b53-4263-4c14-a7d6-088861f416f0
+		summarizeBy: none
+		sourceColumn: c_area_businessarea
+
+		annotation SummarizationSetBy = Automatic
+
+	column c_area_alias
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b2619734-241f-4170-992f-de01add0160b
+		summarizeBy: none
+		sourceColumn: c_area_alias
+
+		annotation SummarizationSetBy = Automatic
+
+	column Wilayah
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9f72c488-f5d2-467b-9bed-26526aff7ba6
+		summarizeBy: none
+		sourceColumn: Wilayah
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_area_raw = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("eud3dnyz5fjehkzavuohztthdi-dcxryn2rcyqehmb53xkxj2c6ja.datawarehouse.fabric.microsoft.com", "dashboard_data"),
+				    dbo_dashboard_ticketing_area_raw = Source{[Schema="dbo",Item="dashboard_ticketing_area_raw"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(dbo_dashboard_ticketing_area_raw,{{"c_area_name", "Area Keberangkatan"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

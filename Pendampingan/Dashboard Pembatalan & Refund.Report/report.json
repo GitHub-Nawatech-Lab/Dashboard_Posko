@@ -1,0 +1,130 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"type\":2,\"version\":\"5.59\"}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":0,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "pods": [
+    {
+      "boundSection": "a398abf222ab5a3bdced",
+      "config": "{}",
+      "name": "657ec0b6e234e0544439"
+    }
+  ],
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"199L\"}}}}}]}}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 1056.00,
+      "name": "a398abf222ab5a3bdced",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"1092d5213b2f383da512\",\"layouts\":[{\"id\":0,\"position\":{\"x\":380.2089524994108,\"y\":166.47914231922755,\"z\":4000,\"width\":435.7836372473898,\"height\":102.82535260893466,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Min(rtsng_t_refund_report.BOOKING_CODE)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"rtsng_t_refund_report\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"BOOKING_CODE\"}},\"Function\":5},\"Name\":\"Min(rtsng_t_refund_report.BOOKING_CODE)\",\"NativeReferenceName\":\"Count of BOOKING_CODE1\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"BOOKING_CODE\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 102.83,
+          "width": 435.78,
+          "x": 380.21,
+          "y": 166.48,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"486fb1b4fabf96416b47\",\"layouts\":[{\"id\":0,\"position\":{\"x\":446.31096489086883,\"y\":269.3044949281623,\"z\":0,\"width\":369.6816248559318,\"height\":200.75425985553912,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"areaChart\",\"projections\":{\"Category\":[{\"queryRef\":\"rtsng_t_refund_report.REFUND_TYPE\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(rtsng_t_refund_report.BOOKING_CODE)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"rtsng_t_refund_report\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"REFUND_TYPE\"},\"Name\":\"rtsng_t_refund_report.REFUND_TYPE\",\"NativeReferenceName\":\"REFUND_TYPE\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"BOOKING_CODE\"}},\"Function\":5},\"Name\":\"CountNonNull(rtsng_t_refund_report.BOOKING_CODE)\",\"NativeReferenceName\":\"BOOKING_CODE\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"BOOKING_CODE\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 200.75,
+          "width": 369.68,
+          "x": 446.31,
+          "y": 269.30,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"618e5892d72744d8b04b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":47.25066786095572,\"y\":269.3044949281623,\"z\":1000,\"width\":362.3369568124364,\"height\":141.99691550757643,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"areaChart\",\"projections\":{\"Category\":[{\"queryRef\":\"rtsng_t_refund_report.REFUND_TYPE\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(rtsng_t_refund_report.TICKET_AMOUNT)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"rtsng_t_refund_report\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"REFUND_TYPE\"},\"Name\":\"rtsng_t_refund_report.REFUND_TYPE\",\"NativeReferenceName\":\"REFUND_TYPE\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"TICKET_AMOUNT\"}},\"Function\":0},\"Name\":\"CountNonNull(rtsng_t_refund_report.TICKET_AMOUNT)\",\"NativeReferenceName\":\"Sum of TICKET_AMOUNT\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"TICKET_AMOUNT\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 142.00,
+          "width": 362.34,
+          "x": 47.25,
+          "y": 269.30,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"9c2f0aca62112eed2a22\",\"layouts\":[{\"id\":0,\"position\":{\"x\":47.25066786095572,\"y\":166.47914231922755,\"z\":5000,\"width\":369.6816248559318,\"height\":102.82535260893466,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(rtsng_t_refund_report.TICKET_AMOUNT)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"rtsng_t_refund_report\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"TICKET_AMOUNT\"}},\"Function\":0},\"Name\":\"Sum(rtsng_t_refund_report.TICKET_AMOUNT)\",\"NativeReferenceName\":\"Sum of TICKET_AMOUNT\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"TICKET_AMOUNT\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 102.83,
+          "width": 369.68,
+          "x": 47.25,
+          "y": 166.48,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"b88bd2761ea12123f6a8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":563.0912166679756,\"y\":46.516230942137106,\"z\":8000,\"width\":235.02937739185066,\"height\":83.23957115961377,\"tabOrder\":8000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"rtsng_t_refund_report.TRIP_DATE\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"rtsng_t_refund_report\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"TRIP_DATE\"},\"Name\":\"rtsng_t_refund_report.TRIP_DATE\",\"NativeReferenceName\":\"TRIP_DATE\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 83.24,
+          "width": 235.03,
+          "x": 563.09,
+          "y": 46.52,
+          "z": 8000.00
+        },
+        {
+          "config": "{\"name\":\"db90bea8391eef29f173\",\"layouts\":[{\"id\":0,\"position\":{\"x\":465.89674634018974,\"y\":470.0587547837014,\"z\":2000,\"width\":332.9582846384551,\"height\":190.96136913087867,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"projections\":{\"Category\":[{\"queryRef\":\"rtsng_t_refund_report.REFUND_TYPE\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(rtsng_t_refund_report.BOOKING_CODE)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"rtsng_t_refund_report\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"REFUND_TYPE\"},\"Name\":\"rtsng_t_refund_report.REFUND_TYPE\",\"NativeReferenceName\":\"REFUND_TYPE\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"BOOKING_CODE\"}},\"Function\":5},\"Name\":\"CountNonNull(rtsng_t_refund_report.BOOKING_CODE)\",\"NativeReferenceName\":\"BOOKING_CODE\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"BOOKING_CODE\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 190.96,
+          "width": 332.96,
+          "x": 465.90,
+          "y": 470.06,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"dcda1bc8557df847f29e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":46.516230942137106,\"y\":46.516230942137106,\"z\":6000,\"width\":144.44513818874154,\"height\":83.23957115961377,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"rtsng_t_refund_report.TRAIN_NAME\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"rtsng_t_refund_report\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"TRAIN_NAME\"},\"Name\":\"rtsng_t_refund_report.TRAIN_NAME\",\"NativeReferenceName\":\"TRAIN_NAME\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 83.24,
+          "width": 144.45,
+          "x": 46.52,
+          "y": 46.52,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"dd41a7ad76112ac48e85\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":695.2952414508916,\"z\":8001,\"width\":1270.6275715246927,\"height\":359.88873413127135,\"tabOrder\":8001}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"rtsng_t_refund_report.TRIP_DATE\"},{\"queryRef\":\"agregat.jumlah_cancel_train\"},{\"queryRef\":\"agregat.jumlah_cancel_train_return\"},{\"queryRef\":\"agregat.jumlah_cancel_passenger\"},{\"queryRef\":\"agregat.jumlah_cancel_rejected\"},{\"queryRef\":\"agregat.amount_cancel_train\"},{\"queryRef\":\"agregat.amount_cancel_train_return\"},{\"queryRef\":\"agregat.amount_cancel_passenger\"},{\"queryRef\":\"agregat.amount_cancel_rejected\"},{\"queryRef\":\"agregat.jumlah_total_tiket_batal\"},{\"queryRef\":\"agregat.refund\"},{\"queryRef\":\"agregat.%jumlah_cancel_passenger\"},{\"queryRef\":\"agregat.%Jumlah_Cancel_train\"},{\"queryRef\":\"agregat.%Jumlah_cancel_Rejected\"},{\"queryRef\":\"agregat.%Jumlah_cancel_Train_return\"},{\"queryRef\":\"agregat.%Amount_Cancel_Rejected\"},{\"queryRef\":\"agregat.%Amount_Cancel_Train\"},{\"queryRef\":\"agregat.%Amount_Cancel_Train_Return\"},{\"queryRef\":\"agregat.%Amount_Cancel_Passenger\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"rtsng_t_refund_report\",\"Type\":0},{\"Name\":\"a\",\"Entity\":\"agregat\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"TRIP_DATE\"},\"Name\":\"rtsng_t_refund_report.TRIP_DATE\",\"NativeReferenceName\":\"TRIP_DATE\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"jumlah_cancel_passenger\"},\"Name\":\"agregat.jumlah_cancel_passenger\",\"NativeReferenceName\":\"jumlah_cancel_passenger\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"%jumlah_cancel_passenger\"},\"Name\":\"agregat.%jumlah_cancel_passenger\",\"NativeReferenceName\":\"%jumlah_cancel_passenger\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"jumlah_cancel_train\"},\"Name\":\"agregat.jumlah_cancel_train\",\"NativeReferenceName\":\"jumlah_cancel_train\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"jumlah_cancel_train_return\"},\"Name\":\"agregat.jumlah_cancel_train_return\",\"NativeReferenceName\":\"jumlah_cancel_train_return\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"jumlah_cancel_rejected\"},\"Name\":\"agregat.jumlah_cancel_rejected\",\"NativeReferenceName\":\"jumlah_cancel_rejected\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"amount_cancel_train\"},\"Name\":\"agregat.amount_cancel_train\",\"NativeReferenceName\":\"amount_cancel_train\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"amount_cancel_train_return\"},\"Name\":\"agregat.amount_cancel_train_return\",\"NativeReferenceName\":\"amount_cancel_train_return\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"amount_cancel_passenger\"},\"Name\":\"agregat.amount_cancel_passenger\",\"NativeReferenceName\":\"amount_cancel_passenger\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"amount_cancel_rejected\"},\"Name\":\"agregat.amount_cancel_rejected\",\"NativeReferenceName\":\"amount_cancel_rejected\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"refund\"},\"Name\":\"agregat.refund\",\"NativeReferenceName\":\"refund\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"jumlah_total_tiket_batal\"},\"Name\":\"agregat.jumlah_total_tiket_batal\",\"NativeReferenceName\":\"jumlah_total_tiket_batal\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"%Jumlah_Cancel_train\"},\"Name\":\"agregat.%Jumlah_Cancel_train\",\"NativeReferenceName\":\"%Jumlah_Cancel_train\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"%Jumlah_cancel_Rejected\"},\"Name\":\"agregat.%Jumlah_cancel_Rejected\",\"NativeReferenceName\":\"%Jumlah_cancel_Rejected\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"%Jumlah_cancel_Train_return\"},\"Name\":\"agregat.%Jumlah_cancel_Train_return\",\"NativeReferenceName\":\"%Jumlah_cancel_Train_return\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"%Amount_Cancel_Rejected\"},\"Name\":\"agregat.%Amount_Cancel_Rejected\",\"NativeReferenceName\":\"%Amount_Cancel_Rejected\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"%Amount_Cancel_Train\"},\"Name\":\"agregat.%Amount_Cancel_Train\",\"NativeReferenceName\":\"%Amount_Cancel_Train\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"%Amount_Cancel_Train_Return\"},\"Name\":\"agregat.%Amount_Cancel_Train_Return\",\"NativeReferenceName\":\"%Amount_Cancel_Train_Return\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"%Amount_Cancel_Passenger\"},\"Name\":\"agregat.%Amount_Cancel_Passenger\",\"NativeReferenceName\":\"%Amount_Cancel_Passenger\"}]},\"columnProperties\":{\"agregat.%jumlah_cancel_passenger\":{\"formatString\":\"0.00 %;-0.00 %;0.00 %\"}},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 359.89,
+          "width": 1270.63,
+          "x": 0.00,
+          "y": 695.30,
+          "z": 8001.00
+        },
+        {
+          "config": "{\"name\":\"ea54a30f8d9c3e017277\",\"layouts\":[{\"id\":0,\"position\":{\"x\":306.0278351456389,\"y\":46.516230942137106,\"z\":7000,\"width\":217.8918186236949,\"height\":88.136016521944,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"rtsng_t_refund_report.WAGON_CLASS\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"rtsng_t_refund_report\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"WAGON_CLASS\"},\"Name\":\"rtsng_t_refund_report.WAGON_CLASS\",\"NativeReferenceName\":\"WAGON_CLASS\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 88.14,
+          "width": 217.89,
+          "x": 306.03,
+          "y": 46.52,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"fd644aa751d4f69c9e28\",\"layouts\":[{\"id\":0,\"position\":{\"x\":47.25066786095572,\"y\":470.0587547837014,\"z\":3000,\"width\":332.9582846384551,\"height\":183.61670108738332,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"projections\":{\"Category\":[{\"queryRef\":\"rtsng_t_refund_report.REFUND_TYPE\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(rtsng_t_refund_report.TICKET_AMOUNT)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"rtsng_t_refund_report\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"REFUND_TYPE\"},\"Name\":\"rtsng_t_refund_report.REFUND_TYPE\",\"NativeReferenceName\":\"REFUND_TYPE\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"TICKET_AMOUNT\"}},\"Function\":0},\"Name\":\"CountNonNull(rtsng_t_refund_report.TICKET_AMOUNT)\",\"NativeReferenceName\":\"Sum of TICKET_AMOUNT\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"TICKET_AMOUNT\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 183.62,
+          "width": 332.96,
+          "x": 47.25,
+          "y": 470.06,
+          "z": 3000.00
+        }
+      ],
+      "width": 816.00
+    }
+  ]
+}

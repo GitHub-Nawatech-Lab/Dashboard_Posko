@@ -1,0 +1,37 @@
+table Agregat
+	lineageTag: 5d3fc2ad-0de3-4307-a74c-09877bb9b970
+
+	measure 'Jumlah Sakit' = CALCULATE(COUNT( RTSNG_T_REFUND_REPORT[TICKET_NUMBER]),RTSNG_T_REFUND_REPORT[REASON]="Penumpang Sakit")
+		formatString: 0
+		lineageTag: 8ad13b39-4041-4f06-a099-56be2712e529
+
+	measure 'KA TERLAMBAT' = CALCULATE(COUNT( RTSNG_T_REFUND_REPORT[TICKET_NUMBER]),RTSNG_T_REFUND_REPORT[REASON]="KA Terlambat 1 Jam")
+		formatString: 0
+		lineageTag: 4e846584-1aee-42d5-9acc-0b706b62d315
+
+	measure 'BLACK LIST PENUMPANG' = CALCULATE(COUNT(RTSNG_T_REFUND_REPORT[TICKET_NUMBER]),RTSNG_T_REFUND_REPORT[REASON]= "BLACKLIST MELEBIHI RELASI")
+		formatString: 0
+		lineageTag: 2380193a-343c-44b5-aa4e-0ae3bfa65309
+
+	measure 'LAIN LAIN' = CALCULATE(COUNT(RTSNG_T_REFUND_REPORT[TICKET_NUMBER]),RTSNG_T_REFUND_REPORT[REASON]<> OR (OR ("SAKIT","KA TERLAMBAT"), "BLACKLIST PENUMPANG"))
+		formatString: 0
+		lineageTag: 1c1c667a-71b8-42f3-9b8a-a3973955b3b1
+
+	measure 'LAIN LAIN 1' = CALCULATE(COUNT(RTSNG_T_REFUND_REPORT[TICKET_NUMBER]), NOT (RTSNG_T_REFUND_REPORT[REASON] IN {"BLACKLIST MELEBIHI RELASI","Penumpang Sakit","KA Terlambat 1 Jam"}))
+		formatString: 0
+		lineageTag: 3c4a2658-73a4-4a70-b522-073362a4ceef
+
+	column a
+		lineageTag: ddea9545-8c9a-463c-b958-1c3fe2c493b6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [a]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Agregat = calculated
+		mode: import
+		source = ROW("a"," ")
+
+	annotation PBI_Id = 43f6bacfe07849649f10a4d9b08e00f3
+

@@ -1,0 +1,1041 @@
+table DateTable
+	lineageTag: 42c2f70e-42ba-49df-bab1-3b7384ecc1e3
+
+	measure TotalPasY = SUM('aggregate_realization'[total_passenger])
+		formatString: #,0
+		lineageTag: bf4b5e39-92bf-4d66-92a3-37b75cd248a2
+
+	measure TotalPasY2 = ```
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year]) -1
+			RETURN 
+			CALCULATE(
+			    SUM('aggregate_realization'[total_passenger]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahun 
+			        //  && DateTable[SemesterLabel] == SELECTEDVALUE('DateTable'[SemesterLabel])
+			    )
+			    
+			```
+		formatString: #,0
+		lineageTag: fb03f8c4-909f-4e40-83b4-fa0c93f99aa5
+
+	measure TotalPasY3 = ```
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year]) -2
+			RETURN 
+			CALCULATE(
+			    SUM('aggregate_realization'[total_passenger]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahun 
+			        //  && DateTable[SemesterLabel] == SELECTEDVALUE('DateTable'[SemesterLabel])
+			    )
+			    
+			```
+		formatString: #,0
+		lineageTag: 4ddf640b-b99f-427a-a875-8ce853eb25d1
+
+	measure TotalAmoY = SUM('aggregate_realization'[total_amount])
+		formatString: #,0
+		lineageTag: 1ba172cb-f26e-49b5-82b6-ecbc534745d7
+
+	measure TotalAmoY2 = ```
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year]) -1
+			RETURN 
+			CALCULATE(
+			    SUM('aggregate_realization'[total_amount]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahun 
+			        //  && DateTable[SemesterLabel] == SELECTEDVALUE('DateTable'[SemesterLabel])
+			    )
+			    
+			```
+		formatString: 0
+		lineageTag: 56af257f-ed6d-4dd5-a853-9da547119f82
+
+	measure TotalAmoY3 = ```
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year]) - 2
+			RETURN 
+			CALCULATE(
+			    SUM('aggregate_realization'[total_amount]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahun 
+			        //  && DateTable[SemesterLabel] == SELECTEDVALUE('DateTable'[SemesterLabel])
+			    )
+			    
+			```
+		formatString: 0
+		lineageTag: cac475d4-01ea-4911-97b7-f70b69bca1da
+
+	measure AvgPasY = SUM('aggregate_realization'[total_passenger])/DISTINCTCOUNT('aggregate_target'[station_code_first_depart])
+		lineageTag: d8305f23-90a4-46e9-ad56-9e571e8ce537
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgAmoY = SUM('aggregate_realization'[total_amount])/DISTINCTCOUNT('aggregate_target'[station_code_first_depart])
+		formatString: 0.00
+		lineageTag: 6f44f5b5-aa4b-430c-b123-45a07cef8ded
+
+	measure %PrevMounthAmo =
+			
+			DIVIDE(SUM('aggregate_realization'[total_amount]),SUM('aggregate_target'[total_amount_target]))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 24adc73a-ff48-4c8c-a23e-1d27de03af73
+
+	measure %PrevMounthPass =
+			
+			DIVIDE(SUM('aggregate_realization'[total_passenger]),SUM('aggregate_target'[total_passenger_target]))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3e5df82c-34b6-406f-ba54-3ff94e94d21e
+
+	measure %RealisasiY2Amo =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) -1
+			var Realisasi = CALCULATE(SUM('aggregate_realization'[total_amount]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN DIVIDE(SUM('aggregate_realization'[total_amount]),Realisasi)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e3400062-b442-40de-8b12-c8959b74ce24
+
+	measure %RealisasiY2Pass =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) -1
+			var Realisasi = CALCULATE(SUM('aggregate_realization'[total_passenger]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN DIVIDE(SUM('aggregate_realization'[total_passenger]),Realisasi)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: bd8f6807-69e0-4575-9c11-22702716b56d
+
+	measure %RealisasiY3Amo = ```
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) -2
+			var Realisasi = CALCULATE(SUM('aggregate_realization'[total_amount]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN DIVIDE(SUM('aggregate_realization'[total_amount]),Realisasi)
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 5442dd85-2702-463d-b0c4-f2778b34a23f
+
+	measure %RealisasiY3Pass = ```
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) -2
+			var Realisasi = CALCULATE(SUM('aggregate_realization'[total_passenger]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN  DIVIDE(SUM('aggregate_realization'[total_passenger]),Realisasi)
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 40c6398d-4fec-4f78-a6f9-7d464fbbd6ce
+
+	measure %SemesterAmoY = ```
+			
+			VAR tahunTerpilih = SELECTEDVALUE(DateTable2[Year])
+			RETURN 
+			DIVIDE(
+			    CALCULATE(
+			    SUM('aggregate_realization'[total_amount]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			         && DateTable2[PoskoLabel] == SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    ), 
+			    CALCULATE(
+			    SUM('aggregate_target'[total_amount_target]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			         && DateTable2[PoskoLabel] == SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    )
+			)
+			```
+		lineageTag: dec6ab9f-cba8-43c6-99df-a310724164a0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %SemesterAmoY2 = ```
+			
+			VAR tahunTerpilih = SELECTEDVALUE(DateTable2[Year])-1
+			RETURN 
+			DIVIDE(
+			    CALCULATE(
+			    SUM('aggregate_realization'[total_amount]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			         && DateTable2[PoskoLabel] = SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    ), 
+			    CALCULATE(
+			    SUM('aggregate_target'[total_amount_target]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			         && DateTable2[PoskoLabel] = SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    )
+			)
+			```
+		lineageTag: 501b9d46-03b4-408f-bb48-b7cb62a36171
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %SemesterAmoY2V1 = ```
+			
+			VAR tahunTerpilih = SELECTEDVALUE(DateTable2[Year])-1
+			RETURN 
+			DIVIDE(
+			    CALCULATE(
+			    SUM('aggregate_realization'[total_amount]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			    ), 
+			    CALCULATE(
+			    SUM('aggregate_target'[total_amount_target]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			    )
+			)
+			```
+		lineageTag: 1f73e100-a9f5-46f0-9efc-a5184816001f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %SemesterAmoY3 = ```
+			
+			VAR tahunTerpilih = SELECTEDVALUE(DateTable2[Year])-2
+			RETURN 
+			DIVIDE(
+			    CALCULATE(
+			    SUM('aggregate_realization'[total_amount]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			         && DateTable2[PoskoLabel] == SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    ), 
+			    CALCULATE(
+			    SUM('aggregate_target'[total_amount_target]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			         && DateTable2[PoskoLabel] == SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    )
+			)
+			```
+		lineageTag: 31785d1d-fac2-44c1-a6ac-a7fe125afa69
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %SemesterAmoY3V1 = ```
+			
+			VAR tahunTerpilih = SELECTEDVALUE(DateTable2[Year])-2
+			RETURN 
+			DIVIDE(
+			    CALCULATE(
+			    SUM('aggregate_realization'[total_amount]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			    ), 
+			    CALCULATE(
+			    SUM('aggregate_target'[total_amount_target]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			    )
+			)
+			```
+		lineageTag: 799cb735-5d1a-49e4-b5d0-846fb395bf4c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %SemesterAmoYV1 = ```
+			
+			VAR tahunTerpilih = SELECTEDVALUE(DateTable2[Year])
+			RETURN 
+			DIVIDE(
+			    CALCULATE(
+			    SUM('aggregate_realization'[total_amount]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			    ), 
+			    CALCULATE(
+			    SUM('aggregate_target'[total_amount_target]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			    )
+			)
+			```
+		lineageTag: 40a6f813-7b6e-46fe-8fde-cef5c27fad1d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %SemesterPassY = ```
+			
+			VAR tahunTerpilih = SELECTEDVALUE(DateTable2[Year])
+			RETURN 
+			DIVIDE(
+			    CALCULATE(
+			    SUM('aggregate_realization'[total_passenger]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			         && DateTable2[PoskoLabel] == SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    ), 
+			    CALCULATE(
+			    SUM('aggregate_target'[total_passenger_target]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			         && DateTable2[PoskoLabel] == SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    )
+			)
+			```
+		lineageTag: cb62c772-cc28-479e-a479-9adc949d2616
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %SemesterPassY2 = ```
+			
+			VAR tahunTerpilih = SELECTEDVALUE(DateTable2[Year])-1
+			RETURN 
+			DIVIDE(
+			    CALCULATE(
+			    SUM('aggregate_realization'[total_passenger]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			         && DateTable2[PoskoLabel] = SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    ), 
+			    CALCULATE(
+			    SUM('aggregate_target'[total_passenger_target]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			         && DateTable2[PoskoLabel] = SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    )
+			)
+			```
+		lineageTag: 67d25171-2212-41cf-8278-41e1fa94e04c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %SemesterPassY2V1 = ```
+			
+			VAR tahunTerpilih = SELECTEDVALUE(DateTable2[Year])-1
+			RETURN 
+			DIVIDE(
+			    CALCULATE(
+			    SUM('aggregate_realization'[total_passenger]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			    ), 
+			    CALCULATE(
+			    SUM('aggregate_target'[total_passenger_target]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			    )
+			)
+			```
+		lineageTag: b969502a-5c8f-4b19-b0a5-b28fac1b2b5b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %SemesterPassY3 = ```
+			
+			VAR tahunTerpilih = SELECTEDVALUE(DateTable2[Year])-2
+			RETURN 
+			DIVIDE(
+			    CALCULATE(
+			    SUM('aggregate_realization'[total_passenger]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			         && DateTable2[PoskoLabel] == SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    ), 
+			    CALCULATE(
+			    SUM('aggregate_target'[total_passenger_target]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			         && DateTable2[PoskoLabel] == SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    )
+			)
+			```
+		lineageTag: 6d075409-7fee-42bb-8f4c-fbd29a6ba75a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %SemesterPassY3V1 = ```
+			
+			VAR tahunTerpilih = SELECTEDVALUE(DateTable2[Year])-2
+			RETURN 
+			DIVIDE(
+			    CALCULATE(
+			    SUM('aggregate_realization'[total_passenger]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			    ), 
+			    CALCULATE(
+			    SUM('aggregate_target'[total_passenger_target]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			    )
+			)
+			```
+		lineageTag: df2230a3-fa4a-4ea0-90a6-b2293ab303f2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %SemesterPassYV1 = ```
+			
+			VAR tahunTerpilih = SELECTEDVALUE(DateTable2[Year])
+			RETURN 
+			DIVIDE(
+			    CALCULATE(
+			    SUM('aggregate_realization'[total_passenger]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			    ), 
+			    CALCULATE(
+			    SUM('aggregate_target'[total_passenger_target]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahunTerpilih 
+			    )
+			)
+			```
+		lineageTag: 2f10d29d-6857-452d-8765-09db7a006033
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgPendapatanArea = DIVIDE(SUM('aggregate_realization'[total_amount]),DISTINCTCOUNTNOBLANK('aggregate_realization'[area_code_first_depart]))
+		lineageTag: d8751e04-dba6-4675-ae88-d0d39f2c491c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgPendapatanHari = DIVIDE(SUM('aggregate_realization'[total_amount]),DISTINCTCOUNT(DateTable2[Date]))
+		lineageTag: 5db9295f-ad84-488e-bebc-37ddc05b963a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgPenumpangArea = DIVIDE(SUM('aggregate_realization'[total_passenger]),DISTINCTCOUNTNOBLANK('aggregate_realization'[area_code_first_depart]))
+		formatString: #,0.00
+		lineageTag: fe48bd65-6ea6-430f-b687-79b4e1f62daf
+
+	measure AvgPenumpangHari = DIVIDE(SUM('aggregate_realization'[total_passenger]),DISTINCTCOUNT(DateTable2[Date]))
+		lineageTag: 3e3692c0-a6e6-4120-aa0d-5dcd90e2f1ef
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgRealisasiAmoAreaY2 =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) -1
+			var out = CALCULATE(SUM('aggregate_realization'[total_amount]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK('aggregate_realization'[area_code_first_depart]))
+		lineageTag: ff18c24d-0585-4aff-9b5e-8241beb79740
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgRealisasiAmoHariY2 =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) -1
+			var out = CALCULATE(SUM('aggregate_realization'[total_amount]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK(DateTable2[Date]))
+		lineageTag: 022162c1-06f6-4978-abbb-3003d69d3fbe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgRealisasiAmouAreaY3 =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) -2
+			var out = CALCULATE(SUM('aggregate_realization'[total_amount]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK('aggregate_realization'[area_code_first_depart]))
+		lineageTag: b616512b-ceea-4692-a8b4-c7e07af7825d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgRealisasiAmouHariY3 =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) -2
+			var out = CALCULATE(SUM('aggregate_realization'[total_amount]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK(DateTable2[Date]))
+		lineageTag: 722f8216-6778-4d92-bb3d-41c943078864
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgRealisasiPassAreaY2 =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) -1
+			var out = CALCULATE(SUM('aggregate_realization'[total_passenger]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK('aggregate_realization'[area_code_first_depart]))
+		formatString: #,0.00
+		lineageTag: 0d1fe53f-a8ee-491d-b2c9-b6df65f64e10
+
+	measure AvgRealisasiPassAreaY3 =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) -2
+			var out = CALCULATE(SUM('aggregate_realization'[total_passenger]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK('aggregate_realization'[area_code_first_depart]))
+		lineageTag: 85022372-d625-4df2-8545-a66b84db5e41
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgRealisasiPassHariY2 =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) - 1
+			var out = CALCULATE(SUM('aggregate_realization'[total_passenger]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK(DateTable2[Date]))
+		lineageTag: af51225d-9f76-456b-880f-72d1a9d9d79b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgRealisasiPassHariY3 = ```
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) -2
+			var out = CALCULATE(SUM('aggregate_realization'[total_passenger]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK(DateTable2[Date]))
+			
+			
+			```
+		lineageTag: 26fbc2db-b3c3-4c74-88ee-172ccb9f24a3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure PrevMounthAmo =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year])
+			var out = CALCULATE(SUM('aggregate_target'[total_amount_target]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN out
+		formatString: #,0
+		lineageTag: 79470b36-ffba-46e6-b8a2-7c9f6cfb5a5b
+
+	measure PrevMounthPass =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year])
+			var out = CALCULATE(SUM('aggregate_target'[total_passenger_target]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN out
+		formatString: #,0
+		lineageTag: 7f9975dc-5eeb-47f9-8a13-f687dd9a3007
+
+	measure RealisasiY2Amo =
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year]) -1
+			var out = CALCULATE(SUM('aggregate_realization'[total_amount]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN out
+		formatString: #,0
+		lineageTag: ab53a374-45ee-4dc3-af03-ebe2250287cc
+
+	measure RealisasiY2Pass =
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year]) -1
+			var out = CALCULATE(SUM('aggregate_realization'[total_passenger]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN out
+		formatString: #,0
+		lineageTag: 93abaa15-ab98-4de4-b886-57da57b8d220
+
+	measure RealisasiY3Amo =
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year]) -2
+			var out = CALCULATE(SUM('aggregate_realization'[total_amount]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN out
+		formatString: #,0
+		lineageTag: f012b13c-be74-4ae0-ba77-94c1a8f419f9
+
+	measure RealisasiY3Pass =
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year]) -2
+			var out = CALCULATE(SUM('aggregate_realization'[total_passenger]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN out
+		formatString: #,0
+		lineageTag: 118a9ac1-dfb9-4337-8959-02532aa5a760
+
+	measure SemesterAmoY = ```
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year])
+			RETURN 
+			CALCULATE(
+			    SUM('aggregate_target'[total_amount_target]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahun 
+			         && DateTable2[PoskoLabel] == SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    )
+			    
+			```
+		formatString: 0
+		lineageTag: 5eb78664-db7c-450b-91d2-f7df6fc1c9d8
+
+	measure SemesterAmoY2 = ```
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year]) -1
+			RETURN 
+			CALCULATE(
+			    SUM('aggregate_realization'[total_amount]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahun 
+			         && DateTable2[PoskoLabel] == SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    )
+			    
+			```
+		formatString: 0
+		lineageTag: f8b1745f-9e39-4267-9bca-581b0a6f877b
+
+	measure SemesterAmoY2V1 = ```
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year]) -1
+			RETURN 
+			CALCULATE(
+			    SUM('aggregate_realization'[total_amount]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahun)
+			    
+			    
+			```
+		formatString: 0
+		lineageTag: b90f87a2-ba06-4936-9487-64f3dea3ef12
+
+	measure SemesterAmoY3 = ```
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year]) -2
+			RETURN 
+			CALCULATE(
+			    SUM('aggregate_realization'[total_amount]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahun 
+			         && DateTable2[PoskoLabel] == SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    )
+			    
+			```
+		formatString: 0
+		lineageTag: d2039d1e-8945-4b40-9590-8a8801e48457
+
+	measure SemesterAmoY3V1 = ```
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year]) -2
+			RETURN 
+			CALCULATE(
+			    SUM('aggregate_realization'[total_amount]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahun)
+			
+			```
+		formatString: 0
+		lineageTag: 629d5ebc-7a5c-4f48-a344-8c459f34a985
+
+	measure SemesterAmoYV1 = ```
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year])
+			RETURN 
+			CALCULATE(
+			    SUM('aggregate_target'[total_amount_target]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahun)
+			    
+			    
+			```
+		formatString: 0
+		lineageTag: 6ca5ddf0-9f3f-4dfb-b8dd-c0f85b658668
+
+	measure SemesterPasY = ```
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year])
+			RETURN 
+			CALCULATE(
+			    SUM('aggregate_target'[total_passenger_target]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahun 
+			         && DateTable2[PoskoLabel] == SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    )
+			
+			
+			    
+			```
+		formatString: #,0
+		lineageTag: dc0f864b-6e7d-4601-bcd1-0a2fc20dad11
+
+	measure SemesterPasY2 = ```
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year]) -1
+			RETURN 
+			CALCULATE(
+			    SUM('aggregate_realization'[total_passenger]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahun 
+			         && DateTable2[PoskoLabel] == SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    )
+			    
+			```
+		formatString: #,0
+		lineageTag: cc0ee747-25fc-41b8-a1d1-8351f74ada1e
+
+	measure SemesterPasY2V1 = ```
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year]) -1
+			RETURN 
+			CALCULATE(
+			    SUM('aggregate_realization'[total_passenger]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahun 
+			    )
+			    
+			```
+		formatString: 0
+		lineageTag: 8c0bf7e4-03ef-49b9-b5ca-08b3c9f7c46f
+
+	measure SemesterPasY3 = ```
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year]) -2
+			RETURN 
+			CALCULATE(
+			    SUM('aggregate_realization'[total_passenger]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahun 
+			         && DateTable2[PoskoLabel] == SELECTEDVALUE('DateTable2'[PoskoLabel])
+			    )
+			    
+			```
+		formatString: #,0
+		lineageTag: f966a95d-4019-4100-aa3d-ff084af5f29e
+
+	measure SemesterPasY3V1 = ```
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year]) -2
+			RETURN 
+			CALCULATE(
+			    SUM('aggregate_realization'[total_passenger]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahun 
+			    )
+			    
+			```
+		formatString: 0
+		lineageTag: 2a3ba822-d523-4097-bede-80db9748318d
+
+	measure SemesterPasYV1 = ```
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year])
+			RETURN 
+			CALCULATE(
+			    SUM('aggregate_target'[total_passenger_target]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahun
+			    )
+			    
+			```
+		formatString: 0
+		lineageTag: 60ee08b4-0eab-4336-bef0-a3880ae79d18
+
+	measure Year3 = SELECTEDVALUE(DateTable2[Year])-2
+		formatString: 0
+		lineageTag: d76a6240-44dc-4da2-97cc-2729bbd52e86
+
+	measure '%RealisasiY3Pass Other' = 1 - [%RealisasiY3Pass]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1daaef9c-1ba3-4855-97a3-7395593e7ee0
+
+	measure '%RealisasiY2Pass Other' = 1 - [%RealisasiY2Pass]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: fa16f752-21d4-4980-b90d-970cf7d796c4
+
+	measure '%RealisasiY3Amo Other' = 1 - [%RealisasiY3Amo]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a8407e45-6ae9-4f34-969d-6634a61e1a5b
+
+	measure '%RealisasiY2Amo Other' = 1 - [%RealisasiY2Amo]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9b75fc70-06d4-4ffa-86ce-2f327c089845
+
+	measure '%PrevMounthPass Other' = 1- [%PrevMounthPass]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e6f8cadc-5a4a-4dc9-bbf3-32115eadfe09
+
+	measure '%PrevMounthAmo Other' = 1 - [%PrevMounthAmo]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3bad0077-12f0-4396-8855-bb0c50371004
+
+	measure AvgPrevMounthAmo =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year])
+			var out = CALCULATE(SUM('aggregate_target'[total_amount_target]), DateTable2[Year] == tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK('aggregate_realization'[area_code_first_depart]))
+		lineageTag: 80dfcbe6-97f0-4dd7-b6c3-6fbfd23eceb2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgPrevMounthPass =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year])
+			var out = CALCULATE(SUM('aggregate_target'[total_passenger_target]), DateTable2[Year] == tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK('aggregate_realization'[area_code_first_depart]))
+		lineageTag: 4fd2a003-b7e9-48bf-b3dd-ec3a959423e3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgPrevMounthPassHari =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year])
+			var out = CALCULATE(SUM('aggregate_target'[total_passenger_target]), DateTable2[Year] == tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK(DateTable2[Tanggal]))
+		lineageTag: 0b358307-3fac-4f5e-9d8a-d3a941085ffe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgPrevMounthAmoHari =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year])
+			var out = CALCULATE(SUM('aggregate_target'[total_amount_target]), DateTable2[Year] == tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK(DateTable2[Tanggal]))
+		lineageTag: 9a06c1f6-aa1c-49ff-9405-388f592c4521
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure TotalAmoYP = ```
+			
+			VAR tahun = SELECTEDVALUE(DateTable2[Year])
+			RETURN 
+			CALCULATE(
+			    SUM('aggregate_target'[total_amount_target]),
+			    ALL(DateTable2),  
+			        DateTable2[Posko] == "Lebaran " & tahun 
+			        //  && DateTable[SemesterLabel] == SELECTEDVALUE('DateTable'[SemesterLabel])
+			    )
+			    
+			```
+		formatString: 0
+		lineageTag: 5e847c0e-59b4-4fd1-a355-2f7226353193
+
+	measure SummaryTitle = ```
+			
+			"Realisasi Posko " 
+			& SELECTEDVALUE(DateTable2[Posko]) 
+			& " (Berdasarkan Tanggal Keberangkatan KA " 
+			& FORMAT(MIN(DateTable2[Date]), "DD.MM.YYYY") 
+			& " s.d " & FORMAT(MAX(DateTable2[Date]), "DD.MM.YYYY") 
+			& " )"
+			```
+		lineageTag: 0d443f42-f2ac-439d-a653-4ee40799df08
+
+	measure RealisasiVolume = ```
+			
+			VAR Pendapatan = 
+			CALCULATE(SUM('aggregate_realization'[total_passenger]),
+			    FILTER(
+			        DateTable2,
+			        // DateTable2[Posko] = SELECTEDVALUE(DateTable2[Posko]) &&
+			        DateTable2[Date] <= TODAY()
+			    )
+			)
+			RETURN Pendapatan
+			
+			```
+		formatString: #,0
+		lineageTag: 6506e746-d82c-4db8-a589-747b71cc1332
+
+	measure %GrowthVolume = ```
+			
+			VAR Tahun = SELECTEDVALUE(DateTable2[Year])-1
+			VAR Leb = MAX(DateTable2[PoskoLabel])
+			
+			VAR Realisasi = 
+			    CALCULATE(
+			        SUM('aggregate_realization'[total_passenger]), 
+			        FILTER(
+			            ALL(DateTable2),
+			            DateTable2[Posko] = "Lebaran " & Tahun
+			        )
+			    )
+			
+			VAR Real = 
+			    CALCULATE(
+			        SUM('aggregate_realization'[total_passenger]), 
+			        FILTER(
+			            ALL(DateTable2),
+			            DateTable2[Posko] = SELECTEDVALUE(DateTable2[Posko]) 
+			            // && DateTable2[PoskoLabel] <= Leb
+			        )
+			    )
+			
+			RETURN DIVIDE(Real,Realisasi, 0) - 1
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1b511587-fa3e-48b6-852a-c8d1941648ec
+
+	measure %GrowthPendapatan = ```
+			
+			VAR Tahun = SELECTEDVALUE(DateTable2[Year])-1
+			VAR Leb = MAX(DateTable2[PoskoLabel])
+			
+			VAR Realisasi = 
+			    CALCULATE(
+			        SUM('aggregate_realization'[total_amount]), 
+			        FILTER(
+			            ALL(DateTable2),
+			            DateTable2[Posko] = "Lebaran " & Tahun
+			        )
+			    )
+			
+			VAR Real = 
+			    CALCULATE(
+			        SUM('aggregate_realization'[total_amount]), 
+			        FILTER(
+			            ALL(DateTable2),
+			            DateTable2[Posko] = SELECTEDVALUE(DateTable2[Posko]) 
+			            // && DateTable2[PoskoLabel] <= Leb
+			        )
+			    )
+			
+			RETURN DIVIDE(Real, Realisasi, 0) - 1 
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c141f4be-561f-45b9-b16c-bdf541d1fd60
+
+	measure RealisasiPendapatan = ```
+			
+			VAR Pendapatan = 
+			CALCULATE(SUM('aggregate_realization'[total_amount]),
+			    FILTER(
+			        DateTable2,
+			        // DateTable2[Posko] = SELECTEDVALUE(DateTable2[Posko]) &&
+			        // DateTable2[Tanggal] >= SELECTEDVALUE(DateTable2[Tanggal])|
+			        DateTable2[Date] <= TODAY()
+			    )
+			)
+			RETURN Pendapatan
+			
+			```
+		formatString: #,0
+		lineageTag: 8ff7ec34-5c7b-439e-83ac-054e1a4e4add
+
+	measure AvgPenumpangStasiun = DIVIDE(SUM('aggregate_realization'[total_passenger]),DISTINCTCOUNTNOBLANK('aggregate_realization'[station_code_first_depart]))
+		formatString: #,0.00
+		lineageTag: fc277e08-6d63-4791-926f-99e8b4eb824a
+
+	measure AvgPendapatanStasiun = DIVIDE(SUM('aggregate_realization'[total_amount]),DISTINCTCOUNTNOBLANK('aggregate_realization'[station_code_first_depart]))
+		lineageTag: 65b9c330-0330-4120-9e5c-d44c9148be12
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgRealisasiAmoStasiunY2 =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) -1
+			var out = CALCULATE(SUM('aggregate_realization'[total_amount]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK('aggregate_realization'[station_code_first_depart]))
+		lineageTag: 768d09a0-1388-43b7-a0a4-b5b8994cd7ac
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgRealisasiAmoStasiunY3 =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) - 2
+			var out = CALCULATE(SUM('aggregate_realization'[total_amount]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK('aggregate_realization'[station_code_first_depart]))
+		lineageTag: 9b304d2c-8d7c-48bf-b7b7-889604d5a048
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgRealisasiPassStasiunY3 =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) -2
+			var out = CALCULATE(SUM('aggregate_realization'[total_passenger]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK('aggregate_realization'[station_code_first_depart]))
+		lineageTag: fa9dba5c-fad2-4d76-8035-470022a460e2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgRealisasiPassStasiunY2 =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) - 1
+			var out = CALCULATE(SUM('aggregate_realization'[total_passenger]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK('aggregate_realization'[station_code_first_depart]))
+		lineageTag: 40638fda-76f7-42ee-822d-8982e7cbfc3a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgPrevMounthAmoStasiun =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year])
+			var out = CALCULATE(SUM('aggregate_target'[total_amount_target]), DateTable2[Year] == tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK('aggregate_realization'[station_code_first_depart]))
+		lineageTag: 095f0992-7329-427b-8065-3b8424596c95
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgPrevMounthPassStasiun =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year])
+			var out = CALCULATE(SUM('aggregate_target'[total_passenger_target]), DateTable2[Year] == tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK('aggregate_realization'[station_code_first_depart]))
+		lineageTag: 37cb76f1-571f-4560-8d10-ccd4f33cbf9f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgPendapatanKereta = DIVIDE(SUM('aggregate_realization'[total_amount]),DISTINCTCOUNTNOBLANK('aggregate_realization'[train_id]))
+		formatString: #,0.00
+		lineageTag: dcb27c57-cb6c-4929-897d-97bae83048e0
+
+	measure AvgPenumpangKereta = DIVIDE(SUM('aggregate_realization'[total_passenger]),DISTINCTCOUNTNOBLANK('aggregate_realization'[train_id]))
+		formatString: #,0.00
+		lineageTag: ac02cc5d-6464-4277-aa49-b36b19a7dbed
+
+	measure AvgRealisasiPassKeretaY2 =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) - 1
+			var out = CALCULATE(SUM('aggregate_realization'[total_passenger]), FILTER(ALL(DateTable2),DateTable2[Posko] == "Lebaran " & tahun))
+			var kereta = CALCULATE( DISTINCTCOUNTNOBLANK('aggregate_realization'[train_id]), FILTER(ALL(DateTable2),DateTable2[Posko] == "Lebaran " & tahun))
+			RETURN DIVIDE(out,kereta)
+		lineageTag: bc025409-dce1-4048-9978-555be07244ea
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgRealisasiPassKeretaY3 =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) - 2
+			var out = CALCULATE(SUM('aggregate_realization'[total_passenger]), FILTER(ALL(DateTable2),DateTable2[Posko] == "Lebaran " & tahun))
+			var kereta = CALCULATE( DISTINCTCOUNTNOBLANK('aggregate_realization'[train_id]), FILTER(ALL(DateTable2),DateTable2[Posko] == "Lebaran " & tahun))
+			RETURN DIVIDE(out,kereta)
+		lineageTag: a218b515-e91e-48ac-8bc6-8281842db270
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgRealisasiAmoKeretaY2 =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) - 1
+			var out = CALCULATE(SUM('aggregate_realization'[total_amount]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK('aggregate_realization'[train_id]))
+		lineageTag: b82368d0-2644-4f89-9b2c-3bbfa584ee82
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgRealisasiAmoKeretaY3 =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year]) - 2
+			var out = CALCULATE(SUM('aggregate_realization'[total_amount]), DateTable2[Posko] == "Lebaran " & tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK('aggregate_realization'[train_id]))
+		lineageTag: 3d2278b9-7906-4937-ae5f-64c663382e43
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgPrevMounthAmoKereta =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year])
+			var out = CALCULATE(SUM('aggregate_target'[total_amount_target]), DateTable2[Year] == tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK('aggregate_realization'[train_id]))
+		lineageTag: a711b590-47b6-4232-ba50-d3509afb87d9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AvgPrevMounthPassKereta =
+			
+			var tahun = SELECTEDVALUE(DateTable2[Year])
+			var out = CALCULATE(SUM('aggregate_target'[total_passenger_target]), DateTable2[Year] == tahun)
+			RETURN DIVIDE(out,DISTINCTCOUNTNOBLANK('aggregate_realization'[train_id]))
+		lineageTag: bda81792-0a1e-49ea-b86a-024bf066a7b6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'cut off' = "cut off data : " & FORMAT(MAX('aggregate_realization'[cut_off_data]),"dd/mm/yyyy h:nn AMPM")
+		lineageTag: 50a4d511-e4a7-420a-b8ac-0b263d160ea0
+
+	measure TVolume = CONCATENATE("Total Volume Per Tanggal ", LEFT(MAX('aggregate_realization'[cut_off_data]),8))
+		lineageTag: 76a9a9c3-4601-4c68-b4db-72e55295a85f
+
+	measure TPendapatan = CONCATENATE("Total Pendapatan Per Tanggal ", LEFT(MAX('aggregate_realization'[cut_off_data]),8))
+		lineageTag: 9ea23a97-2c0e-4c15-9e2c-cfc994caf788
+
+	column a
+		lineageTag: d996ba11-d727-431f-99da-660e5156062d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [a]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DateTable = calculated
+		mode: import
+		source = ROW("a","")
+
+	annotation PBI_Id = d9a1278359894698a6ab20cccfb0326a
+

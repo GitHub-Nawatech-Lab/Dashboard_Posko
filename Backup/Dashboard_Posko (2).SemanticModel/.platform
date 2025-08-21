@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Dashboard_Posko (2)"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7fa9bcab-d857-bfa3-4977-3d763d482c00"
+  }
+}

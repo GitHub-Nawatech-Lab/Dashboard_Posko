@@ -1,0 +1,43 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-ID
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["aggregate_realization","aggregate_target","dim_area_raw","dim_stasiun_raw","dim_train_raw","posko_table","YearTable","dim_train_class","dim_train_pso"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.143.878.0 (25.05)+b20aa3b866ec1b70879135a4e60e4b1301c75b21
+
+annotation PBI_ProTooling = ["WebModelingEdit"]
+
+ref table aggregate_realization
+ref table aggregate_target
+ref table DateTable2
+ref table dim_area_raw
+ref table dim_stasiun_raw
+ref table dim_train_raw
+ref table posko_table
+ref table DateTable
+ref table YearTable
+ref table dim_train_class
+ref table dim_train_pso
+ref table DateTableTemplate_f1fb0310-d3ed-4094-89fa-6611d8f21322
+ref table LocalDateTable_ffe7f5f0-f18c-40d7-abc7-45631728cd36
+ref table LocalDateTable_23ceb2bb-c2a0-4560-b33a-247d18b64a65
+ref table LocalDateTable_8adbb1b1-cb3b-45eb-a900-3b9adf6bc243
+ref table LocalDateTable_28fb3cc1-901e-4c41-a51e-523c599e6156
+ref table LocalDateTable_2dc3e68b-2c9c-48ab-ac32-54b2b45438c1
+ref table LocalDateTable_5b3119fb-d7c7-42e6-8b9b-f4ee53d8c10d
+ref table LocalDateTable_0b56c218-1660-4b74-afe7-45e617980a7a
+ref table LocalDateTable_c638e203-2c19-4c30-9b4b-3b6a4f867f72
+ref table LocalDateTable_060cd448-4c77-4cb1-9127-375ff8f6b751
+ref table LocalDateTable_47394330-6d95-4fca-8ea7-82af53b78c19
+ref table LocalDateTable_6014df42-7f86-4562-a232-a3a15358cfad
+ref table LocalDateTable_4d014ae4-7cab-40af-a49f-4cd2575d9c89
+
+ref cultureInfo en-US
+

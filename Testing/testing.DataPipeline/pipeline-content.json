@@ -1,0 +1,198 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "items": {
+            "value": "@pipeline().parameters.cw_items_duk",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "Copy",
+              "typeProperties": {
+                "source": {
+                  "type": "LakehouseTableSource",
+                  "datasetSettings": {
+                    "type": "LakehouseTable",
+                    "typeProperties": {
+                      "table": {
+                        "value": "@item().source.table",
+                        "type": "Expression"
+                      }
+                    },
+                    "schema": [],
+                    "linkedService": {
+                      "name": "Demo_Day_4",
+                      "properties": {
+                        "type": "Lakehouse",
+                        "typeProperties": {
+                          "artifactId": "7a66a41c-f54a-4b93-8831-03902e3e61fb",
+                          "workspaceId": "e0488a99-2513-48d0-80e0-d2ff58894064",
+                          "rootFolder": "Tables"
+                        },
+                        "annotations": []
+                      }
+                    },
+                    "annotations": []
+                  }
+                },
+                "sink": {
+                  "type": "LakehouseTableSink",
+                  "tableActionOption": "OverwriteSchema",
+                  "partitionOption": "None",
+                  "datasetSettings": {
+                    "type": "LakehouseTable",
+                    "typeProperties": {
+                      "table": {
+                        "value": "@item().destination.table",
+                        "type": "Expression"
+                      }
+                    },
+                    "schema": [],
+                    "linkedService": {
+                      "name": "testing",
+                      "properties": {
+                        "type": "Lakehouse",
+                        "typeProperties": {
+                          "artifactId": "7a5042b4-5102-bbc7-4938-ed22b8c74f69",
+                          "workspaceId": "00000000-0000-0000-0000-000000000000",
+                          "rootFolder": "Tables"
+                        },
+                        "annotations": []
+                      }
+                    },
+                    "annotations": []
+                  }
+                },
+                "translator": {
+                  "type": "TabularTranslator",
+                  "mappings": [
+                    {
+                      "source": {
+                        "name": "period_last_arrival",
+                        "type": "DateTime",
+                        "physicalType": "timestamp"
+                      },
+                      "sink": {
+                        "name": "period_last_arrival",
+                        "physicalType": "timestamp"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "area_code_last_arrival",
+                        "type": "String",
+                        "physicalType": "string"
+                      },
+                      "sink": {
+                        "name": "area_code_last_arrival",
+                        "physicalType": "string"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "area_code_arrival",
+                        "type": "String",
+                        "physicalType": "string"
+                      },
+                      "sink": {
+                        "name": "area_code_arrival",
+                        "physicalType": "string"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "train_class",
+                        "type": "String",
+                        "physicalType": "string"
+                      },
+                      "sink": {
+                        "name": "train_class",
+                        "physicalType": "string"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "train_local",
+                        "type": "Int32",
+                        "physicalType": "integer"
+                      },
+                      "sink": {
+                        "name": "train_local",
+                        "physicalType": "integer"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "passenger",
+                        "type": "Int32",
+                        "physicalType": "integer"
+                      },
+                      "sink": {
+                        "name": "passenger",
+                        "physicalType": "integer"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "amount",
+                        "type": "Int64",
+                        "physicalType": "long"
+                      },
+                      "sink": {
+                        "name": "amount",
+                        "physicalType": "long"
+                      }
+                    }
+                  ],
+                  "typeConversion": true,
+                  "typeConversionSettings": {
+                    "allowDataTruncation": true,
+                    "treatBooleanAsNumber": false
+                  }
+                },
+                "enableStaging": false
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Copy_duk",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "ForEach_duk",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "cw_items_duk": {
+        "type": "Array",
+        "defaultValue": [
+          {
+            "source": {
+              "table": "dashboard_ticketing_aggregate_program"
+            },
+            "destination": {
+              "table": "dashboard_ticketing_aggregate_program"
+            }
+          },
+          {
+            "source": {
+              "table": "dashboard_ticketing_aggregate_system"
+            },
+            "destination": {
+              "table": "dashboard_ticketing_aggregate_system"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

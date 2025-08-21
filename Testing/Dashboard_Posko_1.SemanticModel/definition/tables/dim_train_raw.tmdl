@@ -1,0 +1,41 @@
+table dim_train_raw
+	lineageTag: 26985b79-95b5-4d3b-bd1f-116b2d5ecd2a
+
+	column train_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: efb7f42c-3337-4182-b4e7-c267f3506440
+		summarizeBy: none
+		sourceColumn: train_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_number_merge
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 69c919f8-40ea-4817-9e12-4454a7bcb0ee
+		summarizeBy: none
+		sourceColumn: train_number_merge
+
+		annotation SummarizationSetBy = Automatic
+
+	column train_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: dea1f92c-25a8-4202-bdca-860177229487
+		summarizeBy: none
+		sourceColumn: train_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_train_raw = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("eud3dnyz5fjehkzavuohztthdi-dcxryn2rcyqehmb53xkxj2c6ja.datawarehouse.fabric.microsoft.com", "dashboard_data"),
+				    dbo_dashboard_ticketing_train_raw = Source{[Schema="dbo",Item="dashboard_ticketing_train_raw"]}[Data]
+				in
+				    dbo_dashboard_ticketing_train_raw
+
+	annotation PBI_ResultType = Table
+
